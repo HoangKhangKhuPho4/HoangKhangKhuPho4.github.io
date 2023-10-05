@@ -345,13 +345,6 @@ body {
     width: 100%;
     max-width: 200px; /* Giới hạn chiều rộng tối đa của hình ảnh */
 }
-/* Ví dụ: Điều chỉnh kích thước font cho màn hình nhỏ hơn 768px */
-@media (max-width: 768px) {
-    body {
-        font-size: 50px;
-    }
-   
-}
 
 
 
