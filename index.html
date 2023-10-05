@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Nguyễn Lê Hoàng Khang - IT Front End Web Developer. Explore my resume and my work.">
+    <meta name="keywords" content="Nguyễn Lê Hoàng Khang, Web Developer, Resume, Projects">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website cá nhân GTNM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="navbar">
+        <a href="#top">HOME</a>
+        <a href="#profile-section">PROFILE</a>
+        <a href="#education-section">EDUCATION</a>
+        <a href="#experience-section">EXPERIENCE</a>
+        <a href="#contact-section">CONTACT</a>
+    </div>
+    <div class="resume">
+        <div class="sidebar">
+            <img src="anhcanhan.jpg" alt="Profile Picture" class="profile-pic" width="50" height="100">
+            <h3 class="contact-me" id="contact-section">CONTACT ME</h3>
+            <p><img src="phonebb.png" alt="Phone Icon" width="24" height="24"> <strong>PHONE:</strong> 0567649206</p>
+
+            <p><img src="mail.png" alt="Mail Icon" width="24" height="24"> <strong>MAIL:</strong> 22130116@st.hcmuaf.edu.vn</p>
+
+            <p><img src="Linkedin.png" alt="LinkedIn Icon" width="24" height="24"> <strong>LINKEDIN:</strong> Yourlinkedin.com</p>
+
+            <p><img src="ad.png" alt="Address Icon" width="24" height="24"> <strong>ADDRESS:</strong> Khu Phố 4,Thị Trấn Phước Dân,Huyện Ninh Phước,Tỉnh Ninh Thuận</p>
+
+            <div class="skills-section">
+                <h3>SKILLS</h3>
+                <ul>
+                    <li><strong>Ngôn ngữ lập trình:</strong> Java, Python, JavaScript, C++</li>
+                    <li><strong>Công cụ & Công nghệ:</strong> Git, Docker, Jenkins, AWS, Azure</li>
+                    <li><strong>Phát triển Web:</strong> HTML, CSS, React, Node.js, Express.js</li>
+                    <li><strong>Cơ sở dữ liệu:</strong> SQL (MySQL, PostgreSQL), NoSQL (MongoDB, Cassandra)</li>
+                    <li><strong>DevOps:</strong> CI/CD, Kubernetes, Terraform</li>
+                    <li><strong>Phân tích dữ liệu:</strong> R, Matlab, Tableau</li>
+                    <li><strong>Trí tuệ nhân tạo:</strong> TensorFlow, PyTorch</li>
+                    <li><strong>Mạng & Bảo mật:</strong> OSI Model, VPN, Firewall, IDS/IPS</li>
+                    <li><strong>Phần mềm quản lý dự án:</strong> JIRA, Trello</li>
+                    <li><strong>Giao tiếp:</strong> Đội ngũ đa văn hóa, trình bày dự án, đàm phán kỹ thuật</li>
+                </ul>
+            </div>
+             
+            <div class="language-section">
+                <h3>LANGUAGE</h3>
+                <ul>
+                    <li><strong>Tiếng Việt:</strong> Bản ngữ</li>
+                    <li><strong>Tiếng Anh:</strong> Thành thạo (TOEFL iBT: 95, IELTS: 7.5)</li>
+                    <li><strong>Tiếng Nhật:</strong> Trình độ sơ cấp (JLPT: N4)</li>
+                    <li><strong>Tiếng Pháp:</strong> Giao tiếp cơ bản (DELF: A2)</li>
+                    <li><strong>Tiếng Tây Ban Nha:</strong> Giao tiếp cơ bản</li>
+                </ul>
+            </div>
+            <div class="passions-section">
+                <h3>PASSIONS</h3>
+                <ul>
+                    <li><strong>Code & Tech:</strong> Luôn theo dõi các xu hướng công nghệ mới và tham gia các dự án mã nguồn mở.</li>
+                    <li><strong>Đọc sách:</strong> Yêu thích các tác phẩm về triết học, khoa học và lịch sử.</li>
+                    <li><strong>Du lịch:</strong> Khám phá các vùng đất mới, tìm hiểu văn hóa và ẩm thực địa phương.</li>
+                    <li><strong>Âm nhạc:</strong> Chơi guitar và tham gia ban nhạc nhỏ trong cộng đồng.</li>
+                    <li><strong>Thể thao:</strong> Thường xuyên chạy bộ và tham gia các giải chạy marathon.</li>
+                    <li><strong>Nhiếp ảnh:</strong> Chụp ảnh du lịch và phong cảnh tự nhiên.</li>
+                    <li><strong>Nấu ăn:</strong> Thử nghiệm các công thức nấu ăn từ khắp nơi trên thế giới.</li>
+                    <li><strong>Viết lách:</strong> Viết blog cá nhân và chia sẻ những trải nghiệm và suy nghĩ.</li>
+                </ul>
+            </div>
+            <div class="contact-form">
+                <h4>Send me a message</h4>
+                <form action="/submit_contact" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+            
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+            
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+            
+                    <input type="submit" value="Send Message">
+                </form>
+            </div>
+            
+        </div>
+        <div class="main-content">
+            <h1 class="title" id="top">NGUYỄN LÊ HOÀNG KHANG<br/>IT - Front End Web Developer</h1>
+                <!-- HTML -->
+           <p class="slide-in">Văn bản sẽ trượt vào từ bên trái khi trang web được tải.</p>
+
+            <div class="profile-section" id="profile-section">
+                <h2><img src="profile.png" alt="Profile Icon" width="24" height="24"> PROFILE</h2>
+                
+                <p>
+                    Với hơn 5 năm kinh nghiệm trong lĩnh vực Công nghệ thông tin, tôi luôn đề cao tầm nhìn chiến lược và tập trung vào việc giải quyết vấn đề thông qua công nghệ. Tôi có khả năng làm việc độc lập cũng như trong môi trường nhóm, luôn theo dõi và nắm bắt các xu hướng công nghệ mới để áp dụng vào các dự án thực tế. 
+                </p>
+                <p>
+                    Được đào tạo chuyên sâu với một nền tảng vững chắc về lập trình và thiết kế hệ thống, tôi tự tin trong việc phân tích, thiết kế và triển khai các giải pháp phần mềm hiệu quả. Bên cạnh đó, tôi cũng luôn khao khát học hỏi, tiếp tục nâng cao kiến thức và kỹ năng để phục vụ tốt hơn cho công việc và đóng góp giá trị cho doanh nghiệp.
+                </p>
+            </div>
+            <div class="education-section" id="education-section">
+                <h2><img src="edu.png" alt="" width="24" height="24"> EDUCATION</h2>
+
+                <div class="degree">
+                    <h4>2017-2021: Cử nhân Công nghệ thông tin</h4>
+                    <p><strong>HANOI UNIVERSITY OF SCIENCE AND TECHNOLOGY</strong></p>
+                    <ul>
+                        <li>Chuyên ngành: Phát triển phần mềm</li>
+                        <li>Luận văn cuối kỳ: "Ứng dụng trí tuệ nhân tạo trong xử lý ngôn ngữ tự nhiên"</li>
+                        <li>Đạt giải nhất cuộc thi lập trình Đại học Kỹ thuật ABC năm 2020.</li>
+                    </ul>
+                </div>
+                <div class="degree">
+                    <h4>2015-2017: NONG LAM UNIVERSITY</h4>
+                    <p><strong>Khoa Công Nghệ Thông Tin</strong></p>
+                    <ul>
+                        <li>Chuyên ngành: Hệ thống thông tin</li>
+                        <li>Dự án tiêu biểu: "Xây dựng hệ thống quản lý kho hàng trực tuyến"</li>
+                        <li>Tham gia câu lạc bộ lập trình và đạt giải ba cuộc thi hackathon năm 2016.</li>
+                    </ul>
+                </div>
+            <div class="experience-section" id="experience-section">
+                <h2><img src="ex.png" alt="" width="24" height="24"> EXPERIENCE</h2>
+
+                <div class="job">
+                    <h4>2021-2023: Full-Stack Developer</h4>
+                    <p><strong>Software Quality Assurance (Tester) (Jira, Selenium)</strong></p>
+                    <ol type="1">
+                        <li>Phát triển và bảo trì các ứng dụng web cho khách hàng sử dụng JavaScript, React và Node.js.</li>
+                        <li>Tối ưu hóa hiệu suất trang web và giảm thời gian tải trang.</li>
+                        <li>Làm việc chặt chẽ với đội ngũ thiết kế để tạo ra giao diện người dùng hấp dẫn và thân thiện.</li>
+                    </ol>
+                </div>
+                <div class="job">
+                    <h4>2019-2021: ưưSoftware Engineer</h4>
+                    <p><strong>Zuhlke Engineering Vietnam</strong></p>
+                    <ol type="1">
+                        <li>Tham gia vào việc xây dựng và kiểm thử các sản phẩm phần mềm dành cho doanh nghiệp.</li>
+                        <li>Đảm bảo mã nguồn đạt tiêu chuẩn và dễ dàng bảo trì.</li>
+                        <li>Tư vấn và hỗ trợ khách hàng về các vấn đề kỹ thuật liên quan đến sản phẩm.</li>
+                    </ol>
+                </div>
+                <div class="job">
+                    <h4>2023-2025: DevOps Engineer</h4>
+                    <p><strong>Absolute Software (Vietnam) Ltd</strong></p>
+                    <ol type="1">
+                        <li>Quản lý và tối ưu hóa hạ tầng cloud sử dụng AWS và Azure.</li>
+                        <li>Tự động hóa quy trình triển khai ứng dụng bằng Jenkins và Docker.</li>
+                        <li>Đảm bảo tính sẵn sàng và độ tin cậy của hệ thống thông qua giám sát và cảnh báo.</li>
+                    </ol>
+                </div> 
+              
+                 
+              
+              
+                <footer>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61550764716112" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/your_username" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/your_username/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/your_username/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <!-- Thêm các mạng xã hội khác nếu bạn muốn -->
+                    </div>
+                    
+                    <p>© 2023 by Nguyễn Lê Hoàng Khang<br/>22130116@st.hcmuaf.edu.vn. All rights reserved.</p>
+                </footer>
+            </div>
+                
+        </div>
+    </div>
+    <a href="#top" class="back-to-top">↑</a>
+    <script src="script.js"></script>
+         
+</body>
+</html>
