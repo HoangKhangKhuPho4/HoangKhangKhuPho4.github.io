@@ -352,18 +352,6 @@ body {
     }
    
 }
-/* Thiết lập các quy tắc chung */
-.profile-pic {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Điều chỉnh kích thước của hình ảnh trên màn hình nhỏ (ví dụ: điện thoại) */
-@media (max-width: 768px) {
-    .profile-pic {
-        max-width: 80%;
-    }
-}
 
 
 
