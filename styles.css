@@ -328,6 +328,30 @@ a:hover {
         transform: translateX(0);
     }
 }
+/* Ví dụ: Điều chỉnh vị trí của navbar */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Hiển thị các liên kết dọc khi trên điện thoại */
+    }
+    /* Thêm các điều chỉnh khác cần thiết cho các phần khác của trang */
+}
+/* Ví dụ: Sử dụng rem cho kích thước font */
+body {
+    font-size: 16px;
+}
+
+/* Sử dụng % cho kích thước hình ảnh */
+.profile-pic {
+    width: 100%;
+    max-width: 200px; /* Giới hạn chiều rộng tối đa của hình ảnh */
+}
+/* Ví dụ: Điều chỉnh kích thước font cho màn hình nhỏ hơn 768px */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+}
+
 
 
 
