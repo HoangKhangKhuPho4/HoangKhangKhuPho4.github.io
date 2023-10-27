@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lê Bá Khánh Duy - Blog cá nhân</title>
+    <a href="#" class="read-more">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        color: #333;
+      }
+
+      header,
+      nav,
+      footer {
+        background-color: #333;
+        color: white;
+      }
+
+      nav,
+      footer {
+        padding: 10px 0;
+        text-align: center;
+      }
+
+      nav a,
+      .social-icons a {
+        margin: 0 10px;
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s; /* thêm hiệu ứng hover */
+      }
+
+      nav a:hover,
+      .social-icons a:hover {
+        color: #aaa; /* màu khi hover */
+      }
+
+      #profile-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 20px auto;
+        display: block;
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 40px auto;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      article,
+      aside {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 0;
+        font-size: 2.5em;
+        color: #ffffff; /* Chỉnh màu chữ thành trắng */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+      }
+
+      h2 {
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+        margin-top: 30px;
+      }
+
+      form label,
+      form input,
+      form textarea {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+
+      form input[type="submit"] {
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px 15px;
+        transition: background-color 0.3s;
+      }
+
+      form input[type="submit"]:hover {
+        background-color: #555;
+      }
+
+      @media screen and (max-width: 768px) {
+        main {
+          flex-direction: column;
+        }
+
+        article,
+        aside {
+          margin-bottom: 20px;
+        }
+
+        article {
+          margin-right: 0;
+        }
+      }
+
+      .read-more {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.read-more:hover {
+    background-color: #555;
+}
+
+.read-more i {
+    margin-left: 5px;
+}
+#more-content {
+  display: none;
+}
+.blur {
+    filter: blur(5px); /* Giá trị này có thể cần được điều chỉnh để có hiệu ứng mờ mong muốn */
+  }
+
+.highlight {
+  filter: brightness(1.5); /* làm sáng đối tượng */
+  z-index: 1; /* đặt đối tượng ở trên cùng */
+}
+    
+   
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <header>
+        <img id="profile-image" src="anhcanhan.jpg" alt="Lê Bá Khánh Duy" />
+        <h1>Nguyễn Lê Hoàng Khang</h1>
+        <p>Mã số sinh viên: 22130116</p>
+        <p>Trường Đại học Nông Lâm Thành Phố Hồ Chí Minh</p>
+      </header>
+    </header>
+
+    <nav>
+      <a href="#">Trang chủ</a>
+      <a href="#">Bài viết</a>
+      <a href="#">Giới thiệu</a>
+      <a href="#">Liên hệ</a>
+    </nav>
+
+    <main>
+      <article>
+        <!-- <h2>Giới thiệu bản thân</h2> -->
+        <p><h2>Giới thiệu bản thân</h2>
+            <p>Xin chào! Tôi là Nguyễn Lê Hoàng Khang, một sinh viên tại Trường Đại học Nông Lâm Thành Phố Hồ Chí Minh. Ngay từ những ngày đầu tiên bước chân vào trường, tôi đã luôn mang theo niềm đam mê nghiên cứu và khám phá. Trong quá trình học tập, tôi đã nhận ra rằng không chỉ kiến thức chuyên môn mà cả kỹ năng mềm và tư duy phản biện cũng rất quan trọng.</p>
+            
+            <p>Tôi luôn tự hào về nền tảng giáo dục mà trường đã cung cấp. Bên cạnh việc chăm chỉ học tập, tôi cũng tham gia nhiều câu lạc bộ và hoạt động xã hội tại trường, giúp mình có thêm nhiều trải nghiệm và kỹ năng thực tiễn.</p>
+            
+            <p>Trong thời gian rảnh rỗi, tôi thích viết blog và chia sẻ những suy nghĩ, trải nghiệm của mình. Đôi khi, tôi cũng thích đọc sách, nghe nhạc và tham gia các lớp học online để mở rộng kiến thức. Đối với tôi, học không chỉ là một nghĩa vụ mà còn là một niềm đam mê, giúp tôi không ngừng phát triển bản thân và tạo ra những giá trị cho cộng đồng.</p>
+            
+            <p>Cảm ơn bạn đã dành thời gian đọc giới thiệu về tôi. Mọi góp ý và phản hồi luôn được tôi trân trọng!</p>
+            </p>
+
+        <h2>Bài viết gần đây</h2>
+        
+        <p class="recent-post">
+          Trong những năm gần đây, tôi đã dành nhiều thời gian để khám phá và tìm hiểu về các chủ đề liên quan đến công nghệ, khoa học và văn hóa. Điều này không chỉ giúp tôi mở rộng kiến thức mà còn giúp tôi phát triển kỹ năng giao tiếp và viết lách. 
+          <span id="more-content">Một số bài viết của tôi đã nhận được sự quan tâm và phản hồi tích cực từ cộng đồng. Điều này khích lệ tôi tiếp tục viết và chia sẻ kiến thức của mình với mọi người. Trong tương lai, tôi mong muốn có thể tham gia vào nhiều dự án và hoạt động hơn nữa, nhằm mang lại giá trị và kiến thức cho cộng đồng.</span>
+        </p>
+        <a href="#" id="read-more">Đọc thêm</a>
+        
+
+<!-- Bài viết 1 -->
+<div class="recent-post">
+    <h3><a href="#">Những trải nghiệm đáng nhớ tại Đại học Nông Lâm</a></h3>
+    <p>Ngày đăng: 23/10/2023</p>
+    <p>Một trong những yếu tố khiến tôi yêu thích những năm tháng sinh viên là những trải nghiệm đáng nhớ tại Đại học Nông Lâm. Từ những buổi thực hành ở phòng lab đến những giờ học ngoài trời, mỗi khoảnh khắc đều ẩn chứa những bài học quý giá...</p>
+    <a href="#" class="read-more">Đọc thêm</a>
+</div>
+
+<!-- Bài viết 2 -->
+<div class="recent-post">
+    <h3><a href="#">Cách tôi tự học và phát triển kỹ năng mềm</a></h3>
+    <p>Ngày đăng: 20/10/2023</p>
+    <p>Kỹ năng mềm ngày càng trở thành một yếu tố quan trọng giúp sinh viên nổi bật trong mắt các nhà tuyển dụng. Trong bài viết này, tôi sẽ chia sẻ cách tôi tự học và phát triển những kỹ năng mềm này thông qua những hoạt động và trải nghiệm thực tế...</p>
+    <a href="#" class="read-more">Đọc thêm</a>
+</div>
+
+<!-- Bài viết 3 -->
+<div class="recent-post">
+    <h3><a href="#">Những cuốn sách ảnh hưởng đến quá trình học tập của tôi</a></h3>
+    <p>Ngày đăng: 17/10/2023</p>
+    <p>Sách là nguồn tri thức vô tận, là người bạn đồng hành trên con đường học tập và phát triển bản thân. Trong bài viết này, tôi muốn giới thiệu đến các bạn những cuốn sách đã ảnh hưởng sâu sắc đến tôi trong quá trình học tập...</p>
+    <a href="#" class="read-more">Đọc thêm</a>
+</div>
+
+
+        <h2>Liên hệ</h2>
+        <form id="contactForm">
+          <label for="name">Tên của bạn:</label>
+          <input type="text" id="name" name="name" />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" />
+
+          <label for="message">Tin nhắn:</label>
+          <textarea id="message" name="message" rows="4"></textarea>
+
+          <input type="submit" value="Gửi" />
+        </form>
+      </article>
+
+      <!-- ... Các phần khác ... -->
+
+      <aside>
+        <h3>Bài viết nổi bật</h3>
+        <div class="featured-post">
+          <div class="featured-image"></div>
+          <div class="featured-info">
+            <a class="featured-title" href="#">Khám phá những bí mật ít ai biết tại Địa Điểm X - một thiên đường chưa được khám phá!</a>
+            <div class="featured-date">Ngày đăng: 20/10/2023</div>
+            <div class="featured-description">
+              
+            </div>
+            <a class="read-more" href="#">Đọc tiếp</a>
+          </div>
+          <section class="featured-articles">
+            <div class="article-card">
+                <img src="ck-cn.png" alt="Image 1"  class="article-image">
+                <h4 class="article-title">Nam sinh năm cuối của Khoa Cơ khí Công nghệ thuộc Trường đại học Nông Lâm TP.HCM được phát hiện tử vong trên giường ngủ ở ký túc xá Đại học Quốc gia TP.HCM.</h4>
+                <p class="article-description">Ngày 10.9, Công an TP.Dĩ An (Bình Dương) phối hợp các đơn vị liên quan làm rõ nguyên nhân vụ <b>nam sinh</b> được phát hiện đã <b>tử vong</b> bên trong tòa nhà ký túc xá khu B, Đại học Quốc gia TP.HCM.. Nhấn vào đây để đọc thêm.</p>
+                <p>Danh tính nạn nhân được xác định là anh Nguyễn Trường Sơn (22 tuổi, quê Bình Định), là sinh viên năm thứ 5 (năm cuối) của Khoa Cơ khí Công nghệ thuộc Trường đại học Nông Lâm TP.HCM.</p>
+                <p>Hiện trường vụ việc nằm ở một phòng tại tầng 6 của tòa nhà D, ký túc xá khu B, <b>Đại học Quốc gia TP.HCM (TP.Dĩ An, Bình Dương)</b>.</p>
+
+            </div>
+            <div class="article-card">
+                <img src="dhnl.png" alt="Image 2" class="article-image">
+                <h2 class="article-title">Trường ĐH Nông lâm TP. HCM vừa ban hành hàng chục quyết định khác nhau về việc kỷ luật sinh viên vi phạm nội quy, quy chế học đường năm học 2018 - 2019.</h2>
+                <p class="article-description">Hàng chục sinh viên Trường ĐH Nông lâm bị đình chỉ vì gian lận thi cử. Nhấn vào đây để đọc thêm.</p>
+            </div>
+          
+        </section>
+
+        </div>
+        <!-- ... Các bài viết nổi bật khác ... -->
+      </aside>
+
+      <!-- ... Các phần khác ... -->
+    </main>
+
+    <footer>
+      <div class="social-icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+      </div>
+      <p>&copy;2023 - Hoang Khang Blog. All Right Reserved.</p>
+      Mọi hình thức sao chép nội dung trên website này mà chưa được sự đồng ý đều là trái phép.
+                     Giao diện thiết kế bởi Hoang Khang 
+    </footer>
+
+    <script>
+     
+      // Chức năng phản hồi sau khi gửi form liên hệ
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Ngăn chặn gửi form mặc định
+          alert(
+            "Tin nhắn của bạn đã được gửi! Chúng tôi sẽ phản hồi sớm nhất có thể."
+          );
+        });
+
+        document.getElementById("read-more-btn").addEventListener("click", function(event) {
+  event.preventDefault();
+  let moreContent = document.getElementById("more-content");
+  if (moreContent.style.display === "none" || moreContent.style.display === "") {
+    moreContent.style.display = "inline";
+    event.target.innerText = "Thu gọn";
+  } else {
+    moreContent.style.display = "none";
+    event.target.innerText = "Đọc thêm";
+  }
+});
+document.getElementById("read-more").addEventListener("click", function (event) {
+    event.preventDefault();
+    const moreContent = document.getElementById("more-content");
+    if (moreContent.style.display === "none") {
+      moreContent.style.display = "inline";
+      this.textContent = "Thu gọn";
+    } else {
+      moreContent.style.display = "none";
+      this.textContent = "Đọc thêm";
+    }
+  });
+document.getElementById("read-more").addEventListener("click", function(event) {
+    event.preventDefault();
+
+    // Get the more-content element
+    var moreContent = document.getElementById("more-content");
+
+    // If it's hidden, show it, otherwise hide it
+    if (moreContent.style.display === "none" || moreContent.style.display === "") {
+        moreContent.style.display = "block";
+        event.target.innerText = "Thu gọn"; // Change the button text to "Thu gọn" (Collapse)
+    } else {
+        moreContent.style.display = "none";
+        event.target.innerText = "Đọc thêm"; // Change the button text back to "Đọc thêm" (Read more)
+    }
+});
+document.getElementById("contactForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Extract values from the form
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+
+        // For demonstration purposes, we'll simply alert the user with their input. 
+        // In a real-world scenario, you might want to send this data to a server.
+        alert(`Thank you, ${name}! Your message has been received. We will get back to you at ${email}.`);
+
+        // Optionally, clear the form
+        document.getElementById("contactForm").reset();
+      });
+
+       // Chức năng phản hồi sau khi gửi form liên hệ
+       document.getElementById('contactForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.');
+      });
+
+      // Chức năng "Đọc thêm" cho nội dung blog
+      document.getElementById('read-more').addEventListener('click', function (e) {
+        e.preventDefault();
+        let moreContent = document.getElementById('more-content');
+        if (moreContent.style.display === 'none') {
+          moreContent.style.display = 'inline';
+          e.target.textContent = 'Rút gọn';
+        } else {
+          moreContent.style.display = 'none';
+          e.target.textContent = 'Đọc thêm';
+        }
+      });
+      document.querySelectorAll('nav a').forEach(function(item) {
+  item.addEventListener('mouseenter', function() {
+    document.querySelectorAll('nav a').forEach(function(otherItem) {
+      if (otherItem !== item) {
+        otherItem.classList.add('blur');
+      } else {
+        otherItem.classList.add('highlight');
+      }
+    });
+  });
+  
+  item.addEventListener('mouseleave', function() {
+        document.querySelectorAll('nav a').forEach(function(otherItem) {
+          otherItem.classList.remove('blur');
+        });
+      });
+    });
+    
+        // Chức năng phản hồi sau khi gửi form liên hệ
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.');
+});
+
+// Chức năng "Đọc thêm" cho nội dung blog
+document.getElementById('read-more').addEventListener('click', function (e) {
+  e.preventDefault();
+  let moreContent = document.getElementById('more-content');
+  if (moreContent.style.display === 'none') {
+    moreContent.style.display = 'inline';
+    e.target.textContent = 'Rút gọn';
+  } else {
+    moreContent.style.display = 'none';
+    e.target.textContent = 'Đọc thêm';
+  }
+});
+
+document.querySelectorAll('nav a').forEach(function(item) {
+  item.addEventListener('mouseenter', function() {
+    document.querySelectorAll('nav a').forEach(function(otherItem) {
+      if (otherItem !== item) {
+        otherItem.classList.add('blur');
+      } else {
+        otherItem.classList.add('highlight');
+      }
+    });
+  });
+
+  item.addEventListener('mouseleave', function() {
+    document.querySelectorAll('nav a').forEach(function(otherItem) {
+      otherItem.classList.remove('blur');
+      otherItem.classList.remove('highlight');
+    });
+  });
+});
+
+    </script>
+  </body>
+</html>
