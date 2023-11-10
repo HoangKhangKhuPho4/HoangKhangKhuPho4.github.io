@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang sản phẩm</title>
+    <link rel="stylesheet" href="products.css" />
+  </head>
+  <body>
+    <h1>Sản phẩm</h1>
+
+    <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." />
+    <button id="searchButton">Tìm kiếm</button>
+
+    <section id="product-list">
+      <div class="product">
+        <img src="capheden.jpg" alt="Cà phê đen" />
+        <!-- Đặt đường dẫn đến hình ảnh và mô tả thay thế -->
+        <h3>Cà phê đen</h3>
+        <p>Giá: 20.000 VNĐ</p>
+        <button onclick="addToCart('Cà phê đen', 20000)">Thêm vào giỏ</button>
+        <td><button onclick="removeFromCart('Cà phê đen')">Xóa</button></td>
+      </div>
+
+      <div class="product">
+        <img src="caphesua.jpg" alt="Cà phê sữa" />
+        <!-- Đặt đường dẫn đến hình ảnh và mô tả thay thế -->
+        <h3>Cà phê sữa</h3>
+        <p>Giá: 25.000 VNĐ</p>
+        <button onclick="addToCart('Cà phê sữa', 25000)">Thêm vào giỏ</button>
+        <td><button onclick="removeFromCart('Cà phê sữa')">Xóa</button></td>
+      </div>
+
+      <div class="product">
+        <img src="caphedaxoay.jpg" alt="Cà phê đá xoay" />
+        <!-- Đặt đường dẫn đến hình ảnh và mô tả thay thế -->
+        <h3>Cà phê đá xoay</h3>
+        <p>Giá: 30.000 VNĐ</p>
+        <button onclick="addToCart('Cà phê đá xoay', 30000)">
+          Thêm vào giỏ
+        </button>
+        <td><button onclick="removeFromCart('Cà phê đá xoay')">Xóa</button></td>
+      </div>
+
+      <div class="product">
+        <img src="caphecotdua.jpg" alt="Cà phê cốt dừa" />
+        <!-- Đặt đường dẫn đến hình ảnh và mô tả thay thế -->
+        <h3>Cà phê cốt dừa</h3>
+        <p>Giá: 35.000 VNĐ</p>
+        <button onclick="addToCart('Cà phê cốt dừa', 35000)">
+          Thêm vào giỏ
+        </button>
+        <td><button onclick="removeFromCart('Cà phê cốt dừa')">Xóa</button></td>
+      </div>
+
+      <div class="product">
+        <img src="machiato.jpg" alt="Machiato" />
+        <!-- Đặt đường dẫn đến hình ảnh và mô tả thay thế -->
+        <h3>Machiato</h3>
+        <p>Giá: 100.000 VNĐ</p>
+        <button onclick="addToCart('machiato', 100000)">Thêm vào giỏ</button>
+        <td><button onclick="removeFromCart('machiato')">Xóa</button></td>
+      </div>
+
+      <div class="product">
+        <img src="latte.jpg" alt="latte" />
+        <!-- Đặt đường dẫn đến hình ảnh và mô tả thay thế -->
+        <h3>latte</h3>
+        <p>Giá: 200.000 VNĐ</p>
+        <button onclick="addToCart('latte', 200000)">Thêm vào giỏ</button>
+        <td><button onclick="removeFromCart('latte')">Xóa</button></td>
+      </div>
+
+      <div class="product">
+        <img src="mocha.jpg" alt="Mocha" />
+        <!-- Đặt đường dẫn đến hình ảnh và mô tả thay thế -->
+        <h3>Mocha</h3>
+        <p>Giá: 500.000 VNĐ</p>
+        <button onclick="addToCart('Mocha', 500000)">Thêm vào giỏ</button>
+        <td><button onclick="removeFromCart('Mocha')">Xóa</button></td>
+      </div>
+
+      <!-- Thêm các sản phẩm khác ở đây -->
+    </section>
+
+    <section id="cart">
+      <h2>Giỏ hàng</h2>
+
+      <table>
+        <tr>
+          <th>Sản phẩm</th>
+          <th>Giá</th>
+          <th>Số lượng</th>
+          <th>Thành tiền</th>
+          <th>Xóa</th>
+        </tr>
+        <!-- Các sản phẩm đã thêm sẽ được hiển thị ở đây -->
+      </table>
+
+      <p>Tổng tiền: <span id="total">0</span> VNĐ</p>
+
+      <button id="checkoutButton">Thanh toán</button>
+      <button id="removeItemButton" onclick="removeFromCart('Cà phê đen')">
+        Xóa
+      </button>
+    </section>
+
+    <script>
+      // JavaScript code can be added here
+      let cartItems = [];
+
+      function addToCart(productName, price) {
+        const existingItem = cartItems.find(
+          (item) => item.name === productName
+        );
+        if (existingItem) {
+          existingItem.quantity++;
+          existingItem.totalPrice = existingItem.quantity * price;
+        } else {
+          cartItems.push({
+            name: productName,
+            price: price,
+            quantity: 1,
+            totalPrice: price,
+          });
+        }
+        updateCart();
+      }
+
+      function updateCart() {
+        const cartTable = document.querySelector("table");
+        const cartTotal = document.getElementById("total");
+        cartTable.innerHTML = `
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+        `;
+        let total = 0;
+        cartItems.forEach((item) => {
+          cartTable.innerHTML += `
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.price} VNĐ</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.totalPrice} VNĐ</td>
+                </tr>
+            `;
+          total += item.totalPrice;
+        });
+        cartTotal.textContent = total;
+      }
+    </script>
+
+    <script src="products.js"></script>
+  </body>
+</html>

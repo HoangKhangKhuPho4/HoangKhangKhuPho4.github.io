@@ -1,0 +1,52 @@
+#checkoutButton:active {
+  background-color: #ff0000; /* Màu đỏ sáng, dễ nhận biết */
+  color: #ffffff; /* Màu chữ trắng để tạo sự đối lập */
+  border: 1px solid #ffffff; /* Viền trắng để tăng tính nổi bật */
+  transform: scale(0.95); /* Làm nhỏ nút một chút để tạo hiệu ứng nhấn */
+  transition: all 0.2s ease; /* Chuyển đổi mượt mà cho tất cả hiệu ứng */
+}
+body {
+  font-family: Arial, sans-serif;
+}
+#product-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+button[onclick^="addToCart"]:active {
+  background-color: #28a745; /* Màu xanh lá cây nhạt, dễ chịu */
+  color: #fff;
+  border: 1px solid #fff;
+  transform: scale(0.98); /* Nhẹ nhàng co lại khi được nhấn */
+  transition: all 0.2s ease; /* Chuyển đổi mượt mà */
+}
+button[onclick^="removeFromCart"]:active {
+  background-color: #dc3545; /* Màu đỏ nhạt, dễ nhìn */
+  color: #fff;
+  border: 1px solid #fff;
+  transform: scale(0.98); /* Nhẹ nhàng co lại khi được nhấn */
+  transition: all 0.2s ease; /* Chuyển đổi mượt mà */
+}
