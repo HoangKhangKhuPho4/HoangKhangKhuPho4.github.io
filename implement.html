@@ -4,17 +4,85 @@
     <title>Quản lý quán cà phê</title>
     <link rel="stylesheet" type="text/css" href="implement.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8qduVg+6deLm3BjqzUcJLp9tLirVt8uvtgIic+7e69hdyKjgQZGjRa2gM5K6"
+      crossorigin="anonymous"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css"
+    />
   </head>
   <body>
     <header>
       <h1>Quản lý quán cà phê</h1>
-      <nav role="navigation">
-        <ul>
-          <li id="menu-home"><a href="#">Trang chủ</a></li>
-          <li id="menu-products"><a href="products.html">Sản phẩm</a></li>
-          <li><a href="schedule.html">Xem lịch trình</a></li>
-          <li><a href="#">Hướng dẫn</a></li>
-        </ul>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  ><i class="fa fa-home"></i> Trang chủ</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="products.html"
+                  ><i class="fa fa-shopping-bag"></i> Sản phẩm</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="schedule.html"
+                  ><i class="fa fa-calendar"></i> Xem lịch trình</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="huongDan.html"
+                  ><i class="fa fa-book"></i> Hướng dẫn</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="lienheIm.html"
+                  ><i class="fa fa-envelope"></i> Liên Hệ</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html"
+                  ><i class="fas fa-sign-in-alt"></i> Đăng nhập</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="register.html"
+                  ><i class="fas fa-user-plus"></i> Đăng ký</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="index.html"
+                  ><i class="fa fa-arrow-left"></i> Back To Home</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
     </header>
 
@@ -49,7 +117,9 @@
           </div>
 
           <div class="submit-btn">
-            <button type="submit">Đặt bàn</button>
+            <button type="submit">
+              <i class="bi bi-calendar"></i> Đặt bàn
+            </button>
           </div>
         </form>
 

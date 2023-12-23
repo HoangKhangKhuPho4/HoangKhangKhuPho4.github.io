@@ -129,3 +129,18 @@ btn.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
+function handleSubmit(event) {
+  event.preventDefault(); // Ngăn chặn hành vi gửi form mặc định
+
+  // Lấy giá trị từ form
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var message = document.getElementById("message").value;
+
+  // Tạo URL cho email
+  var emailBody = `Name: ${name}%0AEmail: ${email}%0A%0A${message}`;
+  var mailtoLink = `mailto:hoangkhangbalmer@gmail.com?subject=Message%20from%20${name}&body=${emailBody}`;
+
+  // Mở trình soạn thảo email với thông tin đã điền
+  window.location.href = mailtoLink;
+}

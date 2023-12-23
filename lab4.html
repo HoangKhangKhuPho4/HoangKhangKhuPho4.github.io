@@ -4,19 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lab 4 Management Page</title>
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+    />
     <link rel="stylesheet" href="lab4.css" />
-    <script src="lab4.js"></script>
   </head>
   <body>
     <div class="tab">
       <button class="tablinks" onclick="openTab(event, 'Requirement')">
-        Requirement
+        <i class="bi bi-list-check"></i> Requirement
       </button>
       <button class="tablinks" onclick="openTab(event, 'Design')">
-        Design
+        <i class="bi bi-pencil-square"></i> Design
       </button>
-      <button class="tablinks" onclick="openTab(event, 'Implement')">
-        Implement
+      <button class="tablinks">
+        <a href="implement.html"> <i class="bi bi-laptop"></i> Implement </a>
       </button>
     </div>
 
@@ -73,12 +77,12 @@
         <p>Đây là bản phác thảo ban đầu của giao diện trên giấy.</p>
 
         <div class="download-btn">
-          <a href="DesignTay1.jpg" download>
-            <button>Tải xuống</button>
+          <a href="img/DesignTay1.jpg" download>
+            <button>Download</button>
           </a>
         </div>
 
-        <img src="DesignTay1.jpg" width="400px" alt="Thiết kế giấy" />
+        <img src="img/DesignTay1.jpg" width="400px" alt="Thiết kế giấy" />
       </section>
 
       <section>
@@ -87,33 +91,52 @@
         <p>Đây là bản phác thảo ban đầu của giao diện trên giấy.</p>
 
         <div class="download-btn">
-          <a href="designTay2.jpg" download>
+          <a href="img/designTay2.jpg" download>
             <button>
               <i class="fas fa-download"></i>
-              Tải thiết kế giấy
+              Download
             </button>
           </a>
         </div>
 
-        <img src="designTay2.jpg" width="400px" alt="Thiết kế giấy" />
+        <img src="img/designTay2.jpg" width="400px" alt="Thiết kế giấy" />
       </section>
 
       <section>
         <h3>Thiết kế trên giấy bản 3</h3>
 
-        <p>Đây là bản phác thảo ban đầu của giao diện trên giấy.</p>
+        <p>Đây là bản phác thảo bản 3 của giao diện trên giấy.</p>
 
         <div class="download-btn">
-          <a href="designTay3.jpg" download>
+          <a href="img/designTay3.jpg" download>
             <button>
               <i class="fas fa-download"></i>
-              Tải thiết kế giấy
+              Download
             </button>
           </a>
         </div>
 
-        <img src="designTay3.jpg" width="400px" alt="Thiết kế giấy" />
+        <img src="img/designTay3.jpg" width="400px" alt="Thiết kế giấy" />
       </section>
+
+      <section>
+        <h3>Thiết kế trên giấy bản 4</h3>
+
+        <p>Đây là bản phác thảo bản 4 của giao diện trên giấy.</p>
+
+        <div class="download-btn">
+          <a href="img/loginAndSignup.jpg" download>
+            <button>
+              <i class="fas fa-download"></i>
+              Download
+            </button>
+          </a>
+        </div>
+
+        <img src="img/loginAndSignup.jpg" width="400px" alt="Thiết kế giấy" />
+      </section>
+
+      <!-- Thiết kế bằng html -->
 
       <section>
         <h3>Thiết kế giao diện bằng HTML</h3>
@@ -121,16 +144,16 @@
         <p>Đây là bản phác thảo ban đầu của giao diện trên HTML.</p>
 
         <div class="download-btn">
-          <a href="anhGiaoDienHtml1.png" download>
+          <a href="img/uiIm1.png" download>
             <button>
               <i class="fas fa-download"></i>
-              Tải thiết kế trên HTML,CSS,JavaScript
+              Download
             </button>
           </a>
         </div>
 
         <img
-          src="anhGiaoDienHtml1.png"
+          src="img/uiIm1.png"
           width="400px"
           alt="Thiết kế trên HTML,CSS,JavaScript"
         />
@@ -142,69 +165,352 @@
         <p>Đây là bản phác thảo thứ 2 của giao diện trên HTML.</p>
 
         <div class="download-btn">
-          <a href="anhGiaoDienHtml2.png" download>
+          <a href="img/uiIm2.png" download>
             <button>
               <i class="fas fa-download"></i>
-              Tải thiết kế trên HTML,CSS,JavaScript
+              Download
             </button>
           </a>
         </div>
 
         <img
-          src="anhGiaoDienHtml2.png"
+          src="img/uiIm2.png"
           width="400px"
           alt="Thiết kế trên HTML,CSS,JavaScript"
         />
       </section>
 
       <section>
-        <h3>Thiết kế giao diện bằng HTML bản 2</h3>
+        <h3>Thiết kế giao diện bằng HTML,CSS,JAVASCRIPT bản 3</h3>
 
         <p>Đây là bản phác thảo thứ 3 của giao diện trên HTML.</p>
 
         <div class="download-btn">
-          <a href="anhGiaoDienHtml3.png" download>
+          <a href="img/uiIm3.png" download>
             <button>
               <i class="fas fa-download"></i>
-              Tải thiết kế trên HTML,CSS,JavaScript
+              Dowbload
             </button>
           </a>
         </div>
 
         <img
-          src="anhGiaoDienHtml3.png"
+          src="img/uiIm3.png"
           width="400px"
           alt="Thiết kế trên HTML,CSS,JavaScript"
         />
       </section>
 
       <section>
-        <h3>Thiết kế trên Figma</h3>
+        <h3>Thiết kế giao diện bằng HTML,CSS,JAVASCRIPT bản 4</h3>
 
-        <p>Sau đây là bản thiết kế chi tiết giao diện trên Figma.</p>
+        <p>Đây là bản phác thảo thứ 4 của giao diện trên HTML.</p>
 
-        <div class="figma-btn">
-          <a href="https://www.figma.com/file/xxx" target="_blank">
+        <div class="download-btn">
+          <a href="img/uiIm4.png" download>
             <button>
-              <i class="fas fa-external-link-alt"></i>
-              Xem trên Figma
+              <i class="fas fa-download"></i>
+              Dowbload
             </button>
           </a>
         </div>
 
-        <img src="figma.jpg" alt="Thiết kế Figma" />
+        <img
+          src="img/uiIm4.png"
+          width="400px"
+          alt="Thiết kế trên HTML,CSS,JavaScript"
+        />
       </section>
 
       <section>
-        <h3>Thiết kế trên Figma</h3>
-        <p>Sau đây là bản thiết kế chi tiết giao diện trên Figma.</p>
+        <h3>Thiết kế giao diện bằng HTML,CSS,JAVASCRIPT bản 5</h3>
+
+        <p>Đây là bản phác thảo thứ 5 của giao diện trên HTML.</p>
+
+        <div class="download-btn">
+          <a href="img/uiIm5.png" download>
+            <button>
+              <i class="fas fa-download"></i>
+              Dowbload
+            </button>
+          </a>
+        </div>
+
+        <img
+          src="img/uiIm5.png"
+          width="400px"
+          alt="Thiết kế trên HTML,CSS,JavaScript"
+        />
+      </section>
+
+      <!-- Thiết kế trên figma -->
+      <section>
+        <h3>Thiết Kế Giao Diện Bằng Figma</h3>
+        <p>
+          Đây là bản phác thảo của giao diện được thiết kế sử dụng Figma. Figma
+          là một công cụ thiết kế đồ họa dựa trên web, cho phép chúng ta tạo ra
+          các giao diện đẹp mắt và chức năng.
+        </p>
+
+        <div class="figma-designs">
+          <img
+            src="img/QuanLyQuanCaPheMain.png"
+            width="400px"
+            alt="Thiết Kế Figma 1"
+          />
+        </div>
+
+        <div class="download-btn">
+          <a href="img/QuanLyQuanCaPheMain.png" download>
+            <button>
+              <i class="fas fa-download"></i> Download Figma Designs
+            </button>
+          </a>
+        </div>
+
+        <div class="figma-link">
+          <a
+            href="https://www.figma.com/file/puc6ckhM6MdHHR3hRbUd5K/QuanLyQuanCaPheMain?type=design&node-id=0-1&mode=design&t=VF8ljNMDkdduPvoN-0"
+            target="_blank"
+          >
+            <button>
+              <i class="fas fa-external-link-alt"></i> Go to Figma
+            </button>
+          </a>
+        </div>
+      </section>
+
+      <!-- THIẾT KẾ FIGMA BẢN 2 -->
+      <section>
+        <h3>Thiết Kế Giao Diện Bằng Figma bản 2</h3>
+        <p>
+          Đây là bản phác thảo của giao diện được thiết kế sử dụng Figma. Figma
+          là một công cụ thiết kế đồ họa dựa trên web, cho phép chúng ta tạo ra
+          các giao diện đẹp mắt và chức năng.
+        </p>
+
+        <div class="figma-designs">
+          <img src="img/products.png" width="400px" alt="Thiết Kế Figma 2" />
+        </div>
+
+        <div class="download-btn">
+          <!-- Thay thế "#" bằng liên kết tải xuống thực tế của bạn -->
+          <a href="img/products.png" download>
+            <button>
+              <i class="fas fa-download"></i> Download Figma Designs
+            </button>
+          </a>
+        </div>
+
+        <div class="figma-link">
+          <a
+            href="https://www.figma.com/file/Bm8xIIJVF4dxzX7KSI73XE/products?type=design&mode=design&t=G8dOSF02dJkugeMC-0"
+            target="_blank"
+          >
+            <button>
+              <i class="fas fa-external-link-alt"></i> Go to Figma
+            </button>
+          </a>
+        </div>
+      </section>
+
+      <!-- Thiết kế Figma bản 3 -->
+
+      <section>
+        <h3>Thiết Kế Giao Diện Bằng Figma bản 3</h3>
+        <p>
+          Đây là bản phác thảo của giao diện được thiết kế sử dụng Figma. Figma
+          là một công cụ thiết kế đồ họa dựa trên web, cho phép chúng ta tạo ra
+          các giao diện đẹp mắt và chức năng.
+        </p>
+
+        <div class="figma-designs">
+          <img
+            src="img/LichTrinhFigma.png"
+            width="400px"
+            alt="Thiết Kế Figma 3"
+          />
+        </div>
+
+        <div class="download-btn">
+          <!-- Thay thế "#" bằng liên kết tải xuống thực tế của bạn -->
+          <a href="img/LichTrinhFigma.png" download>
+            <button>
+              <i class="fas fa-download"></i> Download Figma Designs
+            </button>
+          </a>
+        </div>
+
+        <div class="figma-link">
+          <a
+            href="https://www.figma.com/file/ZSOb1JCVMIebPQ4SjcjdWr/LichTrinhFigma?type=design&mode=design&t=G8dOSF02dJkugeMC-0"
+            target="_blank"
+          >
+            <button>
+              <i class="fas fa-external-link-alt"></i> Go to Figma
+            </button>
+          </a>
+        </div>
+      </section>
+
+      <!-- THIẾT KẾ FIGMA BẢN 4 -->
+
+      <section>
+        <h3>Thiết Kế Giao Diện Bằng Figma bản 4</h3>
+        <p>
+          Đây là bản phác thảo của giao diện được thiết kế sử dụng Figma. Figma
+          là một công cụ thiết kế đồ họa dựa trên web, cho phép chúng ta tạo ra
+          các giao diện đẹp mắt và chức năng.
+        </p>
+
+        <div class="figma-designs">
+          <img
+            src="img/HuongDanFigma.png"
+            width="400px"
+            alt="Thiết Kế Figma 4"
+          />
+        </div>
+
+        <div class="download-btn">
+          <!-- Thay thế "#" bằng liên kết tải xuống thực tế của bạn -->
+          <a href="img/HuongDanFigma.png" download>
+            <button>
+              <i class="fas fa-download"></i> Download Figma Designs
+            </button>
+          </a>
+        </div>
+
+        <div class="figma-link">
+          <a
+            href="https://www.figma.com/file/EaMU77fpK9dZAxEkJklQHS/HuongDanFigma?type=design&mode=design&t=G8dOSF02dJkugeMC-0"
+            target="_blank"
+          >
+            <button>
+              <i class="fas fa-external-link-alt"></i> Go to Figma
+            </button>
+          </a>
+        </div>
+      </section>
+
+      <!-- THIẾT KẾ FIGMA BẢN 5 -->
+
+      <section>
+        <h3>Thiết Kế Giao Diện Bằng Figma bản 5</h3>
+        <p>
+          Đây là bản phác thảo của giao diện được thiết kế sử dụng Figma. Figma
+          là một công cụ thiết kế đồ họa dựa trên web, cho phép chúng ta tạo ra
+          các giao diện đẹp mắt và chức năng.
+        </p>
+
+        <div class="figma-designs">
+          <img src="img/LienHeFigma.png" width="400px" alt="Thiết Kế Figma 5" />
+        </div>
+
+        <div class="download-btn">
+          <!-- Thay thế "#" bằng liên kết tải xuống thực tế của bạn -->
+          <a href="img/LienHeFigma.png" download>
+            <button>
+              <i class="fas fa-download"></i> Download Figma Designs
+            </button>
+          </a>
+        </div>
+
+        <div class="figma-link">
+          <a
+            href="https://www.figma.com/file/JxUbtdRuHRJ6NaJ5qk14hw/LienHeFigma?type=design&mode=design&t=G8dOSF02dJkugeMC-0"
+            target="_blank"
+          >
+            <button>
+              <i class="fas fa-external-link-alt"></i> Go to Figma
+            </button>
+          </a>
+        </div>
+      </section>
+
+      <!-- THIẾT KẾ GIAO DIỆN BẢN 6 -->
+
+      <section>
+        <h3>Thiết Kế Giao Diện Bằng Figma bản 6</h3>
+        <p>
+          Đây là bản phác thảo của giao diện được thiết kế sử dụng Figma. Figma
+          là một công cụ thiết kế đồ họa dựa trên web, cho phép chúng ta tạo ra
+          các giao diện đẹp mắt và chức năng.
+        </p>
+
+        <div class="figma-designs">
+          <img src="img/LoginFigma.png" width="400px" alt="Thiết Kế Figma 6" />
+        </div>
+
+        <div class="download-btn">
+          <!-- Thay thế "#" bằng liên kết tải xuống thực tế của bạn -->
+          <a href="img/LoginFigma.png" download>
+            <button>
+              <i class="fas fa-download"></i> Download Figma Designs
+            </button>
+          </a>
+        </div>
+
+        <div class="figma-link">
+          <a
+            href="https://www.figma.com/file/ElYkrAMRX8FHaOPWy3qX6n/LoginFigma?type=design&node-id=0-1&mode=design&t=G8dOSF02dJkugeMC-0"
+            target="_blank"
+          >
+            <button>
+              <i class="fas fa-external-link-alt"></i> Go to Figma
+            </button>
+          </a>
+        </div>
+      </section>
+
+      <!-- THIẾT KẾ GIAO DIỆN BẢN 7 -->
+      <section>
+        <h3>Thiết Kế Giao Diện Bằng Figma bản 7</h3>
+        <p>
+          Đây là bản phác thảo của giao diện được thiết kế sử dụng Figma. Figma
+          là một công cụ thiết kế đồ họa dựa trên web, cho phép chúng ta tạo ra
+          các giao diện đẹp mắt và chức năng.
+        </p>
+
+        <div class="figma-designs">
+          <img src="img/SignUpFigma.png" width="400px" alt="Thiết Kế Figma 7" />
+        </div>
+
+        <div class="download-btn">
+          <a href="img/SignUpFigma.png" download>
+            <button>
+              <i class="fas fa-download"></i> Download Figma Designs
+            </button>
+          </a>
+        </div>
+
+        <div class="figma-link">
+          <a
+            href="https://www.figma.com/file/GOVmNiMIK6VOgAHGX4FP6r/SignUpFigma?type=design&mode=design&t=G8dOSF02dJkugeMC-0"
+            target="_blank"
+          >
+            <button>
+              <i class="fas fa-external-link-alt"></i> Go to Figma
+            </button>
+          </a>
+        </div>
       </section>
     </div>
 
-    <div id="Implement" class="tabcontent">
-      <h3>Implement</h3>
-
-      <iframe src="implement.html" width="100%" height="1000px"></iframe>
+    <div class="container text-center mt-4 mb-4">
+      <button id="homeButton" class="btn btn-primary">
+        <i class="bi bi-house-door"></i> Quay lại trang chủ
+      </button>
     </div>
+    <footer>
+      <p>&copy; 2023 Your Website Name. All rights reserved.</p>
+    </footer>
+    <script src="lab4.js"></script>
+    <script>
+      document
+        .getElementById("homeButton")
+        .addEventListener("click", function () {
+          window.location.href = "index.html"; // Đảm bảo rằng index.html là đường dẫn đúng
+        });
+    </script>
   </body>
 </html>

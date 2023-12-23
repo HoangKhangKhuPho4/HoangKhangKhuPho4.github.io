@@ -41,11 +41,24 @@
       td {
         text-align: center;
       }
+      #homeBtn {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #homeBtn:hover {
+        background: #3e8e41;
+      }
     </style>
   </head>
   <body>
     <div class="schedule-container">
       <h1>Lịch Làm Việc Quán Cà Phê</h1>
+      <button id="homeBtn">Quay lại trang Quản Lý</button>
       <table id="coffeeSchedule">
         <!-- Nội dung bảng được tạo bằng JavaScript -->
       </table>
@@ -66,6 +79,12 @@
 
         table.innerHTML = tableHTML;
       });
+
+      const homeBtn = document.getElementById("homeBtn");
+
+      homeBtn.onclick = function () {
+        location.href = "implement.html"; //đường dẫn trang chủ
+      };
     </script>
   </body>
 </html>

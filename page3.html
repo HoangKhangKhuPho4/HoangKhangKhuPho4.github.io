@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khang Nguyễn's Story</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+    <!-- https://fontawesome.com/ -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <!-- https://fonts.google.com/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/templatemo-xtra-blog.css" rel="stylesheet" />
+    <!--
+    
+TemplateMo 553 Xtra Blog
+
+https://templatemo.com/tm-553-xtra-blog
+
+-->
+  </head>
+  <style>
+    #backToTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    #backToTopBtn:hover {
+      background-color: #0056b3;
+    }
+
+    p.tm-mb-80 {
+      color: #f1f5f9;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    /* a {
+      color: #fff; 
+    } */
+
+    h1,
+    h2,
+    h3 {
+      color: #fff;
+    }
+
+    /* Style cho nút phân trang được chọn */
+    .tm-paging-link.active {
+      background-color: green; /* màu nền xanh lá */
+      color: white; /* màu chữ trắng */
+    }
+
+    /* Style cho nút phân trang không được chọn */
+    .tm-paging-link {
+      background-color: white; /* màu nền trắng */
+      color: black; /* màu chữ đen */
+    }
+  </style>
+  <body>
+    <button id="backToTopBtn" title="Go to top">⬆️</button>
+
+    <header class="tm-header" id="tm-header">
+      <div class="tm-header-wrapper">
+        <!-- <button
+          class="navbar-toggler"
+          type="button"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button> -->
+        <div class="tm-site-header">
+          <div class="mb-3 mx-auto tm-site-logo">
+            <img
+              src="img/comicstt.png"
+              alt="Logo"
+              class="img-fluid"
+              width="180px"
+            />
+            <!-- You can keep or remove the following icon, depending on your preference -->
+          </div>
+          <h1 class="text-center">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Khang Nguyễn's
+            Story
+          </h1>
+        </div>
+
+        <nav class="tm-nav" id="tm-nav">
+          <ul>
+            <li class="tm-nav-item active">
+              <a href="page3.html" class="tm-nav-link">
+                <i class="fas fa-home"></i>
+                Blog Home
+              </a>
+            </li>
+            <li class="tm-nav-item">
+              <a href="post.html" class="tm-nav-link">
+                <i class="fas fa-pen"></i>
+                Single Post
+              </a>
+            </li>
+            <li class="tm-nav-item">
+              <a href="about_xtra.html" class="tm-nav-link">
+                <i class="fas fa-users"></i>
+                About Xtra
+              </a>
+            </li>
+            <li class="tm-nav-item">
+              <a href="contact.html" class="tm-nav-link">
+                <i class="far fa-comments"></i>
+                Contact Us
+              </a>
+            </li>
+
+            <li class="tm-nav-item">
+              <a href="lab6.html" class="tm-nav-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="tm-mb-65">
+          <a
+            rel="nofollow"
+            href="https://fb.com/templatemo"
+            class="tm-social-link"
+          >
+            <i class="fab fa-facebook tm-social-icon"></i>
+          </a>
+          <a href="https://twitter.com" class="tm-social-link">
+            <i class="fab fa-twitter tm-social-icon"></i>
+          </a>
+          <a href="https://instagram.com" class="tm-social-link">
+            <i class="fab fa-instagram tm-social-icon"></i>
+          </a>
+          <a href="https://linkedin.com" class="tm-social-link">
+            <i class="fab fa-linkedin tm-social-icon"></i>
+          </a>
+        </div>
+        <p class="tm-mb-80 pr-5 text-white">
+          " Khang Nguyễn's Story là trang web đa năng về truyện tranh, manga và
+          anime. Trang web cung cấp một thư viện truyện phong phú với hàng ngàn
+          bộ truyện các thể loại dành cho độc giả mọi lứa tuổi. Các series
+          truyện nổi tiếng như One Piece, Naruto, Dragon Ball... đều được cập
+          nhật nhanh chóng sau khi ra chap mới. Bên cạnh đó, trang web có chuyên
+          mục bài viết review, phân tích các bộ truyện tiêu biểu. Mục multimedia
+          bao gồm video hay artwork về các nhân vật. Khang Nguyễn's Story sở hữu
+          cộng đồng người hâm mộ đông đảo và tích cực. Thông qua các hoạt động
+          tương tác trực tuyến, trang web giúp lan tỏa và phát triển văn hóa đọc
+          truyện tại địa phương."
+        </p>
+      </div>
+    </header>
+    <div class="container-fluid">
+      <main class="tm-main">
+        <!-- Search form -->
+        <div class="row tm-row">
+          <div class="col-12">
+            <form
+              method="GET"
+              class="form-inline tm-mb-80 tm-search-form"
+              action="https://www.google.com/search"
+              target="_blank"
+            >
+              <input
+                class="form-control tm-search-input"
+                name="q"
+                type="text"
+                placeholder="Search..."
+                aria-label="Search"
+              />
+              <button class="tm-search-button" type="submit">
+                <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="row tm-row">
+          <article class="col-12 col-md-6 tm-post">
+            <hr class="tm-hr-primary" />
+            <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
+              <div class="tm-post-link-inner">
+                <img src="img/count.png" alt="Image" class="img-fluid" />
+              </div>
+              <span class="position-absolute tm-new-badge">New</span>
+              <h2 class="tm-pt-30 tm-color-primary tm-post-title">
+                <a
+                  href="https://www.amazon.com/Court-Hardcover-Journal-Insights-Journals/dp/1683831225"
+                  class="tm-post-link"
+                  >Court of the Dead Hardcover Ruled Journal (Insights Journals)
+                </a>
+              </h2>
+            </a>
+            <p class="tm-pt-30">
+              "Court of the Dead" là một series truyện tranh giả tưởng tối tăm,
+              khám phá một vương quốc của cái chết nơi các linh hồn được thu
+              thập. Câu chuyện theo dõi Death và những đồng minh của mình trong
+              cuộc chiến chống lại Thiên đường và Địa ngục để cứu lấy nhân loại.
+            </p>
+            <div class="d-flex justify-content-between tm-pt-45">
+              <span class="tm-color-primary">Travel . Events</span>
+              <span class="tm-color-primary"> May 24, 2022 </span>
+            </div>
+            <hr />
+            <div class="d-flex justify-content-between">
+              <span>36 comments</span>
+              <span>by Admin Nat</span>
+            </div>
+          </article>
+          <article class="col-12 col-md-6 tm-post">
+            <hr class="tm-hr-primary" />
+            <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
+              <div class="tm-post-link-inner">
+                <img src="img/black.png" alt="Image" class="img-fluid" />
+              </div>
+              <span class="position-absolute tm-new-badge">New</span>
+              <h2 class="tm-pt-30 tm-color-primary tm-post-title">
+                <a href="https://readcomic.me/" class="tm-post-link"
+                  >Black Science" của Rick Remender và Matteo Scalera (Xuất bản:
+                  2013)
+                </a>
+              </h2>
+            </a>
+            <p class="tm-pt-30">
+              <a
+                rel="nofollow"
+                href="https://www.ebay.com/itm/144419205295"
+                target="_blank"
+                >"Black Science" của Rick Remender và Matteo Scalera (Xuất bản:
+                2013)
+              </a>
+              : "Black Science" là một series truyện tranh khoa học viễn tưởng
+              giả tưởng, nơi nhóm nghiên cứu khoa học đi qua các vũ trụ song
+              song nhờ một thiết bị gọi là Pillar. Họ phải đối mặt với những mối
+              nguy hiểm không lường trước được trong hành trình trở về nhà.
+            </p>
+            <div class="d-flex justify-content-between tm-pt-45">
+              <span class="tm-color-primary">Creative . Design . Business</span>
+              <span class="tm-color-primary">April 09, 2021</span>
+            </div>
+            <hr />
+          </article>
+
+          <article class="col-12 col-md-6 tm-post">
+            <hr class="tm-hr-primary" />
+            <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
+              <div class="tm-post-link-inner">
+                <img src="img/amulet.png" alt="Image" class="img-fluid" />
+              </div>
+              <h2 class="tm-pt-30 tm-color-primary tm-post-title">
+                <a
+                  href="https://nhasachphuongnam.com/amulet-1-the-stonekeeper.html"
+                  class="tm-post-link"
+                  >Amulet 1#: The Stonekeeper</a
+                >
+              </h2>
+            </a>
+            <p class="tm-pt-30">
+              "Amulet" là một series truyện tranh giả tưởng dành cho lứa tuổi
+              thiếu niên, kể về Emily và Navin, hai anh em tìm thấy một quyển
+              sách bí ẩn dẫn họ vào một thế giới đầy ma thuật và quái vật. Họ
+              phải chiến đấu để cứu lấy mẹ mình và khám phá những bí mật của gia
+              đình.
+            </p>
+            <div class="d-flex justify-content-between tm-pt-45">
+              <span class="tm-color-primary">Music . Audio</span>
+              <span class="tm-color-primary">June 11, 2020</span>
+            </div>
+            <hr />
+            <div class="d-flex justify-content-between">
+              <span>24 comments</span>
+              <span>by John Walker</span>
+            </div>
+          </article>
+
+          <article class="col-12 col-md-6 tm-post">
+            <hr class="tm-hr-primary" />
+            <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
+              <div class="tm-post-link-inner">
+                <img src="img/lockey.png" alt="Image" class="img-fluid" />
+              </div>
+              <h2 class="tm-pt-30 tm-color-primary tm-post-title">
+                <a
+                  href="https://nghoangviet93.wordpress.com/2014/11/28/truyen-tranh-locke-key-cuoc-phieu-luu-day-kich-tinh-rung-ron-va-cam-dong-voi-nhung-chiec-chia-khoa-ma-thuat/"
+                  class="tm-post-link"
+                >
+                  [Truyện tranh] Locke & Key – Cuộc phiêu lưu đầy kịch tính,
+                  rùng rợn và cảm động với những chiếc chìa khóa ma thuật
+                </a>
+              </h2>
+            </a>
+            <p class="tm-pt-30">
+              "Locke & Key" là một series truyện tranh kỳ bí, xoay quanh gia
+              đình Locke và căn nhà cổ Keyhouse, nơi chứa đựng những chiếc chìa
+              khóa ma thuật với sức mạnh kỳ lạ. Truyện pha trộn giữa kinh dị,
+              giả tưởng và bí ẩn, khám phá những bí mật đen tối và quá khứ của
+              gia đình.
+            </p>
+            <div class="d-flex justify-content-between tm-pt-45">
+              <span class="tm-color-primary">Music . Audio</span>
+              <span class="tm-color-primary">February 15, 2023</span>
+            </div>
+            <hr />
+          </article>
+          <article class="col-12 col-md-6 tm-post">
+            <hr class="tm-hr-primary" />
+            <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
+              <div class="tm-post-link-inner">
+                <img src="img/bone.png" alt="Image" class="img-fluid" />
+              </div>
+              <h2 class="tm-pt-30 tm-color-primary tm-post-title">
+                <a
+                  href="https://readcomiconline.li/Comic/Nightwing-2016"
+                  class="tm-post-link"
+                  >"Bone" của Jeff Smith (Xuất bản: 1991)
+                </a>
+              </h2>
+            </a>
+            <p class="tm-pt-30">
+              <a
+                href="https://www.tinmoiz.com/truyen-tranh-yeu-thich-bone-dang-duoc-dung-thanh-chuong-trinh-truyen-hinh-netflix-181465/"
+                target="_blank"
+                >Nightwing (2016)</a
+              >
+              Câu chuyện về Dick Grayson, cựu Robin, nay là Nightwing, người đấu
+              tranh để bảo vệ thành phố Blüdhaven khỏi tội phạm và bất công.
+              Ngày ra mắt: 22/05/2021.
+            </p>
+            <div class="d-flex justify-content-between tm-pt-45">
+              <span class="tm-color-primary">Artworks . Design</span>
+              <span class="tm-color-primary">November 12, 2022</span>
+            </div>
+            <hr />
+            <div class="d-flex justify-content-between">
+              <span>72 comments</span>
+              <span>by Admin Sam</span>
+            </div>
+          </article>
+          <article class="col-12 col-md-6 tm-post">
+            <hr class="tm-hr-primary" />
+            <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
+              <div class="tm-post-link-inner">
+                <img src="img/fables.png" alt="Image" class="img-fluid" />
+              </div>
+              <h2 class="tm-pt-30 tm-color-primary tm-post-title">
+                <a
+                  href="https://spiderum.com/bai-dang/Fables-Truyen-co-tich-danh-cho-nguoi-tuong-doi-lon-5jv"
+                  class="tm-post-link"
+                  >Fables - Truyện cổ tích dành cho người tương đối lớn</a
+                >
+              </h2>
+            </a>
+            <p class="tm-pt-30">
+              Fables" là một câu chuyện giả tưởng phong phú, nơi những nhân vật
+              cổ tích sống trong thế giới hiện đại sau khi bị đẩy khỏi vương
+              quốc huyền diệu của họ. Truyện tập trung vào cuộc sống và xung đột
+              của họ khi họ cố gắng ẩn mình giữa con người.
+            </p>
+            <div class="d-flex justify-content-between tm-pt-45">
+              <span class="tm-color-primary">Creative . Video . Audio</span>
+              <span class="tm-color-primary">February 20, 2023</span>
+            </div>
+            <hr />
+            <div class="d-flex justify-content-between">
+              <span>84 comments</span>
+              <span>by Admin Sam</span>
+            </div>
+          </article>
+          <article class="col-12 col-md-6 tm-post">
+            <hr class="tm-hr-primary" />
+            <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
+              <div class="tm-post-link-inner">
+                <img src="img/saga.png" alt="Image" class="img-fluid" />
+              </div>
+              <h2 class="tm-pt-30 tm-color-primary tm-post-title">
+                <a
+                  href="https://cmavn.org/truyen-tranh-chuyen-nghiep-saga-ky-1/"
+                  class="tm-post-link"
+                  >Truyện tranh chuyên nghiệp Saga (kỳ 1)
+                </a>
+              </h2>
+            </a>
+            <p class="tm-pt-30">
+              "Saga" là một series truyện tranh huyền thoại kể về cuộc phiêu lưu
+              của một gia đình trẻ sống trong một vũ trụ đa chiều. Truyện kết
+              hợp yếu tố khoa học viễn tưởng, giả tưởng và kinh dị, đan xen với
+              chủ đề về tình yêu, chiến tranh và đạo đức.
+            </p>
+            <div class="d-flex justify-content-between tm-pt-45">
+              <span class="tm-color-primary">Visual . Artworks</span>
+              <span class="tm-color-primary">June 16, 2020</span>
+            </div>
+            <hr />
+            <div class="d-flex justify-content-between">
+              <span>96 comments</span>
+              <span>by Admin Sam</span>
+            </div>
+          </article>
+        </div>
+        <div class="row tm-row tm-mt-100 tm-mb-75">
+          <div class="tm-prev-next-wrapper">
+            <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next tm-prev"
+              >Prev</a
+            >
+            <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next tm-next"
+              >Next</a
+            >
+          </div>
+
+          <div class="tm-paging-wrapper">
+            <span class="d-inline-block mr-3">Page</span>
+            <nav class="tm-paging-nav d-inline-block">
+              <ul>
+                <li class="tm-paging-item">
+                  <a
+                    href="ex1.html"
+                    id="paging-button-1"
+                    class="mb-2 tm-btn tm-paging-link"
+                    >1</a
+                  >
+                </li>
+                <li class="tm-paging-item">
+                  <a
+                    href="page2.html"
+                    id="paging-button-2"
+                    class="mb-2 tm-btn tm-paging-link"
+                    >2</a
+                  >
+                </li>
+                <li class="tm-paging-item">
+                  <a href="page3.html" class="mb-2 tm-btn tm-paging-link active"
+                    >3</a
+                  >
+                  <!-- Nút 3 với class active -->
+                </li>
+                <li class="tm-paging-item">
+                  <a
+                    href="page4.html"
+                    id="paging-button-4"
+                    class="mb-2 tm-btn tm-paging-link"
+                    >4</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <footer class="row tm-row">
+          <hr class="col-12" />
+          <div class="col-md-6 col-12 tm-color-gray">
+            Design:
+            <a
+              rel="nofollow"
+              target="_parent"
+              href="https://www.facebook.com/profile.php?id=100088292157574"
+              class="tm-external-link"
+              >Nguyễn Lê Hoàng Khang</a
+            >
+          </div>
+          <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+            © Copyright 2023 Nguyễn Lê Hoàng Khang. All Rights Reserved
+            22130116@st.hcmuaf.edu.vn
+          </div>
+        </footer>
+      </main>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/templatemo-script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var backToHomeButton = document.getElementById("backToHome");
+        backToHomeButton.addEventListener("click", function () {
+          window.location.href = "lab6.html";
+        });
+      });
+
+      // Khi người dùng cuộn xuống 20px từ đầu tài liệu, hiển thị nút
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          document.getElementById("backToTopBtn").style.display = "block";
+        } else {
+          document.getElementById("backToTopBtn").style.display = "none";
+        }
+      }
+
+      // Khi người dùng click vào nút, cuộn trở lại đầu trang
+      document
+        .getElementById("backToTopBtn")
+        .addEventListener("click", function () {
+          document.body.scrollTop = 0; // For Safari
+          document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Xử lý nút Next
+        var nextButton = document.querySelector(".tm-next");
+        if (nextButton) {
+          nextButton.addEventListener("click", function () {
+            window.location.href = "page2.html";
+          });
+        }
+
+        // Xử lý nút Prev
+        var prevButton = document.querySelector(".tm-prev");
+        if (prevButton) {
+          prevButton.addEventListener("click", function () {
+            window.location.href = "ex1.html";
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Xử lý sự kiện click cho nút 1
+        var pagingButton1 = document.getElementById("paging-button-1");
+        if (pagingButton1) {
+          pagingButton1.addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+            window.location.href = "ex1.html"; // Điều hướng tới trang ex1.html
+          });
+        }
+
+        // Xử lý sự kiện click cho nút 2
+        var pagingButton2 = document.getElementById("paging-button-2");
+        if (pagingButton2) {
+          pagingButton2.addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+            window.location.href = "page2.html"; // Điều hướng tới trang ex2.html
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Xử lý sự kiện click cho nút 4
+        var pagingButton4 = document.getElementById("paging-button-4");
+        if (pagingButton4) {
+          pagingButton4.addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+            window.location.href = "page4.html"; // Điều hướng tới trang page4.html
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Xử lý nút Prev
+        var prevButton = document.querySelector(".tm-prev");
+        if (prevButton) {
+          prevButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+            window.location.href = "page2.html"; // Điều hướng tới trang page2.html
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // ... other event listeners ...
+
+        // Handle the click event for the Next button
+        var nextButton = document.querySelector(".tm-next");
+        if (nextButton) {
+          nextButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent the default action
+            window.location.href = "page4.html"; // Redirect to page4.html
+          });
+        }
+
+        // ... other event listeners ...
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var paragraphs = document.querySelectorAll(".tm-pt-30");
+        var maxLength = 200; // Đặt giới hạn số ký tự
+
+        paragraphs.forEach(function (p) {
+          if (p.textContent.length > maxLength) {
+            var shortText = p.textContent.slice(0, maxLength);
+            var longText = p.textContent.slice(maxLength);
+            p.innerHTML = shortText;
+            var hiddenSpan = document.createElement("span");
+            hiddenSpan.classList.add("hidden-text");
+            hiddenSpan.innerHTML = longText;
+            p.appendChild(hiddenSpan);
+
+            var btn = document.createElement("button");
+            btn.innerHTML = "Xem thêm";
+            btn.classList.add("read-more-btn", "btn", "btn-primary", "btn-sm");
+            p.appendChild(btn);
+
+            btn.addEventListener("click", function () {
+              hiddenSpan.classList.toggle("hidden-text");
+              this.textContent = hiddenSpan.classList.contains("hidden-text")
+                ? "Xem thêm"
+                : "Thu gọn";
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

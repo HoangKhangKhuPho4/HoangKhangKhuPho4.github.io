@@ -1,15 +1,36 @@
 // Lấy thẻ nút "Thanh toán"
+// Lấy thẻ nút "Thanh toán"
+// Lấy thẻ nút "Thanh toán"
 const checkoutButton = document.getElementById("checkoutButton");
 
 // Thêm sự kiện "click" cho nút "Thanh toán"
 checkoutButton.addEventListener("click", () => {
-  // Thực hiện các tác vụ thanh toán ở đây
-  // Ví dụ: Hiển thị thông báo thanh toán thành công
+  // Tính tổng số lượng sản phẩm trong giỏ hàng
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  // Kiểm tra nếu tổng số lượng bằng 0
+  if (totalQuantity === 0) {
+    alert(
+      "Xin quý khách vui lòng chọn mua sản phẩm ưng ý trước khi thanh toán."
+    );
+    return; // Ngăn không cho tiếp tục nếu không có sản phẩm hoặc số lượng bằng 0
+  }
+
+  // Tiếp tục với quá trình thanh toán nếu có sản phẩm trong giỏ hàng
   alert("Thanh toán thành công!");
-  // Sau khi thanh toán thành công, bạn có thể làm sạch giỏ hàng bằng cách xóa tất cả các sản phẩm khỏi biến cartItems và cập nhật giỏ hàng
+
+  // Hiển thị cửa sổ đánh giá sau khi thanh toán
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("reviewPanel").style.display = "block";
+
+  // Làm sạch giỏ hàng sau khi thanh toán
   cartItems = [];
   updateCart();
 });
+
 // Lấy thẻ ô tìm kiếm và nút tìm kiếm
 const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
@@ -19,7 +40,7 @@ const products = [
   {
     name: "Cà phê đen",
     price: 20000,
-    image: "capheden.jpg",
+    image: "img/capheden.jpg",
     link: "",
   },
   // Thêm các sản phẩm khác vào đây
@@ -29,7 +50,7 @@ const products = [
 const product2 = {
   name: "Cà phê sữa",
   price: 25000,
-  image: "caphesua.jpg",
+  image: "img/caphesua.jpg",
   link: "",
 };
 
@@ -39,7 +60,7 @@ products.push(product2);
 const product3 = {
   name: "Cà phê đá xoay",
   price: 30000,
-  image: "caphedaxoay.jpg",
+  image: "img/caphedaxoay.jpg",
   link: "",
 };
 
@@ -49,7 +70,7 @@ products.push(product3);
 const product4 = {
   name: "Cà phê cốt dừa",
   price: 35000,
-  image: "caphecotdua.jpg",
+  image: "img/caphecotdua.jpg",
   link: "",
 };
 
@@ -59,7 +80,7 @@ products.push(product4);
 const product5 = {
   name: "Machiato",
   price: 100000,
-  image: "machiato.jpg",
+  image: "img/machiato.jpg",
   link: "",
 };
 
@@ -69,7 +90,7 @@ products.push(product5);
 const product6 = {
   name: "latte",
   price: 200000,
-  image: "latte.jpg",
+  image: "img/latte.jpg",
   link: "",
 };
 
@@ -79,7 +100,7 @@ products.push(product6);
 const product7 = {
   name: "Mocha",
   price: 500000,
-  image: "mocha.jpg",
+  image: "img/mocha.jpg",
   link: "",
 };
 
@@ -125,44 +146,15 @@ function displaySearchResults(results) {
   }
 }
 // Hàm xóa sản phẩm khỏi giỏ hàng
-function removeFromCart(productName) {
-  // Tìm sản phẩm có tên trùng khớp trong giỏ hàng và xóa nó
-  const index = cartItems.findIndex((item) => item.name === productName);
-  if (index !== -1) {
-    cartItems.splice(index, 1);
-    updateCart(); // Cập nhật giỏ hàng sau khi xóa sản phẩm
-  }
-}
+// function removeFromCart(productName) {
+//   // Tìm sản phẩm có tên trùng khớp trong giỏ hàng và xóa nó
+//   const index = cartItems.findIndex((item) => item.name === productName);
+//   if (index !== -1) {
+//     cartItems.splice(index, 1);
+//     updateCart(); // Cập nhật giỏ hàng sau khi xóa sản phẩm
+//   }
+// }
 // Lấy thẻ nút xóa bên cạnh nút thanh toán
-const removeItemButton = document.getElementById("removeItemButton");
-
-// Thêm sự kiện "click" cho nút xóa
-removeItemButton.addEventListener("click", () => {
-  removeFromCart("Cà phê đen"); // Thay 'Cà phê đen' bằng tên sản phẩm bạn muốn xóa
-});
-
-removeItemButton.addEventListener("click", () => {
-  removeFromCart("Cà phê sữa"); // Thay 'Cà phê đen' bằng tên sản phẩm bạn muốn xóa
-});
-
-removeItemButton.addEventListener("click", () => {
-  removeFromCart("Cà phê đá xoay"); // Thay 'Cà phê đen' bằng tên sản phẩm bạn muốn xóa
-});
-
-removeItemButton.addEventListener("click", () => {
-  removeFromCart("Cà phê cốt dừa"); // Thay 'Cà phê đen' bằng tên sản phẩm bạn muốn xóa
-});
-
-removeItemButton.addEventListener("click", () => {
-  removeFromCart("Machiato"); // Thay 'Cà phê đen' bằng tên sản phẩm bạn muốn xóa
-});
-
-removeItemButton.addEventListener("click", () => {
-  removeFromCart("latte"); // Thay 'Cà phê đen' bằng tên sản phẩm bạn muốn xóa
-});
-removeItemButton.addEventListener("click", () => {
-  removeFromCart("Mocha"); // Thay 'Cà phê đen' bằng tên sản phẩm bạn muốn xóa
-});
 
 // Lấy thẻ ô tìm kiếm
 searchInput.addEventListener("keydown", (event) => {
@@ -175,3 +167,99 @@ function searchProductsAndDisplay(term) {
   const results = searchProducts(products, term);
   displaySearchResults(results);
 }
+
+// Lấy nút quay lại trang chủ
+const homeBtn = document.getElementById("homeButton");
+
+// Thêm sự kiện click
+homeBtn.addEventListener("click", function () {
+  // Thay đổi màu nền
+  this.style.backgroundColor = "blue";
+
+  // Đặt lại màu nền về ban đầu sau 1 giây
+  setTimeout(() => {
+    this.style.backgroundColor = "";
+  }, 1000);
+
+  // Chuyển trang
+  location.href = "implement.html";
+});
+// Khi rê chuột vào
+homeBtn.onmouseover = function () {
+  this.style.backgroundColor = "red";
+};
+
+// Khi rê chuột ra
+homeBtn.onmouseout = function () {
+  this.style.backgroundColor = "";
+};
+document.getElementById("checkoutButton").onclick = function () {
+  document.getElementById("reviewPanel").style.display = "block";
+};
+document.getElementById("checkoutButton").onclick = function () {
+  document.getElementById("overlay").style.display = "block";
+
+  document.getElementById("reviewPanel").style.display = "block";
+};
+const stars = document.querySelectorAll("#ratings .fa-star");
+stars.forEach((star, index) => {
+  star.addEventListener("mouseover", () => {
+    highlightStars(index);
+  });
+  star.addEventListener("mouseout", () => {
+    unhighlightStars();
+  });
+  star.addEventListener("click", () => {
+    setRating(index + 1);
+  });
+});
+
+function highlightStars(index) {
+  stars.forEach((star, i) => {
+    star.classList.toggle("hovered", i <= index);
+  });
+}
+
+function unhighlightStars() {
+  stars.forEach((star) => {
+    star.classList.remove("hovered");
+  });
+}
+
+function setRating(rating) {
+  // Thêm xử lý để lưu giá trị đánh giá
+}
+document
+  .getElementById("noReviewButton")
+  .addEventListener("click", function () {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("reviewPanel").style.display = "none";
+  });
+document.getElementById("reviewButton").addEventListener("click", function () {
+  // Xử lý đánh giá ở đây
+
+  // Đóng cửa sổ đánh giá
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("reviewPanel").style.display = "none";
+});
+document.getElementById("reviewButton").addEventListener("click", function () {
+  window.location.href = "DanhGia.html"; // Điều hướng đến trang DanhGia.html
+});
+document.querySelectorAll("#ratings .fa-star").forEach((star) => {
+  star.addEventListener("click", function () {
+    let rating = this.dataset.value;
+    setRating(rating);
+  });
+});
+
+document.querySelectorAll("#ratings .fa-star").forEach((star) => {
+  star.addEventListener("click", function () {
+    let isRated = this.getAttribute("data-rated") === "true";
+    this.style.color = isRated ? "gray" : "gold";
+    this.setAttribute("data-rated", isRated ? "false" : "true");
+  });
+});
+document.getElementById("closeButton").addEventListener("click", function () {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("reviewPanel").style.display = "none";
+});

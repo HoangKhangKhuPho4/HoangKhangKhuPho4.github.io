@@ -89,15 +89,16 @@ function selectTable(tableId) {
 document
   .getElementById("booking-form")
   .addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent default submit
+    e.preventDefault();
 
-    // Validate and submit form data
+    // Retrieve form values
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
     const date = document.getElementById("res-date").value;
     const guests = document.getElementById("guests").value;
     const notes = document.getElementById("notes").value;
 
+    // Validation checks
     if (!name) {
       alert("Vui lòng nhập họ tên");
       return;
@@ -113,9 +114,31 @@ document
       return;
     }
 
-    // Add your logic to handle form submission
-    console.log("Form submitted:", { name, phone, date, guests, notes });
-    // Here you can add logic to submit the data to a server, etc.
+    if (!selectedTableId) {
+      alert("Vui lòng chọn bàn");
+      return;
+    }
+
+    // Only show success message if all validations pass
+    const successMessage = document.createElement("div");
+    successMessage.classList.add("success-message");
+    successMessage.innerHTML = "Quý khách đã đặt bàn thành công!";
+    document.body.appendChild(successMessage);
+
+    // Remove the success message after a few seconds
+    setTimeout(function () {
+      successMessage.remove();
+    }, 3000);
+
+    // Here, you can add logic to submit the data to a server, etc.
+    console.log("Form submitted:", {
+      name,
+      phone,
+      date,
+      guests,
+      notes,
+      selectedTableId,
+    });
   });
 
 // Show tables when the page loads
@@ -139,27 +162,6 @@ function selectTable(tableId) {
   selectedTableId = tableId; // Cập nhật bàn đã chọn
 }
 
-document
-  .getElementById("booking-form")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    // Logic kiểm tra và xử lý form ở đây...
-
-    if (selectedTableId) {
-      // Hiển thị thông báo thành công
-      const successMessage = document.createElement("div");
-      successMessage.classList.add("success-message");
-      successMessage.innerHTML = "Quý khách đã đặt bàn thành công!";
-      document.body.appendChild(successMessage);
-
-      // Tự động xóa thông báo sau vài giây
-      setTimeout(function () {
-        successMessage.remove();
-      }, 3000);
-    }
-  });
-
 const totalTables = 24;
 const bookedTables = 10; // Lấy từ server
 
@@ -168,3 +170,5 @@ const availableTables = totalTables - bookedTables;
 const availableCountElement = document.getElementById("available-table-count");
 
 availableCountElement.innerText = `Số bàn trống: ${availableTables}`;
+
+// Đầu tiên, chọn nút cần xử lý sự kiện

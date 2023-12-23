@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>Known - Education HTML Template</title>
+<!-- 
+
+Known Template 
+
+https://templatemo.com/tm-516-known
+
+-->
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/owl.carousel.css">
+     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="css/templatemo-style.css">
+     <style>
+          #backToTopBtn {
+  display: none; /* Ẩn nút cho đến khi cần thiết */
+  position: fixed; /* Nút sẽ cố định so với viewport */
+  bottom: 20px; /* Khoảng cách từ dưới cùng của viewport */
+  right: 30px; /* Khoảng cách từ phải của viewport */
+  z-index: 99; /* Đảm bảo nút nằm trên hầu hết các phần tử khác */
+  border: none; /* Không có viền */
+  outline: none; /* Không có đường viền ngoại quan khi tập trung */
+  background-color: #007bff; /* Màu nền */
+  color: white; /* Màu chữ */
+  cursor: pointer; /* Hiển thị con trỏ như một biểu tượng click */
+  padding: 15px; /* Khoảng cách bên trong */
+  border-radius: 10px; /* Bo góc */
+}
+
+#backToTopBtn:hover {
+  background-color: #0056b3; /* Màu khi hover */
+}
+    /* CSS cho Hộp Thoại Đăng Nhập (Modal) */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+     </style>
+
+</head>
+<button id="backToTopBtn" title="Go to top">⬆️</button>
+
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+     <!-- PRE LOADER -->
+     <section class="preloader">
+          <div class="spinner">
+
+               <span class="spinner-rotate"></span>
+               
+          </div>
+     </section>
+
+
+     <!-- MENU -->
+     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                    <!-- lOGO TEXT HERE -->
+                    <a href="#" class="navbar-brand">Known</a>
+               </div>
+
+               <!-- MENU LINKS -->
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-nav-first">
+                         <li><a href="#top" class="smoothScroll">Home</a></li>
+                         <li><a href="#about" class="smoothScroll">About</a></li>
+                         <li><a href="#team" class="smoothScroll">Our Teachers</a></li>
+                         <li><a href="#courses" class="smoothScroll">Courses</a></li>
+                         <li><a href="#testimonial" class="smoothScroll">Reviews</a></li>
+                         <li><a href="#contact" class="smoothScroll">Contact</a></li>
+                         <li><a href="lab6.html" class="smoothScroll">Back To Home</a></li>
+                         <li><a href="#" id="loginLink">Login</a></li>
+
+
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="#"><i class="fa fa-phone"></i>+84-56-7649206</a></li>
+                    </ul>
+               </div>
+
+          </div>
+     </section>
+
+
+     <!-- HOME -->
+     <section id="home">
+          <div class="row">
+
+                    <div class="owl-carousel owl-theme home-slider">
+                         <div class="item item-first">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-6 col-sm-12">
+                                             <h1>Distance Learning Education Center</h1>
+                                             <h3>Our online courses are designed to fit in your industry supporting all-round with latest technologies.</h3>
+                                             <a href="#feature" class="section-btn btn btn-default smoothScroll">Discover more</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="item item-second">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-6 col-sm-12">
+                                             <h1>Start your journey with our practical courses</h1>
+                                             <h3>Our online courses are built in partnership with technology leaders and are designed to meet industry demands.</h3>
+                                             <a href="#courses" class="section-btn btn btn-default smoothScroll">Take a course</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="item item-third">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-6 col-sm-12">
+                                             <h1>Efficient Learning Methods</h1>
+                                             <h3>Nam eget sapien vel nibh euismod vulputate in vel nibh. Quisque eu ex eu urna venenatis sollicitudin ut at libero. Visit <a rel="nofollow" href="https://www.facebook.com/templatemo">templatemo</a> page.</h3>
+                                             <a href="#contact" class="section-btn btn btn-default smoothScroll">Let's chat</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+          </div>
+     </section>
+
+
+     <!-- FEATURE -->
+     <section id="feature">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-4 col-sm-4">
+                         <div class="feature-thumb">
+                              <span>01</span>
+                              <h3>Trending Courses</h3>
+                              <p>Known is free education HTML Bootstrap Template. You can modify in any way and use this for your website.</p>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                         <div class="feature-thumb">
+                              <span>02</span>
+                              <h3>Books & Library</h3>
+                              <p>You are allowed to use Known HTML Template for your commercial or non-commercial websites.</p>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                         <div class="feature-thumb">
+                              <span>03</span>
+                              <h3>Certified Teachers</h3>
+                              <p>Please spread a word about us. Template redistribution is NOT allowed on any download website.</p>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- ABOUT -->
+     <section id="about">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="about-info">
+                              <h2>Start your journey to a better life with online practical courses</h2>
+
+                              <figure>
+                                   <span><i class="fa fa-users"></i></span>
+                                   <figcaption>
+                                        <h3>Professional Trainers</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                   </figcaption>
+                              </figure>
+
+                              <figure>
+                                   <span><i class="fa fa-certificate"></i></span>
+                                   <figcaption>
+                                        <h3>International Certifications</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                   </figcaption>
+                              </figure>
+
+                              <figure>
+                                   <span><i class="fa fa-bar-chart-o"></i></span>
+                                   <figcaption>
+                                        <h3>Free for 3 months</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                   </figcaption>
+                              </figure>
+                         </div>
+                    </div>
+
+                    <div class="col-md-offset-1 col-md-4 col-sm-12">
+                         <div class="entry-form">
+                              <form action="#" method="post" id="signup-form">
+                                   <h2>Signup today</h2>
+                                   <input type="text" name="fullname" class="form-control" placeholder="Full name" required>
+                               
+                                   <input type="email" name="email" class="form-control" placeholder="Your email address" required>
+                               
+                                   <input type="password" name="password" class="form-control" placeholder="Your password" required>
+                               
+                                   <!-- Thêm trường xác nhận mật khẩu -->
+                                   <input type="password" name="confirm_password" class="form-control" placeholder="Confirm your password" required>
+                               
+                                   <button class="submit-btn form-control" id="form-submit">Get started</button>
+                               </form>
+                               <div id="signup-notification" style="color: green;"></div>
+
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- TEAM -->
+     <section id="team">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title">
+                              <h2>Teachers <small>Meet Professional Trainers</small></h2>
+                         </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                         <div class="team-thumb">
+                              <div class="team-image">
+                                   <img src="img/conga.jpg" class="img-responsive" alt="">
+                              </div>
+                              <div class="team-info">
+                                   <h3>Trần Thị Thanh Nga</h3>
+                                   <span>I love Teaching</span>
+                              </div>
+                              <ul class="social-icon">
+                                   <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+                                   <li><a href="#" class="fa fa-twitter"></a></li>
+                                   <li><a href="#" class="fa fa-instagram"></a></li>
+                              </ul>
+                         </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                         <div class="team-thumb">
+                              <div class="team-image">
+                                   <img src="img/thayCuong.jpg" class="img-responsive" alt="">
+                              </div>
+                              <div class="team-info">
+                                   <h3>Đặng Kiên Cường</h3>
+                                   <span>Education is the key!</span>
+                              </div>
+                              <ul class="social-icon">
+                                   <li><a href="#" class="fa fa-google"></a></li>
+                                   <li><a href="#" class="fa fa-instagram"></a></li>
+                              </ul>
+                         </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                         <div class="team-thumb">
+                              <div class="team-image">
+                                   <img src="img/thayLinh.jpg" class="img-responsive" alt="">
+                              </div>
+                              <div class="team-info">
+                                   <h3>Võ Tấn Linh</h3>
+                                   <span>I like Online Courses</span>
+                              </div>
+                              <ul class="social-icon">
+                                   <li><a href="#" class="fa fa-twitter"></a></li>
+                                   <li><a href="#" class="fa fa-envelope-o"></a></li>
+                                   <li><a href="#" class="fa fa-linkedin"></a></li>
+                              </ul>
+                         </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                         <div class="team-thumb">
+                              <div class="team-image">
+                                   <img src="img/thayNghia.jpg" class="img-responsive" alt="">
+                              </div>
+                              <div class="team-info">
+                                   <h3>Bùi Đại Nghĩa</h3>
+                                   <span>Learning is fun</span>
+                              </div>
+                              <ul class="social-icon">
+                                   <li><a href="#" class="fa fa-twitter"></a></li>
+                                   <li><a href="#" class="fa fa-google"></a></li>
+                                   <li><a href="#" class="fa fa-behance"></a></li>
+                              </ul>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+f
+
+     <!-- Courses -->
+     <section id="courses">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title">
+                              <h2>Popular Courses <small>Upgrade your skills with newest courses</small></h2>
+                         </div>
+
+                         <div class="owl-carousel owl-theme owl-courses">
+                              <div class="col-md-4 col-sm-4">
+                                   <div class="item">
+                                        <div class="courses-thumb">
+                                             <div class="courses-top">
+                                                  <div class="courses-image">
+                                                       <img src="images/courses-image1.jpg" class="img-responsive" alt="">
+                                                  </div>
+                                                  <div class="courses-date">
+                                                       <span><i class="fa fa-calendar"></i> 12 / 7 / 2018</span>
+                                                       <span><i class="fa fa-clock-o"></i> 7 Hours</span>
+                                                  </div>
+                                             </div>
+
+                                             <div class="courses-detail">
+                                                  <h3><a href="#">Social Media Management</a></h3>
+                                                  <p>Khóa học Social Media Management cung cấp kiến thức và kỹ năng quản lý mạng xã hội chuyên nghiệp.
+                                                       Học viên sẽ học cách xây dựng chiến lược, nội dung, lên lịch post và quảng cáo cho các nền tảng mạng xã hội phổ biến.
+                                                       Khóa học bao gồm các kỹ năng copywriting sáng tạo, chỉnh sửa ảnh, video, tăng tương tác và phân tích dữ liệu mạng xã hội.
+                                                       Học viên sẽ thực hành xây dựng chiến dịch quảng cáo Facebook Ads và Google Ads.
+                                                       Sau khóa học, học viên có thể làm Social Media Manager, Community Manager, Digital Marketing Executive.
+                                                       Đây là khóa học lý tưởng cho những ai muốn theo đuổi sự nghiệp Digital Marketing.
+                                                       Với đội ngũ giảng viên giàu kinh nghiệm, học viên sẽ được trang bị đầy đủ kỹ năng thực tế.</p>
+                                             </div>
+
+                                             <div class="courses-info">
+                                                  <div class="courses-author">
+                                                       <img src="images/author-image1.jpg" class="img-responsive" alt="">
+                                                       <span>Mark Wilson</span>
+                                                  </div>
+                                                  <div class="courses-price">
+                                                       <a href="https://emplifi.io/?utm_source=google&utm_medium=cpc&utm_campaign=Japac-fy23-smc-ppc-google-emplifi_brand&utm_content=demo&utm_source=google&utm_medium=cpc&utm_term=social%20media%20bakers&utm_campaign=-19814343834&utm_adgroup=-144832115017&utm_adname=-651211795905&utm_content=&utm_device=c&utm_source=google&utm_medium=cpc&utm_term=social%20media%20bakers&utm_campaign={campaign}-19814343834&utm_adgroup={adgroup}-144832115017&utm_adname={adname}-651211795905&utm_content={content}&utm_device=c&gad_source=1&gclid=CjwKCAiAhJWsBhAaEiwAmrNyq03nUkFDtFWyr0aKzUFlJOCxJ335yeED1a4K1tObpFhNegWEw_HpuBoCYN8QAvD_BwE"><span>USD 25</span></a>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="col-md-4 col-sm-4">
+                                   <div class="item">
+                                        <div class="courses-thumb">
+                                             <div class="courses-top">
+                                                  <div class="courses-image">
+                                                       <img src="images/courses-image2.jpg" class="img-responsive" alt="">
+                                                  </div>
+                                                  <div class="courses-date">
+                                                       <span><i class="fa fa-calendar"></i> 20 / 7 / 2018</span>
+                                                       <span><i class="fa fa-clock-o"></i> 4.5 Hours</span>
+                                                  </div>
+                                             </div>
+
+                                             <div class="courses-detail">
+                                                  <h3><a href="#">Graphic & Web Design</a></h3>
+                                                  <p>Khóa học Graphic & Web Design cung cấp cho học viên kiến thức nền tảng về thiết kế đồ họa và web.
+                                                       Học viên sẽ được làm quen với các kỹ năng thiết kế cơ bản như photoshop, illustrator, typography, màu sắc, bố cục.
+                                                       Khóa học giúp học viên nắm vững kỹ thuật web design từ cơ bản đến nâng cao, có thể tự tay thiết kế giao diện web đẹp mắt.
+                                                       Sau khóa học, học viên có thể làm việc với vị trí Graphic Designer, Web Designer ở các công ty thiết kế, công ty truyền thông.
+                                                       Đây là khóa học phù hợp cho những ai đam mê thiết kế, muốn theo đuổi con đường thiết kế đồ họa và web chuyên nghiệp.
+                                                       Với đội ngũ giảng viên chuyên nghiệp, khóa học sẽ giúp học viên nắm chắc kiến thức và có portfolio ấn tượng.</p>
+                                             </div>
+
+                                             <div class="courses-info">
+                                                  <div class="courses-author">
+                                                       <img src="images/author-image2.jpg" class="img-responsive" alt="">
+                                                       <span>Jessica</span>
+                                                  </div>
+                                                  <div class="courses-price">
+                                                       <a href="https://www.skillshare.com/browse/web-design"><span>USD 80</span></a>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="col-md-4 col-sm-4">
+                                   <div class="item">
+                                        <div class="courses-thumb">
+                                             <div class="courses-top">
+                                                  <div class="courses-image">
+                                                       <img src="images/courses-image3.jpg" class="img-responsive" alt="">
+                                                  </div>
+                                                  <div class="courses-date">
+                                                       <span><i class="fa fa-calendar"></i> 15 / 8 / 2018</span>
+                                                       <span><i class="fa fa-clock-o"></i> 6 Hours</span>
+                                                  </div>
+                                             </div>
+
+                                             <div class="courses-detail">
+                                                  <h3><a href="#">Marketing Communication</a></h3>
+                                                  <p>Khóa học Marketing Communication trang bị cho học viên kiến thức và kỹ năng giao tiếp Marketing hiệu quả.
+                                                       Học viên được học cách xây dựng chiến lược truyền thông thương hiệu và quảng bá sản phẩm đến khách hàng.
+                                                       Khóa học bao gồm các kỹ năng viết bài PR, tổ chức sự kiện, quảng cáo, khuyến mãi và chăm sóc khách hàng.
+                                                       Học viên sẽ được rèn luyện kỹ năng giao tiếp, thuyết trình và xử lý khủng hoảng truyền thông.
+                                                       Sau khóa học, học viên có thể đảm nhận các vị trí PR, Event Executive, Brand Executive.
+                                                       Đây là khóa học lý tưởng cho những ai có đam mê và muốn phát triển sự nghiệp trong lĩnh vực Marketing.
+                                                       Với kinh nghiệm thực chiến, giảng viên sẽ giúp học viên tiếp cận nhanh với thực tế công việc.</p>
+                                             </div>
+
+                                             <div class="courses-info">
+                                                  <div class="courses-author">
+                                                       <img src="images/author-image3.jpg" class="img-responsive" alt="">
+                                                       <span>Catherine</span>
+                                                  </div>
+                                                  <div class="courses-price free">
+                                                       <a href="https://academy.hubspot.com/courses/content-marketing"><span>Free</span></a>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="col-md-4 col-sm-4">
+                                   <div class="item">
+                                        <div class="courses-thumb">
+                                             <div class="courses-top">
+                                                  <div class="courses-image">
+                                                       <img src="images/courses-image4.jpg" class="img-responsive" alt="">
+                                                  </div>
+                                                  <div class="courses-date">
+                                                       <span><i class="fa fa-calendar"></i> 10 / 8 / 2018</span>
+                                                       <span><i class="fa fa-clock-o"></i> 8 Hours</span>
+                                                  </div>
+                                             </div>
+
+                                             <div class="courses-detail">
+                                                  <h3><a href="#">Summer Kids</a></h3>
+                                                  <p>Khóa học Summer Kids là khóa học trải nghiệm dành cho trẻ em vào mùa hè.
+                                                       Thông qua các hoạt động vui chơi, khám phá, trẻ em sẽ được rèn luyện kỹ năng sống và sáng tạo.
+                                                       Các em sẽ được tham gia các lớp học như múa, hát, nấu ăn, thủ công, khoa học, ngoại ngữ phù hợp với lứa tuổi.
+                                                       Ngoài ra còn có các hoạt động ngoại khóa như tham quan bảo tàng, vườn thú, công viên,.. giúp các em khám phá thế giới xung quanh.
+                                                       Qua đó giúp các em rèn luyện tính tự lập, khả năng làm việc theo nhóm và tự tin hơn.
+                                                       Đội ngũ giảng viên tâm huyết, có kinh nghiệm sẽ đồng hành cùng các em trong hành trình khám phá.
+                                                       Đây sẽ là kỳ nghỉ hè ý nghĩa và bổ ích cho trẻ em để vừa học vừa chơi.</p>
+                                             </div>
+
+                                             <div class="courses-info">
+                                                  <div class="courses-author">
+                                                       <img src="images/author-image1.jpg" class="img-responsive" alt="">
+                                                       <span>Mark Wilson</span>
+                                                  </div>
+                                                  <div class="courses-price">
+                                                       <a href="https://www.ymca.org/what-we-do/youth-development/camp"><span>USD 45</span></a>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="col-md-4 col-sm-4">
+                                   <div class="item">
+                                        <div class="courses-thumb">
+                                             <div class="courses-top">
+                                                  <div class="courses-image">
+                                                       <img src="images/courses-image5.jpg" class="img-responsive" alt="">
+                                                  </div>
+                                                  <div class="courses-date">
+                                                       <span><i class="fa fa-calendar"></i> 5 / 10 / 2018</span>
+                                                       <span><i class="fa fa-clock-o"></i> 10 Hours</span>
+                                                  </div>
+                                             </div>
+
+                                             <div class="courses-detail">
+                                                  <h3><a href="#">Business &amp; Management</a></h3>
+                                                  <p>Khóa học Business Management cung cấp kiến thức và kỹ năng quản lý kinh doanh hiệu quả.
+                                                       Học viên sẽ được học cách lập kế hoạch kinh doanh, xây dựng chiến lược phát triển sản phẩm, quản lý nhân sự.
+                                                       Khóa học bao gồm các kỹ năng quản lý tài chính, marketing, quan hệ khách hàng và vận hành doanh nghiệp.
+                                                       Học viên sẽ được rèn luyện tư duy phân tích, ra quyết định và kỹ năng lãnh đạo.
+                                                       Sau khóa học, học viên có thể đảm nhiệm các vị trí quản lý, giám đốc điều hành trong doanh nghiệp.
+                                                       Đây là khóa học lý tưởng cho những ai muốn nâng cao kỹ năng quản trị kinh doanh.
+                                                       Với kinh nghiệm thực tế, giảng viên sẽ giúp học viên tiếp cận nhanh với môi trường kinh doanh.</p>
+                                             </div>
+
+                                             <div class="courses-info">
+                                                  <div class="courses-author">
+                                                       <img src="images/author-image2.jpg" class="img-responsive" alt="">
+                                                       <span>Jessica</span>
+                                                  </div>
+                                                  <div class="courses-price free">
+                                                       <a href="https://www.edx.org/learn/business-administration/university-of-british-columbia-business-foundations"><span>Free</span></a>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+
+                         </div>
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- TESTIMONIAL -->
+     <section id="testimonial">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title">
+                              <h2>Student Reviews <small>from around the world</small></h2>
+                         </div>
+
+                         <div class="owl-carousel owl-theme owl-client">
+                              <div class="col-md-4 col-sm-4">
+                                   <div class="item">
+                                        <div class="tst-image">
+                                             <img src="images/tst-image1.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="tst-author">
+                                             <h4>Jackson</h4>
+                                             <span>Shopify Developer</span>
+                                        </div>
+                                        <p>Cô Trần Thị Thanh Nga là người giảng viên xuất sắc, nhiệt tình và tận tâm với nghề dạy học. Cô luôn chuẩn bị bài giảng công phu, truyền đạt kiến thức một cách logic và dễ hiểu. Cô rất quan tâm tới tiến bộ của học sinh, luôn dành thời gian để giải đáp thắc mắc và khuyến khích tinh thần học tập của các em. Nhờ sự nhiệt tình và tâm huyết của cô mà lớp học luôn sôi nổi và hiệu quả. Cô thực sự là tấm gương mẫu mực để các học sinh noi theo.</p>
+                                        <div class="tst-rating">
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="col-md-4 col-sm-4">
+                                   <div class="item">
+                                        <div class="tst-image">
+                                             <img src="images/tst-image2.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="tst-author">
+                                             <h4>Camila</h4>
+                                             <span>Marketing Manager</span>
+                                        </div>
+                                        <p>Thầy Võ Tấn Linh là người thầy tài năng và kinh nghiệm. Thầy luôn chuẩn bị bài giảng cẩn thận, phân tích logic và truyền đạt kiến thức một cách rõ ràng, mạch lạc. Thầy luôn quan tâm tới tiến bộ của từng học sinh, tận tình hướng dẫn và giải đáp thắc mắc cho các em. Nhờ phương pháp giảng dạy hiệu quả của thầy mà kiến thức được các em nắm chắc và vận dụng tốt. Thầy thực sự là người thầy mẫu mực, đáng để học sinh học tập và noi gương.</p>
+                                        <div class="tst-rating">
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="col-md-4 col-sm-4">
+                                   <div class="item">
+                                        <div class="tst-image">
+                                             <img src="images/tst-image3.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="tst-author">
+                                             <h4>Barbie</h4>
+                                             <span>Art Director</span>
+                                        </div>
+                                        <p>Thầy Đặng Kiên Cường là người thầy nhiệt tình, tâm huyết với nghề dạy học. Thầy luôn chuẩn bị bài giảng chu đáo, truyền đạt kiến thức sâu sắc nhưng dễ hiểu. Thầy rất quan tâm tới sự tiến bộ của học sinh, luôn tìm cách động viên và khích lệ tinh thần học tập của các em. Nhờ sự nhiệt tình và tận tâm của thầy mà các em luôn hứng thú học tập. Thầy thực sự xứng đáng là tấm gương sáng cho học sinh noi theo.</p>
+                                        <div class="tst-rating">
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="col-md-4 col-sm-4">
+                                   <div class="item">
+                                        <div class="tst-image">
+                                             <img src="images/tst-image4.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="tst-author">
+                                             <h4>Andrio</h4>
+                                             <span>Web Developer</span>
+                                        </div>
+                                        <p>Thầy Bùi Đại Nghĩa là người thầy giàu kinh nghiệm và hiểu biết. Thầy luôn chuẩn bị bài giảng kỹ lưỡng, truyền đạt kiến thức một cách logic và sinh động. Thầy rất tận tình, luôn dành thời gian để ôn tập, giải đáp thắc mắc và theo sát sự tiến bộ của từng học sinh. Nhờ phương pháp giảng dạy hiệu quả của thầy mà kiến thức được các em nắm chắc. Thầy thực sự xứng đáng là tấm gương sáng cho thế hệ học sinh.</p>
+                                        <div class="tst-rating">
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                        </div>
+                                   </div>
+                              </div>
+
+                         </div>
+
+               </div>
+          </div>
+     </section> 
+
+
+     <!-- CONTACT -->
+     <section id="contact">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-12">
+                         <form id="contact-form" role="form" action="" method="post">
+                              <div class="section-title">
+                                   <h2>Contact us <small>we love conversations. let us talk!</small></h2>
+                              </div>
+
+                              <div class="col-md-12 col-sm-12">
+                                   <input type="text" class="form-control" placeholder="Enter full name" name="name" required="">
+                    
+                                   <input type="email" class="form-control" placeholder="Enter email address" name="email" required="">
+
+                                   <textarea class="form-control" rows="6" placeholder="Tell us about your message" name="message" required=""></textarea>
+                              </div>
+
+                              <div class="col-md-4 col-sm-12">
+                                   <input type="submit" class="form-control" name="send message" value="Send Message">
+                              </div>
+
+                         </form>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="contact-image">
+                              <img src="images/contact-image.jpg" class="img-responsive" alt="Smiling Two Girls">
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>       
+
+
+     <!-- FOOTER -->
+     <footer id="footer">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-4 col-sm-6">
+                         <div class="footer-info">
+                              <div class="section-title">
+                                   <h2>Headquarter</h2>
+                              </div>
+                              <address>
+                                   <p>Khu phố 4. Thị trấn Phước Dân, huyện Ninh Phước, tỉnh Ninh Thuận</p>
+                              </address>
+
+                              <ul class="social-icon">
+                                   <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+                                   <li><a href="#" class="fa fa-twitter"></a></li>
+                                   <li><a href="#" class="fa fa-instagram"></a></li>
+                              </ul>
+
+                              <div class="copyright-text"> 
+                                   <p>© Copyright 2023 by Hoàng Khang. All Rights Reserved</p>
+                                   
+                                   <p>Design: Nguyễn Lê Hoàng Khang</p>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <div class="footer-info">
+                              <div class="section-title">
+                                   <h2>Contact Info</h2>
+                              </div>
+                              <address>
+                                   <p>+84-56-7649206</p>
+                                   <p>Email: <a href="mailto:22130116@st.hcmuaf.edu.vn">22130116@st.hcmuaf.edu.vn</a></p>
+                              </address>
+
+                              <div class="footer_menu">
+                                   <h2>Quick Links</h2>
+                                   <ul>
+                                        <li><a href="#">Career</a></li>
+                                        <li><a href="#">Investor</a></li>
+                                        <li><a href="#">Terms & Conditions</a></li>
+                                        <li><a href="#">Refund Policy</a></li>
+                                   </ul>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12">
+                         <div class="footer-info newsletter-form">
+                              <div class="section-title">
+                                   <h2>Newsletter Signup</h2>
+                              </div>
+                              <div>
+                                   <div class="form-group">
+                                        <form action="#" method="get">
+                                             <input type="email" class="form-control" placeholder="Enter your email" name="email" id="email" required="">
+                                             <input type="submit" class="form-control" name="submit" id="form-submit" value="Send me">
+                                        </form>
+                                        <span><sup>*</sup> Please note - we do not spam your email.</span>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </footer>
+
+
+     <!-- SCRIPTS -->
+     <script src="js/jquery.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/smoothscroll.js"></script>
+     <script src="js/custom.js"></script>
+
+     <script>
+          // Khi người dùng cuộn xuống 20px từ đầu tài liệu, hiển thị nút
+window.onscroll = function() {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("backToTopBtn").style.display = "block";
+  } else {
+    document.getElementById("backToTopBtn").style.display = "none";
+  }
+}
+
+// Khi người dùng click vào nút, cuộn trở lại đầu trang
+document.getElementById("backToTopBtn").addEventListener("click", function() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+});
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var fullName = document.querySelector('input[name="name"]').value.trim();
+    var email = document.querySelector('input[name="email"]').value.trim();
+    var message = document.querySelector('textarea[name="message"]').value.trim();
+    
+    var subject = encodeURIComponent('Contact Form Submission from ' + fullName);
+    var emailBody = 'Full Name: ' + fullName + '%0D%0A';
+    emailBody += 'Email: ' + email + '%0D%0A';
+    emailBody += 'Message: ' + message;
+
+    window.location.href = 'mailto:22130116@st.hcmuaf.edu.vn?subject=' + subject + '&body=' + encodeURIComponent(emailBody);
+});
+
+
+   
+
+     </script>
+    <div id="loginModal" class="modal">
+     <div class="modal-content">
+         <span class="close">&times;</span>
+         <form id="login-form">
+             <h2>Login</h2>
+             <input type="email" name="email" placeholder="Email" required>
+             <input type="password" name="password" placeholder="Password" required>
+             <button type="submit">Login</button>
+         </form>
+     </div>
+ </div>
+</body>
+</html>

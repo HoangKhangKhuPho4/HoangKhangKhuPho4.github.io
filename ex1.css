@@ -1,0 +1,58 @@
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+p.tm-mb-80 {
+  color: #f1f5f9; /* Màu chữ màu trắng nhạt */
+  font-size: 18px; /* Kích thước font */
+  line-height: 1.6; /* Chiều cao dòng */
+}
+
+a {
+  color: #fff; /* Màu trắng cho các liên kết */
+}
+
+h1,
+h2,
+h3 {
+  color: #fff; /* Màu trắng cho các tiêu đề */
+}
+.download-btn button,
+.figma-link button {
+  background-color: #28a745; /* Màu xanh lá đậm */
+  color: white;
+  font-weight: bold;
+}
+
+.download-btn button:hover,
+.figma-link button:hover {
+  background-color: #218838; /* Màu xanh lá sáng hơn khi hover */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ */
+}

@@ -182,10 +182,10 @@ nav ul li a:hover {
 .button-hover-effect {
   background-color: #f76b1c; /* Màu nền ban đầu */
   color: white; /* Màu chữ ban đầu */
-  transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển đổi mượt mà */
-  padding: 10px 20px; /* Đệm cho nút */
-  border: none; /* Không viền */
-  cursor: pointer; /* Con trỏ chuột */
+  transition: background-color 0.3s, color 0.3s;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
 }
 
 .button-hover-effect:hover {
