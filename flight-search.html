@@ -1,0 +1,2381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight Listings</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-r4NyPdA6Juj7+KikeM0xJLsHskj3tRjPser8mJG7f0JEKVSGPernib1bdFFjgzJ7"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      /* Add your custom styles or overrides here */
+      .form-range-output {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      /* You might not need the custom slider-track anymore if Bootstrap's styling is sufficient */
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Màu nền nhẹ */
+        color: #333; /* Màu chữ tối */
+      }
+      .flight-listing {
+        border: 1px solid #ddd;
+        background-color: #fff; /* Nền trắng cho mỗi listing */
+        color: #333; /* Màu chữ tối */
+      }
+      .flight-header {
+        color: #0056b3; /* Màu xanh dương cho tiêu đề */
+      }
+      .flight-time {
+        color: #333;
+      }
+      .flight-price {
+        color: #d9534f; /* Màu đỏ cho giá */
+      }
+
+      .search-results h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .search-results p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .flight-options {
+        display: flex; /* Use flexbox to layout children horizontally */
+        gap: 10px; /* Spacing between each flight option */
+      }
+      .flight-option {
+        flex: 0 0 auto; /* Do not grow, do not shrink, basis is auto */
+        background-color: #0056b3; /* Example background color for flight option */
+        padding: 10px; /* Padding inside each flight option */
+        border-radius: 5px; /* Rounded corners for flight option */
+        /* Additional CSS for styling */
+      }
+      .price-summary {
+        display: flex;
+        justify-content: space-between; /* Spread out summary items */
+        margin-top: 20px; /* Space from the options above */
+      }
+      .search-results {
+        background-color: #007bff;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 1000px;
+        margin: auto;
+        flex-grow: 1; /* Takes up remaining space */
+        display: flex;
+        flex-direction: column;
+      }
+
+      .flight-option {
+        flex: 0 0 auto;
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer; /* Indicates the item is clickable */
+        transition: transform 0.3s; /* Smooth transformation on click */
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+      }
+      .flight-option.selected {
+        transform: scale(1.1); /* Scales up the selected flight option */
+      }
+      .price-summary {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .weekly-prices {
+        background-color: #87cefa; /* Dark blue background */
+        /* color: white; */
+        padding: 10px;
+        border-radius: 10px;
+        display: flex;
+        gap: 8px;
+        white-space: nowrap; /* Prevents wrapping of items */
+        /* Additional styling for arrow buttons, if needed */
+      }
+      .date-price {
+        min-width: 120px; /* Minimum width for each date-price block */
+        padding: 5px;
+        background-color: #007bff; /* Lighter blue background for each item */
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .sidebar {
+        width: 300px; /* Fixed width for sidebar */
+        border-right: 1px solid #ddd; /* Separation line between sidebar and content */
+        padding: 10px;
+        height: 50vh; /* Full height sidebar */
+        overflow-x: hidden; /* Ẩn thanh cuộn ngang */
+
+        overflow-y: auto;
+        padding: 20px; /* Tăng padding */
+        margin-right: 10px;
+      }
+      @media (min-width: 768px) {
+        .sidebar {
+          width: 300px;
+        }
+      }
+
+      .app {
+        display: flex;
+      }
+
+      .sidebar {
+        width: 250px;
+        padding: 20px;
+      }
+
+      .content {
+        flex-grow: 1;
+        padding: 20px;
+      }
+
+      @media (max-width: 768px) {
+        /* Layout responsive cho mobile */
+      }
+      /* Add more CSS here for styling your page to match the provided image */
+
+      /* Style the accordion and panel */
+      .accordion .panel {
+        display: none;
+        padding: 0 18px;
+        background-color: white;
+        overflow: hidden;
+      }
+
+      .accordion .accordion-header {
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+      }
+
+      /* Style the accordion and panel */
+      .accordion .panel {
+        display: none;
+        padding: 0 18px;
+        background-color: white;
+        overflow: hidden;
+      }
+
+      .accordion .accordion-header {
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+        position: relative; /* Needed for absolute positioning of the pseudo-element */
+      }
+
+      /* Add "V" symbol for the closed state */
+      .accordion .accordion-header::after {
+        content: "▼"; /* Downward arrow symbol */
+        position: absolute;
+        right: 20px;
+        transition: transform 0.4s; /* Transition for the rotation */
+      }
+
+      /* Rotate "V" symbol for the open state */
+      .accordion .accordion-header.active::after {
+        transform: rotate(180deg); /* Rotate the arrow to indicate open state */
+      }
+
+      .checkbox-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px; /* Adjust as needed */
+      }
+
+      .price-info {
+        color: #333; /* Adjust the color as needed */
+        font-weight: bold;
+      }
+      .checkbox-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px; /* Adjust as needed */
+      }
+
+      .checkbox-item label {
+        width: 100%; /* Ensure the label takes up the full width to space out the price */
+      }
+
+      .option-label {
+        font-weight: bold; /* Make the option labels bold */
+      }
+
+      .price-info {
+        color: #333; /* Adjust the color as needed */
+        font-weight: normal; /* Ensure the price info is normal weight */
+      }
+      /* Checkbox item styling */
+      .checkbox-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      /* Checkbox label styling */
+      .checkbox-item label {
+        flex-grow: 1; /* Allow the label to fill the space */
+        margin-right: 10px; /* Space between label and price */
+        display: flex;
+        align-items: center;
+      }
+
+      /* Option label styling */
+      .option-label {
+        font-weight: bold;
+        flex-grow: 1; /* Allow the text to fill the space */
+      }
+
+      /* Price info styling */
+      .price-info {
+        color: #333;
+        font-weight: normal;
+        text-align: right;
+        white-space: nowrap; /* Keep the price in one line */
+        flex-basis: 120px; /* Set a fixed size for the price */
+      }
+
+      /* Checkbox item styling */
+      .checkbox-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      /* Checkbox label styling */
+      .checkbox-item label {
+        display: flex;
+        align-items: center;
+        flex: 1; /* Flex property to allow it to expand */
+        white-space: nowrap; /* Prevents the text from wrapping */
+      }
+
+      /* Option label styling */
+      .option-label {
+        font-weight: bold;
+        margin-right: 0.5em; /* Ensures some space between the label and the checkbox */
+      }
+
+      /* Price info styling */
+      .price-info {
+        color: #333;
+        font-weight: normal;
+        min-width: 120px; /* Minimum width for the price */
+        text-align: right; /* Align the text to the right */
+        white-space: nowrap; /* Prevents the price from wrapping */
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+      }
+
+      .checkbox-item label {
+        width: 100%;
+      }
+
+      .option-label {
+        font-weight: bold;
+      }
+
+      .price-info {
+        text-align: right;
+        width: 140px;
+      }
+
+      .price-info {
+        text-align: right;
+        width: 150px; /* tăng width lên */
+        white-space: nowrap; /* không wrap text */
+      }
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+      }
+
+      .checkbox-item label {
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .option-label {
+        font-weight: bold;
+        white-space: nowrap;
+      }
+
+      .price-info {
+        width: 150px;
+        text-align: right;
+        white-space: nowrap;
+      }
+      .listings {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .flight-listing {
+        background-color: #f5f5f5;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+      }
+
+      .flight-header {
+        font-weight: bold;
+      }
+
+      .flight-price {
+        color: #0056b3;
+        font-weight: bold;
+      }
+      .flight-options {
+        background-color: #fff; /* Màu nền trắng */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 10px;
+      }
+
+      .flight-option {
+        flex: 0 0 auto;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f5f5f5; /* Màu nền nhẹ cho mỗi tùy chọn */
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .flight-option:hover {
+        transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
+      }
+
+      .flight-option.selected {
+        transform: scale(1.1); /* Phóng to khi được chọn */
+        border: 2px solid #0056b3; /* Viền màu xanh dương để nổi bật */
+      }
+
+      .selected {
+        border: 2px solid #0056b3;
+      }
+      .weekly-prices {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        white-space: nowrap;
+      }
+
+      .date-price {
+        padding: 5px 10px;
+        border-radius: 3px;
+        background-color: #0056b3;
+
+        min-width: 100px;
+        text-align: center;
+      }
+
+      .flight-button {
+        background-color: #5cb85c; /* Màu xanh lá cho nút chọn */
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .flight-button:hover {
+        background-color: #4cae4c; /* Màu sáng hơn khi hover */
+      }
+
+      body {
+        background-color: #e6f2ff;
+      }
+
+      .flight-header {
+        color: #0056b3;
+      }
+
+      /* Các phần tử được chọn */
+      .selected {
+        border-color: #0056b3;
+      }
+
+      .search-results {
+        padding: 32px;
+        border-radius: 12px;
+      }
+
+      .flight-listing {
+        padding: 16px;
+        border-radius: 8px;
+      }
+
+      .sidebar {
+        height: 90vh;
+      }
+      .flight-button {
+        transition: background-color 0.2s;
+      }
+
+      .panel {
+        width: 100%; /* Hoặc một giá trị cụ thể khác theo yêu cầu */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      @media (min-width: 768px) {
+        .panel {
+          width: 100%; /* Hoặc một giá trị khác phù hợp */
+        }
+      }
+
+      .accordion-header {
+        background-color: #f4f4f4;
+        color: #333;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: background-color 0.4s ease;
+      }
+
+      .accordion-header:hover,
+      .accordion-header.active {
+        background-color: #e4e4e4;
+      }
+
+      .accordion-arrow {
+        float: right;
+        transition: transform 0.4s ease;
+      }
+
+      .accordion-header.active .accordion-arrow {
+        transform: rotate(-180deg);
+      }
+
+      .panel {
+        padding: 0 18px;
+        background-color: white;
+        display: none;
+        overflow: hidden;
+      }
+
+      .checkbox-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+      }
+
+      .checkbox-item label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .price-info {
+        margin-left: 10px;
+        font-weight: bold;
+        color: #d9534f; /* Red color for the price */
+      }
+      /* Style for nested accordion items */
+      .accordion .nested {
+        padding-left: 20px;
+        background-color: #e6e6e6;
+      }
+
+      .accordion .nested + .panel {
+        padding-left: 20px;
+      }
+      .accordion-header {
+        background-color: #f4f4f4;
+        color: #333;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: background-color 0.4s ease;
+      }
+
+      .accordion-header:hover,
+      .accordion-header.active {
+        background-color: #e4e4e4;
+      }
+
+      .accordion-arrow {
+        float: right;
+        transition: transform 0.4s ease;
+      }
+
+      .accordion-header.active .accordion-arrow {
+        transform: rotate(-180deg);
+      }
+
+      .panel {
+        padding: 0 18px;
+        background-color: white;
+        display: none;
+        overflow: hidden;
+      }
+
+      .time-section h3 {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #333;
+      }
+
+      .time-option {
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 10px;
+      }
+      .range-slider {
+        position: relative;
+        width: 300px; /* Adjust as needed */
+      }
+
+      .slider-track {
+        position: absolute;
+        width: 100%;
+        height: 5px;
+        background: #ddd;
+        z-index: 1;
+        top: 15px; /* Adjust as needed */
+      }
+
+      input[type="range"] {
+        -webkit-appearance: none; /* Override default appearance */
+        appearance: none;
+        width: 100%;
+        margin: 8px 0;
+        z-index: 2; /* Above the track */
+      }
+
+      input[type="range"]:focus {
+        outline: none; /* Removes the blue outline. */
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default appearance */
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #fff;
+        cursor: pointer;
+        border: 1px solid blue; /* Add a border */
+        box-shadow: 0 0 2px blue; /* Add a shadow for better visibility */
+      }
+
+      input[type="range"]::-webkit-slider-thumb:hover {
+        background: #e8e8e8;
+      }
+      .accordion-button:not(.collapsed) {
+        color: #333;
+        background-color: #f4f4f4;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+      }
+      /* Remove bullets from list items */
+      .accordion-body ul {
+        list-style-type: none; /* Removes the bullets */
+        padding-left: 0; /* Resets the padding */
+      }
+
+      /* Additional styling for list items */
+      .accordion-body li {
+        margin-bottom: 10px;
+      }
+      .price-range-slider {
+        margin: 15px 0;
+      }
+
+      .price-range {
+        font-weight: bold;
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      .panel {
+        display: none;
+      }
+      .accordion .panel {
+        display: none; /* Ẩn tất cả các panel mặc định */
+        /* các thuộc tính CSS khác */
+      }
+
+      .flight-listing {
+        transition: box-shadow 0.3s ease;
+      }
+
+      .flight-listing:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .flight-header {
+        color: #0056b3;
+      }
+
+      .detail-link {
+        color: #007bff;
+      }
+
+      .detail-link:hover {
+        text-decoration: underline;
+      }
+
+      .listings {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .flight-listing {
+        background-color: #f5f5f5;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        transition: box-shadow 0.3s ease;
+        font-size: 1.1em;
+      }
+
+      .flight-listing:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .flight-header,
+      .flight-time,
+      .flight-price {
+        margin-bottom: 10px;
+      }
+
+      .flight-button {
+        background-color: #5cb85c;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .flight-button:hover {
+        background-color: #4cae4c;
+      }
+
+      .accordion-seats-panel {
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        margin-top: 10px;
+        display: none; /* Mặc định là ẩn */
+      }
+
+      .seat-available {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        margin: 5px;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+      }
+
+ 
+
+#backToHomeBtn:hover {
+  background-color: #0062cc;
+}
+
+#backToHomeBtn {
+    background-color: #0d6efd;
+    border: none; 
+    border-radius: 5px;
+    padding: 12px 24px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #backToHomeBtn:hover {
+    background-color: #025ce2;
+  }
+  
+  #backToHomeBtn i {
+    margin-right: 8px; 
+  }
+  #backToHomeBtn {
+    background-color: #007bff; /* Màu nền xanh dương */
+    color: white; /* Màu chữ trắng */
+    border: none; 
+    border-radius: 5px; /* Bo tròn góc */
+    padding: 10px 20px; /* Đệm xung quanh nút */
+    font-size: 16px; /* Cỡ chữ */
+    cursor: pointer; /* Con trỏ chuột khi di chuyển qua nút */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền */
+    display: inline-block; /* Hiển thị dạng khối ngang */
+    margin-bottom: 20px; /* Khoảng cách với phần tử dưới */
+}
+
+#backToHomeBtn:hover {
+  background-color: #0056b3; /* Màu nền khi hover */
+}
+
+#backToHomeBtn i {
+    margin-right: 5px; /* Khoảng cách giữa icon và chữ */
+}
+
+    </style>
+  </head>
+  <body>
+         
+    
+    <button id="backToHomeBtn" onclick="window.location.href='lab5.html';">
+      <i class="bi bi-house-door-fill"></i> Trang Chủ
+    </button>
+    
+    <div class="app">
+      <div class="sidebar">
+        <h2>Bộ lọc:</h2>
+        <div class="accordion">
+          <h3 class="accordion-header">Số điểm dừng</h3>
+          <div class="panel">
+            <div class="checkbox-item">
+              <label
+                ><input type="checkbox" name="stops" value="direct" /><span
+                  class="option-label"
+                >
+                  Bay thẳng</span
+                ></label
+              >
+              <span class="price-info"
+                >2.952.000 VND &nbsp;&nbsp;&nbsp;&nbsp;</span
+              >
+            </div>
+            <div class="checkbox-item">
+              <label
+                ><input type="checkbox" name="stops" value="onestop" /><span
+                  class="option-label"
+                >
+                  1 điểm dừng</span
+                ></label
+              >
+              <span class="price-info">4.342.480 VND &emsp;&emsp;</span>
+            </div>
+            <div class="checkbox-item">
+              <label
+                ><input
+                  type="checkbox"
+                  name="stops"
+                  value="twoplustransits"
+                /><span class="option-label"> 2+ transits &nbsp;</span></label
+              >
+              <span class="price-info">8.399.650 VND </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header" id="headingOne">
+              Hãng hàng không
+              <span class="accordion-arrow">▼</span>
+            </button>
+            <div class="panel" id="panelOne">
+              <!-- Content for the accordion panel -->
+              <div class="checkbox-item">
+                <label>
+                  <input type="checkbox" name="airline" value="koreanAir" />
+                  Korean Air
+                  <span class="price-info">25.373.220 VND</span>
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <label>
+                  <input type="checkbox" name="airline" value="vietJetAir" />
+                  VietJet Air
+                  <span class="price-info">10.092.000 VND</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- Additional accordion items here -->
+        </div>
+
+        <!-- Parent Accordion item for Flight Time -->
+
+        <div class="accordion">
+          <!-- Accordion item for Flight Time -->
+          <div class="accordion-item">
+            <button class="accordion-header" id="headingFlightTime">
+              Thời gian bay
+              <span class="accordion-arrow">▼</span>
+            </button>
+            <div class="panel" id="panelFlightTime">
+              <!-- Section for Takeoff Time -->
+              <div class="time-section">
+                <h3>Giờ cất cánh</h3>
+                <div class="time-option">Đêm đến Sáng<br />00:00 - 06:00</div>
+                <div class="time-option">Sáng đến Trưa<br />06:00 - 12:00</div>
+                <div class="time-option">Trưa đến Tối<br />12:00 - 18:00</div>
+                <div class="time-option">Tối đến Đêm<br />18:00 - 24:00</div>
+              </div>
+              <!-- Section for Landing Time -->
+              <div class="time-section">
+                <h3>Giờ hạ cánh</h3>
+                <div class="time-option">Đêm đến Sáng<br />00:00 - 06:00</div>
+                <div class="time-option">Sáng đến Trưa<br />06:00 - 12:00</div>
+                <div class="time-option">Trưa đến Tối<br />12:00 - 18:00</div>
+                <div class="time-option">Tối đến Đêm<br />18:00 - 24:00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="range-slider">
+          <label for="timeStart" class="form-label">Thời gian bay</label>
+          <output
+            class="form-range-output"
+            id="timeOutput"
+            for="timeStart timeEnd"
+            >0h - 22h</output
+          >
+
+          <div class="d-flex justify-content-between">
+            <input
+              type="range"
+              class="form-range"
+              id="timeStart"
+              name="timeStart"
+              min="0"
+              max="22"
+              value="0"
+              oninput="updateSlider(this.value, this.id)"
+            />
+            <input
+              type="range"
+              class="form-range"
+              id="timeEnd"
+              name="timeEnd"
+              min="0"
+              max="22"
+              value="22"
+              oninput="updateSlider(this.value, this.id)"
+            />
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingUtilities">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseUtilities"
+                aria-expanded="false"
+                aria-controls="collapseUtilities"
+              >
+                Tiện ích
+              </button>
+            </h2>
+            <div
+              id="collapseUtilities"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingUtilities"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <ul class="list-unstyled ps-0">
+                  <li class="d-flex align-items-center">
+                    <input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      value=""
+                      id="luggage"
+                    />
+                    <div class="panel" id="panelFlightTime"></div>
+                    <label class="form-check-label" for="luggage">
+                      <i class="bi bi-suitcase"></i>Hành lý
+                    </label>
+                  </li>
+                  <li class="d-flex align-items-center mb-2">
+                    <input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      value=""
+                      id="meal"
+                    />
+                    <label class="form-check-label flex-grow-1" for="meal">
+                      <i class="bi bi-cup-straw me-2" aria-hidden="true"></i>
+                      Suất ăn
+                    </label>
+                  </li>
+                  <li class="d-flex align-items-center mb-2">
+                    <input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      value=""
+                      id="entertainment"
+                    />
+                    <label
+                      class="form-check-label flex-grow-1"
+                      for="entertainment"
+                    >
+                      <i class="bi bi-tv me-2" aria-hidden="true"></i>
+                      Giải trí
+                    </label>
+                  </li>
+                  <li class="d-flex align-items-center mb-2">
+                    <input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      value=""
+                      id="wifi"
+                    />
+                    <label class="form-check-label flex-grow-1" for="wifi">
+                      <i class="bi bi-wifi me-2" aria-hidden="true"></i>
+                      WiFi
+                    </label>
+                  </li>
+                  <li class="d-flex align-items-center mb-2">
+                    <input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      value=""
+                      id="charging"
+                    />
+                    <label class="form-check-label flex-grow-1" for="charging">
+                      <i
+                        class="bi bi-battery-charging me-2"
+                        aria-hidden="true"
+                      ></i>
+                      Nguồn sạc / cổng USB
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Repeat for each accordion item -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed">Giá/hành khách</button>
+            </h2>
+
+            <div class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <div class="price-slider">
+                  <label>Khoảng giá:</label>
+                  <output id="priceRange"
+                    >10.000.000 VND - 25.000.000 VND</output
+                  >
+
+                  <input
+                    type="range"
+                    min="10000000"
+                    max="25000000"
+                    value="10000000"
+                    id="priceStart"
+                    oninput="updatePriceRange()"
+                  />
+                  <input
+                    type="range"
+                    min="10000000"
+                    max="25000000"
+                    value="25000000"
+                    id="priceEnd"
+                    oninput="updatePriceRange()"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lựa chọn ưu tiên -->
+          <div class="accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" aria-expanded="false">
+                <button
+                  class="accordion-button collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapsePriorities"
+                >
+                  Lựa chọn ưu tiên
+                </button>
+              </h2>
+
+              <div id="collapsePriorities" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <div class="form-check">
+                        <input class="form-check-input me-1" type="checkbox" />
+                        <i class="bi bi-moon"></i>
+                        <label class="form-check-label">
+                          Không quá cảnh qua đêm
+                        </label>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <div class="form-check">
+                        <input class="form-check-input me-1" type="checkbox" />
+                        <i class="bi bi-clock"></i>
+                        <label class="form-check-label">
+                          Không chọn chuyến bay muộn
+                        </label>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <div class="form-check">
+                        <input class="form-check-input me-1" type="checkbox" />
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <label class="form-check-label">
+                          Chỉ làm thủ tục một lần
+                        </label>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <div class="form-check">
+                        <input class="form-check-input me-1" type="checkbox" />
+                        <i class="bi bi-person-x"></i>
+                        <label class="form-check-label">
+                          Không chuyến bay liên danh
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Hoàn vé & Đổi lịch -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseRefund"
+              >
+                Hoàn vé & Đổi lịch
+              </button>
+            </h2>
+
+            <div id="collapseRefund" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <div class="form-check">
+                      <input class="form-check-input me-1" type="checkbox" />
+                      <i class="bi bi-arrow-counterclockwise"></i>
+                      <label class="form-check-label"> Hoàn vé </label>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="form-check">
+                      <input class="form-check-input me-1" type="checkbox" />
+                      <i class="bi bi-arrow-repeat"></i>
+                      <label class="form-check-label"> Đổi lịch </label>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        checked
+                        disabled
+                      />
+                      <i class="bi bi-check-circle-fill"></i>
+                      <label class="form-check-label">
+                        Được Hoàn vé, Đổi lịch có sẵn
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Điểm dừng quá cảnh -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseStopover"
+              >
+                Điểm dừng quá cảnh
+              </button>
+            </h2>
+            <div id="collapseStopover" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="selectAll"
+                  />
+                  <label class="form-check-label" for="selectAll">
+                    Chọn tất cả
+                  </label>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">ست </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Thượng Hải (PVG)</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Nhật Chiểu (RIZ)</label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Los Angeles (LAX)</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Osaka (ITM)</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Thanh Đảo (TAO)</label>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Sapporo (CTS)</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Đài Bắc (TPE)</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Thượng Hải (SHA)</label>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <!-- Các địa điểm -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Thẩm Dương (SHE)</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Fukuoka (FUK)</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Trùng Khánh (CKG)</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Kuala Lumpur (KUL)</label>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <!-- Các địa điểm -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Bangkok (BKK)</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Côn Minh (KMG)</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Hồng Kông (HKG)</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Đà Nẵng (DAD)</label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Thâm Quyến (SZX)</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Nam Xương (KHN)</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" />
+                      <label class="form-check-label">Wuhu (WHA)</label>
+                    </div>
+                  </div>
+                </div>
+                <!-- Các lựa chọn điểm dừng khác -->
+              </div>
+            </div>
+          </div>
+          <!-- Thời gian quá cảnh -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button">
+                Thời gian quá cảnh
+              </button>
+            </h2>
+
+            <div class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <div class="time-range-slider">
+                  <label>Thời gian quá cảnh:</label>
+
+                  <input
+                    type="range"
+                    min="0"
+                    max="23"
+                    value="0"
+                    id="hourSlider"
+                  />
+                  <output id="output">0 giờ</output>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Continue adding items -->
+        </div>
+      </div>
+
+      <div class="search-results">
+        <div class="filter">
+          <select id="filter-price">
+            <option>Giá vé</option>
+            <option value="asc">Thấp đến cao</option>
+            <option value="desc">Cao đến thấp</option>
+          </select>
+
+          <select id="filter-duration">
+            <option>Thời gian bay</option>
+            <option value="asc">Ngắn đến dài</option>
+            <option value="desc">Dài đến ngắn</option>
+          </select>
+        </div>
+        <div class="search-bar">
+          <!-- Content for search bar: from location, to location, date, number of passengers, class -->
+        </div>
+
+        <div class="flight-options">
+          <!-- Repeatable flight option blocks -->
+          <div class="weekly-prices">
+            <!-- Scrollable list of dates and prices -->
+            <div class="date-price">CN, 3 thg 12<br />3.097.000 VND</div>
+            <div class="date-price">Thứ 2, 4 thg 12<br />2.952.000 VND</div>
+            <div class="date-price">Thứ 3, 5 thg 12<br />2.952.000 VND</div>
+            <div class="date-price">Thứ 4, 6 thg 12<br />2.952.000 VND</div>
+            <div class="date-price">Thứ 5, 7 thg 12<br />2.952.000 VND</div>
+            <div class="date-price">Thứ 6, 8 thg 12<br />2.952.000 VND</div>
+            <div class="date-price">Thứ 7, 9 thg 12<br />2.952.000 VND</div>
+            <div class="date-price">CN, 10 thg 12<br />3.097.000 VND</div>
+            <!-- Add more date-price blocks for additional dates -->
+          </div>
+          <!-- Additional flight options here -->
+        </div>
+
+        <div class="price-summary">
+          <div class="lowest-price">
+            <span class="label">Giá thấp nhất</span>
+            <span class="value">5.612.000 VND</span>
+          </div>
+          <div class="shortest-flight">
+            <span class="label">Thời gian bay ngắn nhất</span>
+            <span class="value">16.722.480 VND</span>
+          </div>
+        </div>
+
+        <div class="listings">
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div
+              class="card-header d-flex justify-content-between align-items-center"
+            >
+              <div class="flight-header font-weight-bold">VietJet Air</div>
+              <button class="btn-close" aria-label="Close"></button>
+            </div>
+            <div class="card-body">
+              <p class="flight-time mb-2">17:20 SGN → 01:00+1day HND</p>
+              <p class="flight-duration mb-2">5h 40m</p>
+              <p class="flight-price mb-3">5.512.000 VND/khách</p>
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfo"
+                aria-expanded="false"
+                aria-controls="additionalInfo"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfo">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây: <span id="recent-bookings">12</span>
+                  </p>
+                  <p>Số ghế còn trống: <span id="seats-available">30</span></p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+            </div>
+            <a
+              href="#"
+              class="detail-link"
+              onclick="redirectToDetailsPage(event, this)"
+              data-href="gheNgoi.html"
+              >Xem chi tiết</a
+            >
+
+            <div
+              id="seatsAccordion1"
+              class="accordion-seats-panel"
+              style="display: none"
+            >
+              <!-- Các ghế ngồi sẽ được thêm vào đây bởi JavaScript -->
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="flight-header">Cathay Pacific</div>
+              <div class="flight-time">19:35 SGN → 06:30+1day NRT</div>
+              <div class="flight-duration">1 stop, 8h 55m</div>
+              <div class="flight-price">6.859.800 VND/passenger</div>
+
+              <!-- Nút để mở rộng thông tin thêm -->
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfoCathayPacific"
+                aria-expanded="false"
+                aria-controls="additionalInfoCathayPacific"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfoCathayPacific">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây:
+                    <span id="recent-bookings-cathay">12</span>
+                  </p>
+                  <p>
+                    Số ghế còn trống:
+                    <span id="seats-available-cathay">30</span>
+                  </p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+
+              <!-- Liên kết để xem chi tiết -->
+              <a
+                href="#"
+                class="detail-link"
+                onclick="redirectToDetailsPage(event, this)"
+                data-href="gheNgoi.html"
+              >
+                Xem chi tiết
+              </a>
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="flight-header">Vietnam Airlines</div>
+              <div class="flight-time">21:00 SGN → 07:35+1day NRT</div>
+              <div class="flight-duration">1 stop, 8h 35m</div>
+              <div class="flight-price">11.941.000 VND/passenger</div>
+
+              <!-- Nút để mở rộng thông tin thêm -->
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfoVietnamAirlines"
+                aria-expanded="false"
+                aria-controls="additionalInfoVietnamAirlines"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfoVietnamAirlines">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây:
+                    <span id="recent-bookings-vietnam">15</span>
+                  </p>
+                  <p>
+                    Số ghế còn trống:
+                    <span id="seats-available-vietnam">25</span>
+                  </p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+
+              <!-- Liên kết để xem chi tiết -->
+              <a
+                href="#"
+                class="detail-link"
+                onclick="redirectToDetailsPage(event, this)"
+                data-href="gheNgoi.html"
+              >
+                Xem chi tiết
+              </a>
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="flight-header">Vietnam Airlines</div>
+              <div class="flight-time">21:30 SGN → 08:35+1day NRT</div>
+              <div class="flight-duration">1 stop, 8h 35m</div>
+              <div class="flight-price">11.941.000 VND/passenger</div>
+
+              <!-- Nút để mở rộng thông tin thêm -->
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfoVietnamAirlines"
+                aria-expanded="false"
+                aria-controls="additionalInfoVietnamAirlines"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfoVietnamAirlines">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây:
+                    <span id="recent-bookings-vietnam">15</span>
+                  </p>
+                  <p>
+                    Số ghế còn trống:
+                    <span id="seats-available-vietnam">25</span>
+                  </p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+
+              <!-- Liên kết để xem chi tiết -->
+              <a
+                href="#"
+                class="detail-link"
+                onclick="redirectToDetailsPage(event, this)"
+                data-href="gheNgoi.html"
+              >
+                Xem chi tiết
+              </a>
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="flight-header">Vietnam Airlines</div>
+              <div class="flight-time">22:00 SGN → 07:50+1day NRT</div>
+              <div class="flight-duration">1 stop, 8h 35m</div>
+              <div class="flight-price">11.941.000 VND/passenger</div>
+
+              <!-- Nút để mở rộng thông tin thêm -->
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfoVietnamAirlines"
+                aria-expanded="false"
+                aria-controls="additionalInfoVietnamAirlines"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfoVietnamAirlines">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây:
+                    <span id="recent-bookings-vietnam">15</span>
+                  </p>
+                  <p>
+                    Số ghế còn trống:
+                    <span id="seats-available-vietnam">25</span>
+                  </p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+
+              <!-- Liên kết để xem chi tiết -->
+              <a
+                href="#"
+                class="detail-link"
+                onclick="redirectToDetailsPage(event, this)"
+                data-href="gheNgoi.html"
+              >
+                Xem chi tiết
+              </a>
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="flight-header">Cathay Pacific</div>
+              <div class="flight-time">20:35 SGN → 16:50+2days NRT</div>
+              <div class="flight-duration">2 stops, 43h 15m</div>
+              <div class="flight-price">8.491.320 VND/passenger</div>
+
+              <!-- Nút để mở rộng thông tin thêm -->
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfoCathayPacific2"
+                aria-expanded="false"
+                aria-controls="additionalInfoCathayPacific2"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfoCathayPacific2">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây:
+                    <span id="recent-bookings-cathay2">8</span>
+                  </p>
+                  <p>
+                    Số ghế còn trống:
+                    <span id="seats-available-cathay2">18</span>
+                  </p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+
+              <!-- Liên kết để xem chi tiết -->
+              <a
+                href="#"
+                class="detail-link"
+                onclick="redirectToDetailsPage(event, this)"
+                data-href="gheNgoi.html"
+              >
+                Xem chi tiết
+              </a>
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="flight-header">Cathay Pacific</div>
+              <div class="flight-time">19:00 SGN → 15:50+2days NRT</div>
+              <div class="flight-duration">2 stops, 43h 15m</div>
+              <div class="flight-price">8.491.320 VND/passenger</div>
+
+              <!-- Nút để mở rộng thông tin thêm -->
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfoCathayPacific2"
+                aria-expanded="false"
+                aria-controls="additionalInfoCathayPacific2"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfoCathayPacific2">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây:
+                    <span id="recent-bookings-cathay2">8</span>
+                  </p>
+                  <p>
+                    Số ghế còn trống:
+                    <span id="seats-available-cathay2">18</span>
+                  </p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+
+              <!-- Liên kết để xem chi tiết -->
+              <a
+                href="#"
+                class="detail-link"
+                onclick="redirectToDetailsPage(event, this)"
+                data-href="gheNgoi.html"
+              >
+                Xem chi tiết
+              </a>
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="flight-header">China Airlines</div>
+              <div class="flight-time">17:55 SGN → 14:30+1day NRT</div>
+              <div class="flight-duration">1 stop, 17h 40m</div>
+              <div class="flight-price">9.773.670 VND/passenger</div>
+
+              <!-- Nút để mở rộng thông tin thêm -->
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfoChinaAirlines"
+                aria-expanded="false"
+                aria-controls="additionalInfoChinaAirlines"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfoChinaAirlines">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây:
+                    <span id="recent-bookings-china">5</span>
+                  </p>
+                  <p>
+                    Số ghế còn trống: <span id="seats-available-china">22</span>
+                  </p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+
+              <!-- Liên kết để xem chi tiết -->
+              <a
+                href="#"
+                class="detail-link"
+                onclick="redirectToDetailsPage(event, this)"
+                data-href="gheNgoi.html"
+              >
+                Xem chi tiết
+              </a>
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div
+              class="card-header d-flex justify-content-between align-items-center"
+            >
+              <div class="flight-header font-weight-bold">VietJet Air</div>
+              <button class="btn-close" aria-label="Close"></button>
+            </div>
+            <div class="card-body">
+              <p class="flight-time mb-2">16:20 SGN → 01:00+1day HND</p>
+              <p class="flight-duration mb-2">5h 40m</p>
+              <p class="flight-price mb-3">5.512.000 VND/khách</p>
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfo"
+                aria-expanded="false"
+                aria-controls="additionalInfo"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfo">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây: <span id="recent-bookings">12</span>
+                  </p>
+                  <p>Số ghế còn trống: <span id="seats-available">30</span></p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+            </div>
+            <a
+              href="#"
+              class="detail-link"
+              onclick="redirectToDetailsPage(event, this)"
+              data-href="gheNgoi.html"
+              >Xem chi tiết</a
+            >
+
+            <div
+              id="seatsAccordion1"
+              class="accordion-seats-panel"
+              style="display: none"
+            >
+              <!-- Các ghế ngồi sẽ được thêm vào đây bởi JavaScript -->
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="flight-header">Korean Air</div>
+              <div class="flight-time">12:55 SGN → 14:20+1day NRT</div>
+              <div class="flight-duration">1 stop, 20h 25m</div>
+              <div class="flight-price">12.065.460 VND/passenger</div>
+
+              <!-- Nút để mở rộng thông tin thêm -->
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfoKoreanAir"
+                aria-expanded="false"
+                aria-controls="additionalInfoKoreanAir"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfoKoreanAir">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây:
+                    <span id="recent-bookings-korean">10</span>
+                  </p>
+                  <p>
+                    Số ghế còn trống:
+                    <span id="seats-available-korean">20</span>
+                  </p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+
+              <!-- Liên kết để xem chi tiết -->
+              <a
+                href="#"
+                class="detail-link"
+                onclick="redirectToDetailsPage(event, this)"
+                data-href="gheNgoi.html"
+              >
+                Xem chi tiết
+              </a>
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="flight-header">Korean Air</div>
+              <div class="flight-time">16:55 SGN → 12:20+1day NRT</div>
+              <div class="flight-duration">1 stop, 20h 25m</div>
+              <div class="flight-price">12.065.460 VND/passenger</div>
+
+              <!-- Nút để mở rộng thông tin thêm -->
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfoKoreanAir"
+                aria-expanded="false"
+                aria-controls="additionalInfoKoreanAir"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfoKoreanAir">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây:
+                    <span id="recent-bookings-korean">10</span>
+                  </p>
+                  <p>
+                    Số ghế còn trống:
+                    <span id="seats-available-korean">20</span>
+                  </p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+
+              <!-- Liên kết để xem chi tiết -->
+              <a
+                href="#"
+                class="detail-link"
+                onclick="redirectToDetailsPage(event, this)"
+                data-href="gheNgoi.html"
+              >
+                Xem chi tiết
+              </a>
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="flight-header">Korean Air</div>
+              <div class="flight-time">14:00 SGN → 12:20+1day NRT</div>
+              <div class="flight-duration">1 stop, 20h 25m</div>
+              <div class="flight-price">12.065.460 VND/passenger</div>
+
+              <!-- Nút để mở rộng thông tin thêm -->
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfoKoreanAir"
+                aria-expanded="false"
+                aria-controls="additionalInfoKoreanAir"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfoKoreanAir">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây:
+                    <span id="recent-bookings-korean">10</span>
+                  </p>
+                  <p>
+                    Số ghế còn trống:
+                    <span id="seats-available-korean">20</span>
+                  </p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+
+              <!-- Liên kết để xem chi tiết -->
+              <a
+                href="#"
+                class="detail-link"
+                onclick="redirectToDetailsPage(event, this)"
+                data-href="gheNgoi.html"
+              >
+                Xem chi tiết
+              </a>
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="flight-header">Korean Air</div>
+              <div class="flight-time">14:20 SGN → 12:20+1day NRT</div>
+              <div class="flight-duration">1 stop, 20h 25m</div>
+              <div class="flight-price">12.065.460 VND/passenger</div>
+
+              <!-- Nút để mở rộng thông tin thêm -->
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfoKoreanAir"
+                aria-expanded="false"
+                aria-controls="additionalInfoKoreanAir"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfoKoreanAir">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây:
+                    <span id="recent-bookings-korean">10</span>
+                  </p>
+                  <p>
+                    Số ghế còn trống:
+                    <span id="seats-available-korean">20</span>
+                  </p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+
+              <!-- Liên kết để xem chi tiết -->
+              <a
+                href="#"
+                class="detail-link"
+                onclick="redirectToDetailsPage(event, this)"
+                data-href="gheNgoi.html"
+              >
+                Xem chi tiết
+              </a>
+            </div>
+          </div>
+
+          <div class="flight-listing card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="flight-header">Korean Air</div>
+              <div class="flight-time">15:55 SGN → 12:20+1day NRT</div>
+              <div class="flight-duration">1 stop, 20h 25m</div>
+              <div class="flight-price">12.065.460 VND/passenger</div>
+
+              <!-- Nút để mở rộng thông tin thêm -->
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#additionalInfoKoreanAir"
+                aria-expanded="false"
+                aria-controls="additionalInfoKoreanAir"
+              >
+                Thông tin thêm
+              </button>
+              <div class="collapse" id="additionalInfoKoreanAir">
+                <div class="mt-3">
+                  <p>
+                    Số người đặt gần đây:
+                    <span id="recent-bookings-korean">10</span>
+                  </p>
+                  <p>
+                    Số ghế còn trống:
+                    <span id="seats-available-korean">20</span>
+                  </p>
+                  <p class="no-payment">Không cần thanh toán trước</p>
+                </div>
+              </div>
+
+              <!-- Liên kết để xem chi tiết -->
+              <a
+                href="#"
+                class="detail-link"
+                onclick="redirectToDetailsPage(event, this)"
+                data-href="gheNgoi.html"
+              >
+                Xem chi tiết
+              </a>
+            </div>
+          </div>
+        </div>
+        <div id="price-comparison"></div>
+
+        <!-- Additional elements like search button, settings, etc. -->
+      </div>
+    </div>
+
+    <script>
+      function notifyPriceChange() {
+        alert("We will notify you when the price changes!");
+      }
+      function selectFlight(option) {
+        // Deselect all options
+        document.querySelectorAll(".flight-option").forEach(function (opt) {
+          opt.classList.remove("selected");
+        });
+        // Select the clicked option
+        option.classList.add("selected");
+        // Display the message
+        var message = document.getElementById("selected-flight-message");
+        message.textContent =
+          "Flights available for " +
+          option.querySelector(".flight-date").textContent;
+      }
+
+      function comparePrices(flights) {
+        // Sắp xếp chuyến bay theo giá vé tăng dần
+        flights.sort((a, b) => a.price - b.price);
+
+        // Hiển thị danh sách so sánh
+      }
+
+      let searchedFlights = [];
+
+      function saveSearchedFlight(flight) {
+        // Lưu chuyến bay vào mảng
+        searchedFlights.push(flight);
+
+        // Lưu vào localStorage
+        localStorage.setItem(
+          "searchedFlights",
+          JSON.stringify(searchedFlights)
+        );
+      }
+
+      document
+        .querySelectorAll('input[name="stops"]')
+        .forEach(function (checkbox) {
+          checkbox.addEventListener("change", function () {
+            filterFlights();
+          });
+        });
+
+      function filterFlights() {
+        // Logic to filter flights based on checked boxes
+        var checkedValues = Array.from(
+          document.querySelectorAll('input[name="stops"]:checked')
+        ).map((cb) => cb.value);
+        // Use these values to filter your flight data
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var acc = document.getElementsByClassName("accordion-header");
+        for (var i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function () {
+            /* Toggle between adding and removing the "active" class,
+      to highlight the button that controls the panel */
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+              panel.style.display = "none";
+            } else {
+              panel.style.display = "block";
+            }
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var acc = document.getElementsByClassName("accordion-header");
+        for (var i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+              panel.style.display = "none";
+            } else {
+              panel.style.display = "block";
+            }
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Select all accordion headers
+        var accHeaders = document.querySelectorAll(".accordion-header");
+
+        accHeaders.forEach(function (accHeader) {
+          accHeader.addEventListener("click", function () {
+            // Toggle the "active" class to style the header
+            this.classList.toggle("active");
+
+            // Select the associated panel and toggle its display
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+              panel.style.display = "none";
+            } else {
+              panel.style.display = "block";
+            }
+          });
+        });
+      });
+      function filterFlights() {
+        // Get the checked values from checkboxes
+        const checkedValues = Array.from(
+          document.querySelectorAll('input[name="stops"]:checked')
+        ).map((cb) => cb.value);
+
+        // Logic to filter the flight data based on checked values
+        // This will depend on how your flight data is structured
+        const filteredFlights = flightsData.filter((flight) =>
+          checkedValues.includes(flight.stops)
+        );
+
+        // Update the display with the filtered flights
+        displayFlights(filteredFlights);
+      }
+      function updateSlider(value, id) {
+        var output = document.getElementById("timeOutput");
+        var start = document.getElementById("timeStart").value;
+        var end = document.getElementById("timeEnd").value;
+
+        if (id === "timeStart" && parseInt(start, 10) > parseInt(end, 10)) {
+          document.getElementById("timeEnd").value = value;
+        } else if (
+          id === "timeEnd" &&
+          parseInt(end, 10) < parseInt(start, 10)
+        ) {
+          document.getElementById("timeStart").value = value;
+        }
+
+        output.value = start + "h - " + end + "h";
+      }
+      // Lấy ra các element
+      const hourSlider1 = document.getElementById("hourSlider1");
+      const output1 = document.getElementById("output1");
+
+      const hourSlider2 = document.getElementById("hourSlider2");
+      const output2 = document.getElementById("output2");
+
+      // Lấy ra các element
+      const hourSlider = document.getElementById("hourSlider");
+      const output = document.getElementById("output");
+
+      // Xử lý sự kiện khi giá trị thay đổi
+      hourSlider.oninput = function () {
+        output.innerText = this.value + " giờ";
+      };
+
+      function updatePriceRange() {
+        var startPrice = document.getElementById("priceStart").value;
+        var endPrice = document.getElementById("priceEnd").value;
+
+        // Cập nhật nội dung của phần tử output
+        document.getElementById("priceRange").textContent = `${formatPrice(
+          startPrice
+        )} VND - ${formatPrice(endPrice)} VND`;
+      }
+
+      function formatPrice(price) {
+        // Chuyển đổi giá trị thành dạng định dạng tiền tệ
+        return parseInt(price).toLocaleString("vi-VN");
+      }
+
+      // Gọi hàm này một lần để khởi tạo giá trị ban đầu
+      updatePriceRange();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var accButtons = document.querySelectorAll(".accordion-button");
+
+        accButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            var targetPanel = document.querySelector(this.dataset.bsTarget);
+            if (targetPanel.classList.contains("show")) {
+              targetPanel.classList.remove("show");
+              this.classList.add("collapsed");
+              this.setAttribute("aria-expanded", "false");
+            } else {
+              targetPanel.classList.add("show");
+              this.classList.remove("collapsed");
+              this.setAttribute("aria-expanded", "true");
+            }
+          });
+        });
+      });
+
+      header.addEventListener("click", function () {
+        // Toggle "active" class
+        this.classList.toggle("active");
+
+        // Toggle visibility of content panel
+        var panel = this.nextElementSibling;
+        panel.style.display =
+          panel.style.display === "block" ? "none" : "block";
+      });
+
+      function updateFlightListing() {
+        // Giả sử bạn lấy dữ liệu từ một nguồn nào đó
+        var recentBookings = 12; // Dữ liệu giả định
+        var seatsAvailable = 30; // Dữ liệu giả định
+
+        document.getElementById("recent-bookings").textContent = recentBookings;
+        document.getElementById("seats-available").textContent = seatsAvailable;
+      }
+
+      // Gọi hàm khi trang tải xong
+      document.addEventListener("DOMContentLoaded", function () {
+        updateFlightListing();
+      });
+      document.querySelectorAll(".close-button").forEach((button) => {
+        button.addEventListener("click", function () {
+          this.parentElement.style.display = "none";
+        });
+      });
+
+      document.querySelectorAll(".btn-close").forEach((button) => {
+        button.addEventListener("click", function () {
+          this.closest(".flight-listing").style.display = "none";
+        });
+      });
+
+      document.querySelectorAll(".btn-close").forEach((button) => {
+        button.addEventListener("click", function () {
+          this.closest(".flight-listing").style.display = "none";
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Bắt sự kiện click trên tất cả liên kết "Xem chi tiết"
+        document.querySelectorAll(".detail-link").forEach(function (link) {
+          link.addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn không cho trang web tải lại
+
+            // Gọi API hoặc một function để lấy dữ liệu ghế ngồi
+            fetch("/api/get-available-seats")
+              .then((response) => response.json())
+              .then((data) => {
+                displayAvailableSeats(data.seats);
+              })
+              .catch((error) => console.error("Error:", error));
+          });
+        });
+      });
+
+      function displayAvailableSeats(seats) {
+        // Tạo và hiển thị danh sách ghế ngồi còn trống
+        const seatsContainer = document.createElement("div");
+        seatsContainer.className = "seats-container";
+
+        seats.forEach((seat) => {
+          const seatElement = document.createElement("img");
+          seatElement.src = seat.imageUrl; // Đường dẫn tới hình ảnh ghế ngồi
+          seatElement.alt = "Seat " + seat.number;
+          seatElement.title = "Seat " + seat.number + " - Click to select";
+          seatElement.className = "seat";
+
+          // Thêm sự kiện click nếu bạn muốn cho phép người dùng chọn ghế
+          seatElement.addEventListener("click", function () {
+            // Logic để xử lý việc chọn ghế
+          });
+
+          seatsContainer.appendChild(seatElement);
+        });
+
+        // Tìm nơi trên trang để hiển thị danh sách ghế ngồi
+        const listingElement = document.querySelector(".listings");
+        listingElement.appendChild(seatsContainer);
+      }
+
+      function redirectToDetailsPage(event, element) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+
+        // Lấy URL từ thuộc tính data-href của liên kết
+        var href = element.getAttribute("data-href");
+
+        // Chuyển hướng đến trang gheNgoi.html
+        window.location.href = href;
+      }
+
+      function compareFlights(flights, userPreferences) {
+        // Filter based on user preferences
+        const filteredFlights = flights.filter((flight) => {
+          return (
+            flight.price >= userPreferences.minPrice &&
+            flight.price <= userPreferences.maxPrice &&
+            (userPreferences.directOnly ? flight.stops === 0 : true)
+          );
+        });
+
+        // Sort by price
+        const sortedByPrice = [...filteredFlights].sort(
+          (a, b) => a.price - b.price
+        );
+
+        // Sort by duration
+        const sortedByDuration = [...filteredFlights].sort(
+          (a, b) => a.duration - b.duration
+        );
+
+        return {
+          cheapestFlight: sortedByPrice[0],
+          shortestFlight: sortedByDuration[0],
+        };
+      }
+
+      // Example user preferences
+      const userPreferences = {
+        minPrice: 100,
+        maxPrice: 300,
+        directOnly: true,
+      };
+
+      const recommendations = compareFlights(flights, userPreferences);
+
+      console.log("Cheapest Flight:", recommendations.cheapestFlight);
+      console.log("Shortest Flight:", recommendations.shortestFlight);
+
+      const flights = document.querySelectorAll(".flight-listing");
+      const prices = [];
+      flights.forEach((flight) => {
+        const price = flight.querySelector(".flight-price").textContent;
+        prices.push(parseInt(price));
+      });
+      prices.sort((a, b) => a - b);
+      const lowestPrice = prices[0];
+      const highestPrice = prices[prices.length - 1];
+
+      document.getElementById("price-comparison").innerHTML = `
+  Giá vé thấp nhất: ${lowestPrice}
+  Giá vé cao nhất: ${highestPrice}
+`;
+  
+
+// Lấy phần tử button
+const homeBtn = document.getElementById('backToHomeBtn');
+
+// Thêm sự kiện click
+homeBtn.addEventListener('click', handleGoHome);
+
+// Xử lý sự kiện
+function handleGoHome() {
+
+  // Redirect về trang index.html 
+  window.location.href = 'lab5.html';
+
+}
+document.addEventListener("DOMContentLoaded", function() {
+    // Lấy phần tử button
+    const homeBtn = document.getElementById('backToHomeBtn');
+
+    // Thêm sự kiện click
+    homeBtn.addEventListener('click', function() {
+        // Redirect về trang index.html 
+        window.location.href = 'lab5.html';
+    });
+});
+
+     
+</script>
+
+    </script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"
+      integrity="sha384-oesi62hXKu2jN6RhaDB9LTZqU9JSdVDZir0BZYEGEYvyQu2JdCJojlDafWvt6K5T"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"
+      integrity="sha384-oesi62hXKu2jN6RhaDB9LTZqU9JSdVDZir0BZYEGEYvyQu2JdCJojlDafWvt6K5T"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

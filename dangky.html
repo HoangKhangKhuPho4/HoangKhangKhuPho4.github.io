@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Đăng ký tài khoản</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <style>
+      .btn-google {
+        background: #dd4b39;
+        color: #fff;
+      }
+
+      .btn-facebook {
+        background: #3b5998;
+        color: #fff;
+      }
+
+      .btn-google,
+      .btn-facebook {
+        padding: 5px 10px;
+        border-radius: 2px;
+        margin-left: 10px;
+      }
+
+      .go-back-btn {
+        position: fixed;
+        right: 20px; /* Hoặc thay đổi vị trí theo yêu cầu, ví dụ: left: 20px; */
+        bottom: 20px; /* Hoặc điều chỉnh vị trí lên trên, ví dụ: top: 20px; */
+        z-index: 1000; /* Đảm bảo nút hiển thị trên cùng */
+        padding: 10px 20px; /* Tăng kích thước padding để dễ dàng nhấn */
+        font-size: 16px; /* Điều chỉnh kích thước chữ nếu cần */
+        border-radius: 5px; /* Làm tròn góc cho nút */
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Đăng ký</h2>
+      <p>Vui lòng điền vào form bên dưới để tạo tài khoản mới.</p>
+
+      <form>
+        <!-- Trường Email -->
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Nhập email"
+            name="email"
+          />
+        </div>
+
+        <!-- Trường Mật khẩu -->
+        <div class="form-group">
+          <label for="password">Mật khẩu:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Nhập mật khẩu"
+            name="pswd"
+          />
+        </div>
+
+        <!-- Trường Xác nhận Mật khẩu (nếu cần) -->
+        <!-- ... -->
+
+        <div class="form-group">
+          <label for="confirm-password">Xác nhận mật khẩu:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="confirm-password"
+            placeholder="Nhập lại mật khẩu"
+            name="confirm-pswd"
+          />
+        </div>
+
+        <!-- Trường Họ và tên -->
+        <div class="form-group">
+          <label for="fullname">Họ và tên:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fullname"
+            placeholder="Nhập họ và tên"
+            name="fullname"
+          />
+        </div>
+
+        <!-- Nút Đăng ký -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Đăng ký</button>
+
+          <button id="google-login-btn" class="btn btn-google">
+            Tiếp tục với Google
+          </button>
+
+          <button class="btn btn-facebook">Tiếp tục với Facebook</button>
+        </div>
+      </form>
+      <!-- Form đăng ký -->
+    </div>
+    <!-- Điều chỉnh vị trí của nút quay lại trang chủ -->
+    <button
+      type="button"
+      class="btn btn-primary go-back-btn"
+      onclick="goHome()"
+    >
+      Quay lại trang chủ
+    </button>
+
+    <script>
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   const form = document.querySelector("form");
+
+      //   form.addEventListener("submit", function (event) {
+      //     event.preventDefault(); // Ngăn chặn việc gửi form mặc định
+
+      //     const email = document.getElementById("email").value;
+      //     const password = document.getElementById("password").value;
+      //     const confirmPassword =
+      //       document.getElementById("confirm-password").value;
+      //     const fullname = document.getElementById("fullname").value;
+
+      //     // Kiểm tra dữ liệu nhập vào
+      //     if (
+      //       !email ||
+      //       !password ||
+      //       !fullname ||
+      //       password !== confirmPassword
+      //     ) {
+      //       alert(
+      //         "Vui lòng điền đầy đủ thông tin và xác nhận mật khẩu chính xác."
+      //       );
+      //       return;
+      //     }
+
+      //     // Gửi dữ liệu đến server ở đây...
+      //   });
+      // });
+
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   const form = document.querySelector("form");
+
+      //   form.addEventListener("submit", function (event) {
+      //     event.preventDefault(); // Ngăn chặn việc gửi form mặc định
+
+      //     const email = document.getElementById("email").value;
+      //     const password = document.getElementById("password").value;
+      //     const confirmPassword =
+      //       document.getElementById("confirm-password").value;
+      //     const fullname = document.getElementById("fullname").value;
+
+      //     // Kiểm tra dữ liệu nhập vào
+      //     if (
+      //       !email ||
+      //       !password ||
+      //       !fullname ||
+      //       password !== confirmPassword
+      //     ) {
+      //       alert(
+      //         "Vui lòng điền đầy đủ thông tin và xác nhận mật khẩu chính xác."
+      //       );
+      //     } else {
+      //       // Hiển thị thông báo thành công
+      //       alert("Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.");
+
+      //       // Chuyển hướng đến trang đăng nhập sau khi đăng ký thành công
+      //       window.location.href = "dangnhap.html"; // Thay đổi 'login.html' thành URL của trang đăng nhập thực tế
+      //     }
+      //   });
+      // });
+
+      // function isEmailValid(email) {
+      //   const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      //   return re.test(String(email).toLowerCase());
+      // }
+
+      // function isPasswordValid(password) {
+      //   // Mật khẩu phải có ít nhất 8 ký tự, ít nhất một chữ cái và một số
+      //   const re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      //   return re.test(String(password));
+      // }
+
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   const form = document.querySelector("form");
+      //   const emailInput = document.getElementById("email");
+      //   const passwordInput = document.getElementById("password");
+      //   const confirmPasswordInput =
+      //     document.getElementById("confirm-password");
+      //   const fullnameInput = document.getElementById("fullname");
+
+      //   form.addEventListener("submit", function (event) {
+      //     event.preventDefault();
+      //     let hasError = false;
+
+      //     if (!isEmailValid(emailInput.value)) {
+      //       alert("Email không hợp lệ.");
+      //       hasError = true;
+      //     }
+
+      //     if (!isPasswordValid(passwordInput.value)) {
+      //       alert("Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ và số.");
+      //       hasError = true;
+      //     }
+
+      //     if (passwordInput.value !== confirmPasswordInput.value) {
+      //       alert("Mật khẩu xác nhận không khớp.");
+      //       hasError = true;
+      //     }
+
+      //     if (!fullnameInput.value.trim()) {
+      //       alert("Vui lòng nhập họ và tên.");
+      //       hasError = true;
+      //     }
+
+      //     if (!hasError) {
+      //       alert("Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.");
+      //       window.location.href = "dangnhap.html"; // Chuyển hướng sau khi đăng ký thành công
+      //     }
+      //   });
+      // });
+      // localStorage.setItem("registeredEmail", email);
+      // localStorage.setItem("registeredPassword", password);
+
+      // if (
+      //   email === localStorage.getItem("registeredEmail") &&
+      //   password === localStorage.getItem("registeredPassword")
+      // ) {
+      //   window.location.href = "index.html";
+      // } else {
+      //   alert("Thông tin đăng nhập không chính xác.");
+      // }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault(); // Ngăn chặn việc gửi form mặc định
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirm-password").value;
+          const fullname = document.getElementById("fullname").value;
+
+          // Kiểm tra dữ liệu nhập vào
+          if (
+            !email ||
+            !password ||
+            !fullname ||
+            password !== confirmPassword
+          ) {
+            alert(
+              "Vui lòng điền đầy đủ thông tin và xác nhận mật khẩu chính xác."
+            );
+          } else if (!isEmailValid(email)) {
+            alert("Email không hợp lệ.");
+          } else if (!isPasswordValid(password)) {
+            alert("Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ và số.");
+          } else {
+            // Lưu thông tin đăng ký
+            localStorage.setItem("registeredEmail", email);
+            localStorage.setItem("registeredPassword", password);
+
+            alert("Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.");
+            window.location.href = "lab5.html"; // Chuyển hướng sau khi đăng ký thành công
+          }
+        });
+      });
+
+      function isEmailValid(email) {
+        const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return re.test(String(email).toLowerCase());
+      }
+
+      function isPasswordValid(password) {
+        const re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        return re.test(String(password));
+      }
+
+      // Khởi tạo Facebook SDK
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "YOUR_APP_ID", // Thay thế YOUR_APP_ID bằng App ID của bạn
+          cookie: true,
+          xfbml: true,
+          version: "v3.2",
+        });
+
+        FB.AppEvents.logPageView();
+      };
+
+      // Hàm xử lý đăng nhập Facebook
+      function facebookLogin() {
+        FB.login(
+          function (response) {
+            if (response.status === "connected") {
+              // Người dùng đã đăng nhập vào Facebook và ứng dụng của bạn
+              // Bạn có thể lấy thông tin người dùng tại đây
+              FB.api("/me", function (response) {
+                console.log("Successful login for: " + response.name);
+                // Lưu thông tin người dùng hoặc xử lý chuyển hướng tại đây
+              });
+            } else {
+              // Người dùng đã hủy đăng nhập hoặc đăng nhập không thành công
+              console.log("User cancelled login or did not fully authorize.");
+            }
+          },
+          { scope: "public_profile,email" }
+        ); // Yêu cầu quyền truy cập cơ bản
+      }
+
+      // Gắn sự kiện cho nút đăng nhập Facebook
+      document
+        .getElementById("facebook-login-btn")
+        .addEventListener("click", facebookLogin);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault(); // Ngăn chặn việc gửi form mặc định
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirm-password").value;
+          const fullname = document.getElementById("fullname").value;
+
+          // Kiểm tra dữ liệu nhập vào
+          if (
+            !email ||
+            !password ||
+            !fullname ||
+            password !== confirmPassword
+          ) {
+            alert(
+              "Vui lòng điền đầy đủ thông tin và xác nhận mật khẩu chính xác."
+            );
+          } else if (!isEmailValid(email)) {
+            alert("Email không hợp lệ.");
+          } else if (!isPasswordValid(password)) {
+            alert("Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ và số.");
+          } else {
+            // Lưu thông tin đăng ký (giả định là lưu vào localStorage cho mục đích minh họa)
+            localStorage.setItem("registeredEmail", email);
+            localStorage.setItem("registeredPassword", password);
+
+            // Chuyển hướng đến trang 'flight-search.html' sau khi đăng ký thành công
+            window.location.href = "flight-search.html";
+          }
+        });
+      });
+
+      function isEmailValid(email) {
+        const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return re.test(String(email).toLowerCase());
+      }
+
+      function isPasswordValid(password) {
+        const re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        return re.test(String(password));
+      }
+      function goHome() {
+        window.location.href = "lab5.html";
+      }
+
+      function goHome() {
+        window.location.href = "lab5.html"; // Đảm bảo URL này dẫn đến trang chủ của bạn
+      }
+    </script>
+    <!-- Google API -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <!-- Facebook SDK -->
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2"
+    ></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <footer class="container mt-4">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Liên hệ</h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Về chúng tôi</a>
+            </li>
+            <li>
+              <a href="#!"
+                >Địa chỉ: Khu phố 4.Thị trấn phước dân, huyện ninh phước , tỉnh
+                ninh thuận</a
+              >
+            </li>
+            <li>
+              <a href="mailto:info@example.com"
+                >Email: 22130116@st.hcmuaf.edu.vn</a
+              >
+            </li>
+            <li>
+              <a href="tel:+123456789">Điện thoại: 0567649206</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Hỗ trợ</h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">FAQs</a>
+            </li>
+            <li>
+              <a href="#!">Chính sách bảo mật</a>
+            </li>
+            <li>
+              <a href="#!">Điều khoản sử dụng</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Bản quyền thuộc về
+        <a class="text-dark" href="https://yourwebsite.com/"
+          >22130116@st.hcmuaf.edu.vn</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>

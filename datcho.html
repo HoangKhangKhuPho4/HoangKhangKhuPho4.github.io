@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đặt Chỗ Vé Máy Bay</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <style>
+      /* Các style của bạn */
+      .sidebar {
+        background-color: #fff;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        border-radius: 0.25rem;
+      }
+      .content {
+        background-color: #fff;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        border-radius: 0.25rem;
+        margin-left: 20px;
+      }
+      .alert {
+        border-radius: 0.25rem;
+      }
+      .box {
+        border: none;
+        margin-bottom: 10px;
+        transition: transform 0.2s;
+      }
+      .box:hover {
+        transform: translateY(-5px);
+      }
+      @media (max-width: 768px) {
+        .sidebar,
+        .content {
+          float: none;
+          width: auto;
+          margin-left: 0;
+          margin-bottom: 20px;
+        }
+      }
+      .container-my-5 {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .content {
+        flex: 1;
+      }
+      .sidebar .fas {
+        margin-right: 10px;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <div class="sidebar p-4">
+            <!-- Nội dung sidebar -->
+            <div class="box">
+              <i class="fas fa-shopping-cart"></i> Tất cả sản phẩm
+            </div>
+            <div class="box"><i class="fas fa-plane"></i> Vé máy bay</div>
+            <div class="box"><i class="fas fa-hotel"></i> Khách sạn</div>
+            <div class="box"><i class="fas fa-train"></i> Trains</div>
+            <div class="box">
+              <i class="fas fa-percent"></i> Combo tiết kiệm
+            </div>
+            <div class="box"><i class="fas fa-asterisk"></i> Activities</div>
+
+            <!-- Nút Quay lại trang chủ -->
+            <div class="mt-4">
+              <a href="lab5.html" class="btn btn-primary btn-block">
+                <i class="fas fa-home"></i> Quay lại trang chủ
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-8 col-sm-12">
+          <div class="content p-4">
+            <!-- Nội dung chính -->
+            <div
+              class="alert alert-primary d-flex justify-content-between align-items-center"
+              role="alert"
+            >
+              <div>
+                <i class="fas fa-info-circle"></i> Để dàng truy cập đặt chỗ của
+                bạn trên Flights
+              </div>
+              <div>
+                <a href="dangnhap.html" class="btn btn-sm btn-outline-light"
+                  >Đăng nhập</a
+                >
+                <a href="dangky.html" class="btn btn-sm btn-light ml-2"
+                  >Đăng ký</a
+                >
+              </div>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h4>Tìm kiếm chuyến bay</h4>
+              <button
+                id="search-flights-btn"
+                class="btn btn-success"
+                type="button"
+              >
+                Search Flights
+              </button>
+            </div>
+            <!-- Thêm nội dung ở đây -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap and Popper.js JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(function () {
+        $('[data-toggle="popover"]').popover({
+          html: true,
+          content: function () {
+            return $("#popover-content").html();
+          },
+          trigger: "focus",
+        });
+      });
+
+      document
+        .getElementById("search-flights-btn")
+        .addEventListener("click", function () {
+          window.location.href = "flight-search.html";
+        });
+    </script>
+
+    <footer class="bg-light text-center text-lg-start mt-4">
+      <div class="container p-4">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Thông tin liên hệ</h5>
+            <ul class="list-unstyled mb-0">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>Khu Phố 4.Thị Trấn Phước
+                Dân,huyện Ninh phước,Tỉnh Ninh Thuận
+              </li>
+              <li><i class="fas fa-phone"></i>0567649206</li>
+              <li><i class="fas fa-envelope"></i>22130116@st.hcmuaf.edu.vn</li>
+            </ul>
+          </div>
+
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Liên kết nhanh</h5>
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="#!">Về chúng tôi</a>
+              </li>
+              <li>
+                <a href="#!">Liên hệ</a>
+              </li>
+              <li>
+                <a href="#!">Chính sách bảo mật</a>
+              </li>
+              <li>
+                <a href="#!">Điều khoản dịch vụ</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="text-center p-3"
+        style="background-color: rgba(0, 0, 0, 0.05)"
+      >
+        © 2023 Bản quyền thuộc về
+        <a class="text-dark" href="https://yourwebsite.com/"
+          >22130116@st.hcmuaf.edu.vn</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>

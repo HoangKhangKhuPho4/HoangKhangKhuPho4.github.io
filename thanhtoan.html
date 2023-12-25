@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Thanh Toán Vé Máy Bay</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      :root {
+        --primary-color: #4285f4;
+        --error-color: #f44336;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .error-message {
+        color: var(--error-color);
+        font-size: 0.85em;
+      }
+
+      .button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 12px 20px;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .button:hover {
+        background-color: #3367d6;
+      }
+
+      .payment-methods {
+        margin-bottom: 20px;
+      }
+
+      .payment-option {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .payment-option input {
+        margin-right: 10px;
+      }
+
+      /* Media Queries cho Responsive Design */
+      @media (max-width: 600px) {
+        .container {
+          width: 100%;
+          padding: 10px;
+        }
+
+        .form-group,
+        .payment-methods {
+          width: 100%;
+        }
+      }
+      /* Thêm style cho bảng tổng hợp đơn hàng */
+      .order-summary {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-top: 20px;
+      }
+
+      /* Style cho nút hỗ trợ trực tuyến */
+      .support-button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      .support-button:hover {
+        background-color: #45a049;
+      }
+
+      /* Style cho nút hỗ trợ trực tuyến ở góc dưới bên phải */
+      .support-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        /* Các style khác giữ nguyên */
+      }
+      /* Style cho tính năng lưu thông tin */
+      .save-info {
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+
+      /* Các style khác giữ nguyên */
+
+      /* Media Queries cho Responsive Design */
+
+      /* Các style khác giữ nguyên */
+      .support-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+      }
+      /* Tùy chỉnh cho nút Quay lại Trang chủ */
+      .btn-secondary {
+        background-color: #6c757d; /* Màu nền */
+        color: white; /* Màu chữ */
+      }
+
+      .btn-secondary:hover {
+        background-color: #5a6268; /* Màu nền khi hover */
+      }
+
+      /* Thêm bất kỳ tùy chỉnh CSS nào khác theo nhu cầu */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="text-center mb-4">
+        <img
+          src="https://icons.iconarchive.com/icons/custom-icon-design/mini-3/48/payments-icon.png"
+          class="img-fluid"
+          width="48"
+          height="48"
+        />
+      </div>
+
+      <form id="paymentForm">
+        <h2>Thông Tin Thanh Toán</h2>
+
+        <!-- Các trường form với class của Bootstrap -->
+        <div class="form-group">
+          <label for="name">Họ tên:</label>
+          <input type="text" class="form-control" id="name" required />
+          <div class="invalid-feedback">Vui lòng nhập họ tên.</div>
+        </div>
+
+        <!-- Trường Email -->
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" class="form-control" required />
+          <div class="invalid-feedback">Vui lòng nhập email.</div>
+        </div>
+
+        <!-- Trường Ngày Hết Hạn -->
+        <div class="form-group">
+          <label for="expiry">Ngày hết hạn:</label>
+          <input
+            type="text"
+            id="expiry"
+            class="form-control"
+            placeholder="MM/YY"
+            required
+          />
+          <div class="invalid-feedback">Vui lòng nhập ngày hết hạn.</div>
+        </div>
+
+        <!-- Trường From -->
+        <div class="form-group">
+          <label for="from">From:</label>
+          <select class="form-control" id="from" required>
+            <option value="">Chọn nơi khởi hành...</option>
+            <option value="Hanoi">Hà Nội</option>
+            <option value="Saigon">TP. Hồ Chí Minh</option>
+            <option value="Danang">Đà Nẵng</option>
+            <option value="Danang">Campuchia</option>
+            <option value="Danang">Hồng Kông</option>
+            <option value="Danang">Ấn Độ</option>
+            <option value="Danang">Nhật Bản</option>
+            <option value="Danang">Hàn Quốc</option>
+
+            <!-- Thêm các lựa chọn khác theo nhu cầu -->
+          </select>
+          <div class="invalid-feedback">Vui lòng chọn nơi khởi hành.</div>
+        </div>
+
+        <!-- Trường To -->
+        <div class="form-group">
+          <label for="to">To:</label>
+          <select class="form-control" id="to" required>
+            <option value="">Chọn điểm đến...</option>
+            <option value="NewYork">New York</option>
+            <option value="London">London</option>
+            <option value="Tokyo">Tokyo</option>
+            <option value="Tokyo">Lào</option>
+            <option value="Tokyo">Myanmar</option>
+            <option value="Tokyo">Singapore</option>
+
+            <!-- Thêm các lựa chọn khác theo nhu cầu -->
+          </select>
+          <div class="invalid-feedback">Vui lòng chọn điểm đến.</div>
+        </div>
+
+        <!-- Phương thức thanh toán -->
+        <div class="form-group">
+          <label>Phương thức thanh toán:</label>
+          <div class="payment-options">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="payment"
+                id="credit-card"
+                value="credit-card"
+                checked
+              />
+              <label class="form-check-label" for="credit-card">
+                Thẻ tín dụng
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="payment"
+                id="e-wallet"
+                value="e-wallet"
+              />
+              <label class="form-check-label" for="e-wallet">
+                Ví điện tử
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="payment"
+                id="paypal"
+                value="paypal"
+              />
+              <label class="form-check-label" for="paypal"> PayPal </label>
+            </div>
+          </div>
+        </div>
+        <!-- Lưu thông tin -->
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="saveInfo" />
+          <label class="form-check-label" for="saveInfo"
+            >Lưu thông tin cho lần sau</label
+          >
+        </div>
+
+        <!-- Nút thanh toán và hỗ trợ trực tuyến -->
+        <button type="submit" class="btn btn-primary btn-block">
+          <i class="fas fa-credit-card"></i> Thanh toán
+        </button>
+        <!-- Nút Quay lại Trang chủ -->
+        <a href="lab5.html" class="btn btn-secondary btn-block mt-2">
+          <i class="fas fa-home"></i> Quay lại Trang chủ
+        </a>
+        <button
+          type="button"
+          class="btn btn-info btn-floating support-button"
+          onclick="openSupportChat()"
+        >
+          Hỗ Trợ Trực Tuyến
+        </button>
+      </form>
+    </div>
+    <!-- Bootstrap và jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap và jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+      document
+        .getElementById("paymentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          var isValid = true;
+
+          // Validation code here
+          var inputs = document.querySelectorAll(
+            '#paymentForm input[type="text"], #paymentForm input[type="email"]'
+          );
+          inputs.forEach((input) => {
+            if (!input.value) {
+              input.nextElementSibling.textContent =
+                "Trường này không được để trống";
+              isValid = false;
+            } else {
+              input.nextElementSibling.textContent = "";
+            }
+          });
+
+          if (isValid) {
+            // Logic thanh toán
+            alert("Thanh toán thành công!");
+            // Reset form
+            this.reset();
+          }
+        });
+
+      document
+        .getElementById("paymentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          var isValid = true;
+
+          // Validation định dạng email
+          var emailInput = document.getElementById("email");
+          if (!emailInput.value.includes("@")) {
+            emailInput.nextElementSibling.textContent = "Email không hợp lệ";
+            isValid = false;
+          } else {
+            emailInput.nextElementSibling.textContent = "";
+          }
+
+          // Validation các trường khác
+          // ...
+
+          if (isValid) {
+            // Logic thanh toán
+            // Hiệu ứng hoàn tất thanh toán
+            alert("Thanh toán thành công!");
+            this.reset();
+          }
+        });
+
+      // Hàm mở cửa sổ hỗ trợ trực tuyến (mô phỏng)
+      function openSupportChat() {
+        alert("Mở cửa sổ hỗ trợ trực tuyến (mô phỏng).");
+      }
+
+      document
+        .getElementById("paymentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Xử lý validation và thanh toán như trước đây
+
+          if (isValid) {
+            // Logic thanh toán
+            alert("Thanh toán thành công!");
+            this.reset();
+          }
+        });
+
+      function openSupportChat() {
+        // Giả lập việc mở hỗ trợ trực tuyến
+        alert("Đây là một hệ thống hỗ trợ trực tuyến giả lập.");
+      }
+
+      document
+        .getElementById("paymentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Xử lý validation và thanh toán như trước đây
+
+          if (isValid) {
+            // Logic thanh toán
+            alert("Thanh toán thành công!");
+            this.reset();
+          }
+        });
+      function openSupportChat() {
+        // Giả lập việc mở hỗ trợ trực tuyến
+        alert("Hệ thống hỗ trợ trực tuyến giả lập.");
+      }
+
+      function assessRisk() {
+        // Giả lập việc đánh giá rủi ro giao dịch
+        // Trong thực tế, nên sử dụng một hệ thống đánh giá rủi ro thực sự
+        return Math.random() < 0.1; // 10% cơ hội giao dịch rủi ro
+      }
+
+      document
+        .getElementById("paymentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          var risk = assessRisk();
+          if (risk) {
+            alert("Giao dịch có rủi ro. Vui lòng thử lại sau.");
+            return;
+          }
+
+          // Xử lý validation và thanh toán như trước đây
+          if (isValid) {
+            alert("Thanh toán thành công!");
+            this.reset();
+          }
+        });
+
+      document
+        .getElementById("paymentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (!this.checkValidity()) {
+            event.stopPropagation();
+            $(this).addClass("was-validated");
+            return;
+          }
+
+          // Đánh giá rủi ro và xử lý thanh toán như trước đây
+          // ...
+        });
+
+      function openSupportChat() {
+        // Mở hỗ trợ trực tuyến
+        alert("Hệ thống hỗ trợ trực tuyến giả lập.");
+      }
+
+      // Tối ưu hóa xử lý form và phản hồi người dùng
+      document
+        .getElementById("paymentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Sử dụng hàm này để kiểm tra các trường trong form
+          function validateForm() {
+            var isValid = true;
+            var emailInput = document.getElementById("email");
+            var nameInput = document.getElementById("name");
+            var expiryInput = document.getElementById("expiry");
+
+            // Reset thông báo lỗi
+            document
+              .querySelectorAll(".invalid-feedback")
+              .forEach(function (element) {
+                element.style.display = "none";
+              });
+
+            // Kiểm tra tên
+            if (nameInput.value.trim() === "") {
+              document.querySelector(
+                "#name + .invalid-feedback"
+              ).style.display = "block";
+              isValid = false;
+            }
+
+            // Kiểm tra email
+            if (!emailInput.value.includes("@")) {
+              document.querySelector(
+                "#email + .invalid-feedback"
+              ).style.display = "block";
+              isValid = false;
+            }
+
+            // Kiểm tra ngày hết hạn
+            if (expiryInput.value.trim() === "") {
+              document.querySelector(
+                "#expiry + .invalid-feedback"
+              ).style.display = "block";
+              isValid = false;
+            }
+
+            return isValid;
+          }
+
+          // Kiểm tra và xử lý form
+          if (validateForm()) {
+            // Sử dụng AJAX để gửi dữ liệu form
+            // Tạo một đối tượng FormData từ form
+            var formData = new FormData(this);
+
+            // Gửi dữ liệu form bằng AJAX
+            fetch("processPayment", {
+              // URL xử lý thanh toán của bạn
+              method: "POST",
+              body: formData,
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                if (data.success) {
+                  alert("Thanh toán thành công!");
+                  this.reset();
+                } else {
+                  alert("Có lỗi xảy ra, vui lòng thử lại.");
+                }
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+              });
+          }
+        });
+
+      // Cảnh báo người dùng khi họ cố gắng rời khỏi trang mà không gửi form
+      window.onbeforeunload = function () {
+        if (
+          document.querySelector("#name").value !== "" ||
+          document.querySelector("#email").value !== "" ||
+          document.querySelector("#expiry").value !== ""
+        ) {
+          return "Bạn có chắc chắn muốn rời khỏi trang? Mọi thông tin bạn đã nhập sẽ không được lưu.";
+        }
+      };
+
+      // Hàm mở cửa sổ hỗ trợ trực tuyến
+      function openSupportChat() {
+        // Cải thiện hàm này để mở một cửa sổ chat thực sự hoặc modal
+        alert(
+          "Chức năng chat đang được phát triển, vui lòng liên hệ qua email hoặc điện thoại."
+        );
+      }
+
+      // Trên trang thanhtoan.html
+      document.addEventListener("DOMContentLoaded", function () {
+        var fromValue = localStorage.getItem("from");
+        var toValue = localStorage.getItem("to");
+
+        document.getElementById("from").value = fromValue ? fromValue : "";
+        document.getElementById("to").value = toValue ? toValue : "";
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("form-submit");
+        const emailInput = document.getElementById("email"); // Thay đổi ID tùy theo form của bạn
+        const emailError = document.getElementById("email-error"); // ID của phần tử hiển thị thông báo lỗi
+
+        form.addEventListener("submit", function (event) {
+          const emailValue = emailInput.value;
+          if (!validateEmail(emailValue)) {
+            emailError.textContent = "Email không hợp lệ. Vui lòng nhập lại.";
+            event.preventDefault(); // Ngăn chặn gửi form
+          } else {
+            emailError.textContent = ""; // Xóa thông báo lỗi nếu có
+          }
+        });
+      });
+
+      function validateEmail(email) {
+        const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return re.test(email);
+      }
+    </script>
+  </body>
+</html>
