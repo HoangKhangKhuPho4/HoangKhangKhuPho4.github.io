@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Contact | Bootstrap 5 Theme</title>
+    <title>Car Washing | Bootstrap 5 Theme</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,6 +22,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
 
     <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="css/magnific-popup.css" rel="stylesheet" />
 
     <link href="css/tooplate-clean-work.css" rel="stylesheet" />
 
@@ -40,7 +42,6 @@
       type="text/javascript"
       src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
     ></script>
-
     <style>
       #backToTopBtn {
         position: fixed;
@@ -58,23 +59,6 @@
 
       #backToTopBtn:hover {
         background-color: #0056b3;
-      }
-
-      #myLandbot {
-        width: 100vh;
-        height: 10vh;
-      }
-
-      #chatbotGuide {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: white;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-        display: none;
       }
 
       .goog-te-gadget-icon {
@@ -98,11 +82,8 @@
         }
       }
 
-      body,
-      .form-control,
-      .custom-form {
+      body {
         font-family: "Poppins", sans-serif;
-        font-size: 14px;
       }
 
       h1 {
@@ -114,27 +95,16 @@
       }
 
       h3 {
-        font-size: 21px;
+        font-size: 20px;
       }
 
-      @media (max-width: 768px) {
-        h1 {
-          font-size: 24px;
-        }
+      body,
+      p {
+        font-size: 14px;
+      }
 
-        h2 {
-          font-size: 20px;
-        }
-
-        h3 {
-          font-size: 18px;
-        }
-
-        body,
-        .form-control,
-        .custom-form {
-          font-size: 12px;
-        }
+      .small-text {
+        font-size: 12px;
       }
     </style>
   </head>
@@ -229,7 +199,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="contact.html">Contact</a>
+              <a class="nav-link" href="contact.html">Contact</a>
             </li>
 
             <li class="nav-item">
@@ -239,8 +209,8 @@
             <li class="nav-item ms-3">
               <a
                 class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
-                id="getStartedBtn"
                 href="#"
+                onclick="showCarWashingGuide()"
                 >Get started</a
               >
             </li>
@@ -259,7 +229,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-7 col-12">
-              <h1 class="text-white mb-lg-0">Contact</h1>
+              <h1 class="text-white mb-lg-0">Car Washing</h1>
             </div>
 
             <div
@@ -270,7 +240,7 @@
                   <li class="breadcrumb-item"><a href="lab7.html">Home</a></li>
 
                   <li class="breadcrumb-item active" aria-current="page">
-                    Contact
+                    Car Washing
                   </li>
                 </ol>
               </nav>
@@ -279,109 +249,337 @@
         </div>
       </section>
 
-      <section class="contact-section section-padding">
+      <section class="services-detail-section section-padding">
         <div class="container">
           <div class="row">
-            <div class="col-lg-5 col-12 me-auto mb-lg-0 mb-5">
-              <h2 class="my-3">We're happy to help</h2>
+            <div class="col-lg-6 col-12">
+              <div class="services-image-wrap">
+                <img
+                  src="images/services/man-polishing-car-inside-car-service.jpg"
+                  class="services-image img-fluid"
+                  alt="Professional car washing in progress"
+                />
+                <img
+                  src="images/services/car-detailing-service.jpg"
+                  class="services-image services-image-hover img-fluid"
+                  alt="Detailing service on a car"
+                />
+                <div class="services-icon-wrap">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <p class="text-white mb-0">
+                      <i class="bi-cash me-2"></i>
+                      $240
+                    </p>
+                    <p class="text-white mb-0">
+                      <i class="bi-clock-fill me-2"></i>
+                      2 hrs
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12">
+              <div class="services-info px-4 pt-4">
+                <h2 class="mb-4">Car Washing Services</h2>
 
-              <p>
-                Best Cleaning Service is ready to serve you. Clean Work is a
-                professional website layout for your business.
-              </p>
+                <p>
+                  Our car washing services provide detailed and comprehensive
+                  cleaning for your car. We specialize in cleaning both the
+                  exterior and interior of your car, ensuring your vehicle looks
+                  and feels as good as new.
+                </p>
 
-              <div class="contact-info bg-white shadow-lg">
-                <h3 class="mb-4">Contact Information</h3>
+                <h6 class="mt-4">Advanced Cleaning Techniques</h6>
 
-                <h5 class="d-flex mt-3 mb-3">
-                  <i class="bi-geo-alt-fill custom-icon me-3"></i>
-                  Neighborhood 4, Phuoc Dan Town, Ninh Phuoc District, Ninh
-                  Thuan Province
-                </h5>
+                <p>
+                  We use the latest advanced cleaning technologies, including
+                  high-pressure washing and soft microfiber towels, to ensure
+                  effective and safe cleaning of the exterior surfaces of your
+                  car. Interior cleaning services include vacuuming, seat
+                  cleaning, and dashboard polishing.
+                </p>
 
-                <h5 class="d-flex mb-3">
-                  <i class="bi-telephone-fill custom-icon me-3"></i>
+                <h6>Environmentally Friendly and Safe</h6>
 
-                  <a href="tel: 110-220-9800"> +84-56-7649206 </a>
-                </h5>
+                <p>
+                  Our commitment to protecting the environment means that we use
+                  environmentally friendly cleaning agents with high
+                  biodegradability, which are powerful against dirt but gentle
+                  on the car's surfaces and the environment.
+                </p>
 
-                <h5 class="d-flex">
-                  <i class="bi-envelope-fill custom-icon me-3"></i>
+                <p>
+                  Ready to have a clean and sparkling car? Contact us at [Phone
+                  Number] or book an appointment online. Let our professional
+                  team bring out the best in your vehicle.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                  <a href="mailto:info@company.com"
-                    >22130116@st.hcmuaf.edu.vn
-                  </a>
-                </h5>
+      <section class="section-padding pt-0">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-12">
+              <h2 class="mb-4">Photo gallery</h2>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-12">
+              <a href="images/services/anh-tay-vs.jpg" class="image-popup">
+                <img
+                  src="images/services/anh-tay-vs.jpg"
+                  class="gallery-image img-fluid"
+                />
+              </a>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-12 my-4 my-lg-0 my-md-0">
+              <a
+                href="images/ve-sinh-noi-that-o-to-e1614044065259.jpg"
+                class="image-popup"
+              >
+                <img
+                  src="images/services/vsco.jpg"
+                  class="gallery-image img-fluid"
+                />
+              </a>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-12">
+              <a href="images/services/vs-mb.jpg" class="image-popup">
+                <img
+                  src="images/services/vs-mb.jpg"
+                  class="gallery-image img-fluid"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padding section-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-12">
+              <h2 class="mb-4">Related Services</h2>
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <div class="services-thumb mb-lg-0">
+                <div class="row">
+                  <div class="col-lg-5 col-md-5 col-12">
+                    <div class="services-image-wrap">
+                      <a href="car_washing.html">
+                        <img
+                          src="images/services/man-polishing-car-inside-car-service.jpg"
+                          class="services-image img-fluid"
+                          alt=""
+                        />
+                        <img
+                          src="images/services/man-polishing-car-inside.jpg"
+                          class="services-image services-image-hover img-fluid"
+                          alt=""
+                        />
+
+                        <div class="services-icon-wrap">
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <p class="text-white mb-0">
+                              <i class="bi-cash me-2"></i>
+                              $240
+                            </p>
+
+                            <p class="text-white mb-0">
+                              <i class="bi-clock-fill me-2"></i>
+                              2 hrs
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-lg-7 col-md-7 col-12 d-flex align-items-center"
+                  >
+                    <div class="services-info mt-4 mt-lg-0 mt-md-0">
+                      <h4 class="services-title mb-1 mb-lg-2">
+                        <a
+                          class="services-title-link"
+                          href="car_washing.html
+                          "
+                          >Car Washing</a
+                        >
+                      </h4>
+
+                      <p>
+                        Best Cleaning Service Provider Ipsum dolor sit
+                        consectetur kengan
+                      </p>
+
+                      <div class="d-flex flex-wrap align-items-center">
+                        <div class="reviews-icons">
+                          <i class="bi-star-fill"></i>
+                          <i class="bi-star-fill"></i>
+                          <i class="bi-star-fill"></i>
+                          <i class="bi-star-fill"></i>
+                          <i class="bi-star-fill"></i>
+                        </div>
+
+                        <a
+                          href="car_washing.html"
+                          class="custom-btn btn button button--atlas mt-2 ms-auto"
+                        >
+                          <span>Learn More</span>
+
+                          <div class="marquee" aria-hidden="true">
+                            <div class="marquee__inner">
+                              <span>Learn More</span>
+                              <span>Learn More</span>
+                              <span>Learn More</span>
+                              <span>Learn More</span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div class="col-lg-6 col-12">
-              <form
-                class="custom-form consulting-form bg-white shadow-lg mb-5 mb-lg-0"
-                method="post"
-                onsubmit="handleFormSubmit(event)"
-                id="quotationForm"
-                method="post"
-                role="form"
-              >
-                <div class="consulting-form-header d-flex align-items-center">
-                  <h3 class="mb-4">Get a Free Quotation</h3>
-                </div>
+              <div class="services-thumb mb-lg-0">
+                <div class="row">
+                  <div class="col-lg-5 col-md-5 col-12">
+                    <div class="services-image-wrap">
+                      <a href="car_washing.html">
+                        <img
+                          src="images/services/professional-industrial-cleaner-protective-uniform-cleaning-floor-food-processing-plant.jpg"
+                          class="services-image img-fluid"
+                          alt=""
+                        />
+                        <img
+                          src="images/services/close-up-mop-cleaning-industrial-plant-floor.jpg"
+                          class="services-image services-image-hover img-fluid"
+                          alt=""
+                        />
 
-                <div class="consulting-form-body">
-                  <div class="row">
-                    <div class="col-lg-6 col-md-6 col-12">
-                      <input
-                        type="text"
-                        name="volunteer-name"
-                        id="volunteer-name"
-                        class="form-control"
-                        placeholder="John Walker"
-                        required
-                      />
-                    </div>
+                        <div class="services-icon-wrap">
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <p class="text-white mb-0">
+                              <i class="bi-cash me-2"></i>
+                              $6,800
+                            </p>
 
-                    <div class="col-lg-6 col-md-6 col-12">
-                      <input
-                        type="email"
-                        name="volunteer-email"
-                        id="volunteer-email"
-                        pattern="[^ @]*@[^ @]*"
-                        class="form-control"
-                        placeholder="yours@gmail.com"
-                        required
-                      />
+                            <p class="text-white mb-0">
+                              <i class="bi-clock-fill me-2"></i>
+                              30 hrs
+                            </p>
+                          </div>
+                        </div>
+                      </a>
                     </div>
                   </div>
 
-                  <select
-                    class="form-select form-control"
-                    name="job-salary"
-                    id="job-salary"
-                    aria-label="Default select example"
+                  <div
+                    class="col-lg-7 col-md-7 col-12 d-flex align-items-center"
                   >
-                    <option selected>Service Type</option>
-                    <option value="House cleaning">House cleaning</option>
-                    <option value="Car washing">Car washing</option>
-                    <option value="Office cleaning">Office cleaning</option>
-                    <option value="Factory cleaning">Factory cleaning</option>
-                  </select>
+                    <div class="services-info mt-4 mt-lg-0 mt-md-0">
+                      <h4 class="services-title mb-1 mb-lg-2">
+                        <a class="services-title-link" href="factory.html"
+                          >Factory Cleaning</a
+                        >
+                      </h4>
 
-                  <textarea
-                    name="volunteer-message"
-                    rows="3"
-                    class="form-control"
-                    id="volunteer-message"
-                    placeholder="Comment (Optional)"
-                  ></textarea>
+                      <p>
+                        Best Cleaning Service Provider Ipsum dolor sit
+                        consectetur kengan
+                      </p>
 
-                  <div class="col-lg-6 col-md-10 col-8 mx-auto">
-                    <button type="submit" class="form-control">
-                      Submit Request
-                    </button>
+                      <div class="d-flex flex-wrap align-items-center">
+                        <div class="reviews-icons">
+                          <i class="bi-star-fill"></i>
+                          <i class="bi-star-fill"></i>
+                          <i class="bi-star-fill"></i>
+                          <i class="bi-star-fill"></i>
+                          <i class="bi-star"></i>
+                        </div>
+
+                        <a
+                          href="factory.html"
+                          class="custom-btn btn button button--atlas mt-2 ms-auto"
+                        >
+                          <span>Learn More</span>
+
+                          <div class="marquee" aria-hidden="true">
+                            <div class="marquee__inner">
+                              <span>Learn More</span>
+                              <span>Learn More</span>
+                              <span>Learn More</span>
+                              <span>Learn More</span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="partners-section">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-lg-12 col-12">
+              <h4 class="partners-section-title bg-white shadow-lg">
+                Trusted by companies
+              </h4>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6">
+              <img
+                src="images/partners/glorix.svg"
+                class="partners-image img-fluid"
+              />
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6">
+              <img
+                src="images/partners/rolf-leasing.svg"
+                class="partners-image img-fluid"
+              />
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6">
+              <img
+                src="images/partners/woocommerce.svg"
+                class="partners-image img-fluid"
+              />
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6">
+              <img
+                src="images/partners/toprak-leasing.svg"
+                class="partners-image img-fluid"
+              />
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6">
+              <img
+                src="images/partners/unilabs.svg"
+                class="partners-image img-fluid"
+              />
             </div>
           </div>
         </div>
@@ -571,6 +769,8 @@
     <script src="js/init.js"></script>
     <script src="js/modernizr.js"></script>
     <script src="js/animated-headline.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/magnific-popup-options.js"></script>
     <script src="js/custom.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -586,7 +786,7 @@
           s.addEventListener("load", function () {
             var myLandbot = new Landbot.Livechat({
               configUrl:
-                "https://storage.googleapis.com/landbot.online/v3/H-2077772-8E1K20WQWSR0EJMV/index.json",
+                "https://storage.googleapis.com/landbot.online/v3/H-2077778-NMBZMKEDCXG650C3/index.json",
             });
           });
           s.src = "https://cdn.landbot.io/landbot-3/landbot-3.0.0.js";
@@ -597,141 +797,23 @@
     </script>
 
     <script>
-      function handleFormSubmit(event) {
-        event.preventDefault();
-
-        var form = document.getElementById("quotationForm");
-        var name = form.querySelector('[name="volunteer-name"]').value;
-        var email = form.querySelector('[name="volunteer-email"]').value;
-        var serviceType = form.querySelector('[name="job-salary"]').value;
-        var message = form.querySelector('[name="volunteer-message"]').value;
-
-        // Tạo chuỗi query cho mailto
-        var mailtoLink = "mailto:22130116@st.hcmuaf.edu.vn";
-        mailtoLink +=
-          "?subject=" + encodeURIComponent("Quotation Request from " + name);
-        mailtoLink +=
-          "&body=" +
-          encodeURIComponent(
-            "Name: " +
-              name +
-              "\nEmail: " +
-              email +
-              "\nService Type: " +
-              serviceType +
-              "\nMessage: " +
-              message
-          );
-
-        // Chuyển hướng trình duyệt
-        window.location.href = mailtoLink;
-      }
-
-      function scrollToChatbot() {
-        var chatbotElement = document.querySelector(
-          "YOUR_CHATBOT_CONTAINER_ID_OR_CLASS"
-        );
-        if (chatbotElement) {
-          chatbotElement.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        // Thêm sự kiện click cho nút "Get started"
-        var getStartedBtn = document.getElementById("getStartedBtn");
-        if (getStartedBtn) {
-          getStartedBtn.addEventListener("click", function (e) {
-            e.preventDefault(); // Ngăn chặn hành vi mặc định của nút
-            var guideElement = document.getElementById("chatbotGuide");
-            if (guideElement) {
-              guideElement.style.display = "block"; // Hiển thị thông báo
-            }
-          });
-        }
-      });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        var getStartedBtn = document.getElementById("getStartedBtn");
-        if (getStartedBtn) {
-          getStartedBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            // Step 1: Chatbot Instructions
-            Swal.fire({
-              title: "Step 1: Chatbot Instructions",
-              text: "To contact and receive a quote from Clean Work, please use the chatbot in the bottom right corner of the screen.",
-              icon: "info",
-              imageUrl: "images/chatbot.png",
-              imageWidth: 400,
-              imageHeight: 200,
-              imageAlt: "Illustration of a chatbot",
-              confirmButtonText: "Continue",
-            }).then((result) => {
-              if (result.isConfirmed) {
-                scrollToChatbot();
-
-                // Step 2: Encourage Form Submission
-                Swal.fire({
-                  title: "Step 2: Experience Exclusive Services",
-                  text: "Fill out the form below to experience our exclusive high-quality services available only at Clean Work.",
-                  icon: "info",
-                  imageUrl: "buoc2", // Replace with the path to your image
-                  imageWidth: 400, // Set the width of the image
-                  imageHeight: 200, // Set the height of the image
-                  imageAlt: "A relevant description of the image", // Alternative text for the image
-                  confirmButtonText: "Go to Form",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    scrollToForm();
-                  }
-                });
-              }
-            });
-          });
-        }
-      });
-
-      function scrollToChatbot() {
-        var chatbotElement = document.querySelector(
-          "YOUR_CHATBOT_CONTAINER_ID_OR_CLASS"
-        );
-        if (chatbotElement) {
-          chatbotElement.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-
-      function scrollToForm() {
-        var formElement = document.getElementById("quotationForm");
-        if (formElement) {
-          formElement.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-
-      function scrollToChatbot() {
-        var chatbotElement = document.querySelector(
-          "YOUR_CHATBOT_CONTAINER_ID_OR_CLASS"
-        );
-        if (chatbotElement) {
-          chatbotElement.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-
-      function scrollToForm() {
-        var formElement = document.getElementById("quotationForm");
-        if (formElement) {
-          formElement.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        var form = document.getElementById("quotationForm");
-        form.addEventListener("keypress", function (e) {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            form.querySelector('[type="submit"]').click();
+      function showCarWashingGuide() {
+        Swal.fire({
+          title: "Start Car Washing Service Consultation",
+          html:
+            "After you have finished reviewing the car washing service package from Clean Work, " +
+            "if you are satisfied, please click on the Landbot icon at the bottom right corner of the screen " +
+            "so that we can provide you with more detailed advice and care.",
+          imageUrl: "images/landbot.png",
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: "Illustrative image",
+          confirmButtonText: "Continue",
+        }).then((result) => {
+          if (result.isConfirmed) {
           }
         });
-      });
+      }
     </script>
   </body>
 </html>

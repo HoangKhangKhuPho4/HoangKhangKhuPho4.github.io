@@ -1,430 +1,645 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nguyễn Lê Hoàng Khang - Blog cá nhân</title>
-    <a href="#" class="read-more">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>About Us | Bootstrap 5 Theme</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="css/tooplate-clean-work.css" rel="stylesheet" />
+ 
+
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      },
+      'google_translate_element'
+    );
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f5f5f5;
-        color: #333;
-      }
-
-      header,
-      nav,
-      footer {
-        background-color: #333;
+      #backToTopBtn {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: #007bff;
         color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 10px;
       }
 
-      nav,
-      footer {
-        padding: 10px 0;
-        text-align: center;
+      #backToTopBtn:hover {
+        background-color: #0056b3;
       }
 
-      nav a,
-      .social-icons a {
-        margin: 0 10px;
-        color: white;
-        text-decoration: none;
-        transition: color 0.3s; /* thêm hiệu ứng hover */
-      }
-
-      nav a:hover,
-      .social-icons a:hover {
-        color: #aaa; /* màu khi hover */
-      }
-
-      #profile-image {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        margin: 20px auto;
-        display: block;
-      }
-
-      main {
-        max-width: 1200px;
-        margin: 40px auto;
+      /* Định dạng cho phần văn bản */
+      .section .col-lg-6 {
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: center;
       }
 
-      article,
-      aside {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Định dạng cho hình ảnh */
+      .section img.img-fluid {
+        max-width: 100%;
+        height: auto;
       }
 
-      h1 {
-        text-align: center;
-        margin-top: 0;
-        font-size: 2.5em;
-        color: #ffffff; /* Chỉnh màu chữ thành trắng */
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        font-family: "Roboto", sans-serif;
-        font-weight: 700;
+      /* Định dạng cho tiêu đề và đoạn văn */
+      .section h2 {
+        font-size: 1.5rem; /* Điều chỉnh kích thước font nếu cần */
+        margin-bottom: 1rem;
+      }
+
+      .section p {
+        font-size: 1rem; /* Điều chỉnh kích thước font nếu cần */
       }
 
       h2 {
-        border-bottom: 2px solid #eee;
-        padding-bottom: 10px;
-        margin-top: 30px;
+        color: #007bff; /* Màu sắc nổi bật cho tiêu đề */
+        margin-bottom: 16px; /* Khoảng cách dưới tiêu đề */
       }
 
-      form label,
-      form input,
-      form textarea {
-        width: 100%;
-        margin-bottom: 15px;
-        padding: 8px;
-        box-sizing: border-box;
+      .goog-te-gadget-icon {
+        background-image: url("//translate.google.com/favicon.ico") !important;
       }
 
-      form input[type="submit"] {
-        background-color: #333;
-        color: white;
-        border: none;
-        cursor: pointer;
-        padding: 10px 15px;
-        transition: background-color 0.3s;
+      /* CSS để căn chỉnh và tạo khoảng cách cho Google Translate */
+      #google_translate_element {
+        margin-top: 20px; /* Tạo khoảng cách phía trên */
+        margin-right: 20px; /* Tạo khoảng cách phía bên phải */
+        margin-bottom: 20px; /* Tạo khoảng cách phía dưới nếu cần */
+        margin-left: 20px; /* Tạo khoảng cách phía bên trái nếu cần */
+        display: inline-block; /* Đảm bảo widget không chiếm toàn bộ chiều rộng */
       }
 
-      form input[type="submit"]:hover {
-        background-color: #555;
-      }
-
-      @media screen and (max-width: 768px) {
-        main {
-          flex-direction: column;
-        }
-
-        article,
-        aside {
-          margin-bottom: 20px;
-        }
-
-        article {
-          margin-right: 0;
+      /* Bạn cũng có thể cần chỉnh sửa cho responsive */
+      @media (max-width: 768px) {
+        #google_translate_element {
+          margin-top: 10px;
+          margin-right: 10px;
+          margin-bottom: 10px;
+          margin-left: 10px;
         }
       }
-
-      .read-more {
-    background-color: #333;
-    color: white;
-    padding: 5px 10px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    display: inline-flex;
-    align-items: center;
-    font-weight: bold;
+      h1, h2, h4 {
+    font-family: 'Poppins', sans-serif;
+    color: #333; /* Dark color for light backgrounds */
 }
 
-.read-more:hover {
-    background-color: #555;
+h1 {
+    font-size: 28px; /* Example for larger headings */
 }
 
-.read-more i {
-    margin-left: 5px;
+h2 {
+    font-size: 24px; /* Example for medium headings */
 }
-#more-content {
-  display: none;
-}
-.blur {
-    filter: blur(5px); /* Giá trị này có thể cần được điều chỉnh để có hiệu ứng mờ mong muốn */
-  }
 
-.highlight {
-  filter: brightness(1.5); /* làm sáng đối tượng */
-  z-index: 1; /* đặt đối tượng ở trên cùng */
+h4 {
+    font-size: 20px; /* Example for smaller headings */
 }
-    
-   
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px; /* Standard size for body text */
+    color: #333; /* Dark color for readability */
+}
+
     </style>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   </head>
 
   <body>
-    <header>
-      <header>
-        <img id="profile-image" src="anhcanhan.jpg" alt="Lê Bá Khánh Duy" />
-        <h1>Nguyễn Lê Hoàng Khang</h1>
-        <p>Mã số sinh viên: 22130116</p>
-        <p>Trường Đại học Nông Lâm Thành Phố Hồ Chí Minh</p>
-      </header>
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/6588601470c9f2407f83105f/1hiebekpo";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+    </script>
+    <button id="backToTopBtn" title="Go to top">⬆️</button>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-12 d-flex flex-wrap">
+            <p class="d-flex me-4 mb-0">
+              <i class="bi-house-fill me-2"></i>
+              One-Stop Cleaning Service
+            </p>
+
+            <p class="d-flex d-lg-block d-md-block d-none me-4 mb-0">
+              <i class="bi-clock-fill me-2"></i>
+              <strong class="me-2">Mon - Fri</strong> 8:00 AM - 5:30 PM
+            </p>
+
+            <p class="site-header-icon-wrap text-white d-flex mb-0 ms-auto">
+              <i class="site-header-icon bi-whatsapp me-2"></i>
+
+              <a href="tel: +84-56-7649206 " class="text-white">+84-56-7649206</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <nav>
-      <a href="#">Trang chủ</a>
-      <a href="#">Bài viết</a>
-      <a href="#">Giới thiệu</a>
-      <a href="#">Liên hệ</a>
-      <a href="index.html">Quay lại Trang chủ</a>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="lab7.html">
+          <img src="images/bubbles.png" class="logo img-fluid" alt="" />
 
+          <span class="ms-2">Clean Work</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="lab7.html">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="about.html">About Us</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#section_5"
+                id="navbarLightDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Pages</a
+              >
+
+              <ul
+                class="dropdown-menu dropdown-menu-light"
+                aria-labelledby="navbarLightDropdownMenuLink"
+              >
+                <li>
+                  <a class="dropdown-item" href="services.html">Our Services</a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="coming-soon.html"
+                    >Coming Soon</a
+                  >
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="page-404.html">Page 404</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="lab7.html">Back To Home</a>
+            </li>
+
+            <li class="nav-item ms-3">
+              <a
+              class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
+              href="#"
+              onclick="showTawkToGuide()"
+              >Get started</a
+            >
+            </li>
+          </ul>
+
+          <div id="google_translate_element"></div>
+
+        </div>
+      </div>
     </nav>
 
     <main>
-      <article>
-        <!-- <h2>Giới thiệu bản thân</h2> -->
-        <p><h2>Giới thiệu bản thân</h2>
-            <p>Xin chào! Tôi là Nguyễn Lê Hoàng Khang, một sinh viên tại Trường Đại học Nông Lâm Thành Phố Hồ Chí Minh. Ngay từ những ngày đầu tiên bước chân vào trường, tôi đã luôn mang theo niềm đam mê nghiên cứu và khám phá. Trong quá trình học tập, tôi đã nhận ra rằng không chỉ kiến thức chuyên môn mà cả kỹ năng mềm và tư duy phản biện cũng rất quan trọng.</p>
-            
-            <p>Tôi luôn tự hào về nền tảng giáo dục mà trường đã cung cấp. Bên cạnh việc chăm chỉ học tập, tôi cũng tham gia nhiều câu lạc bộ và hoạt động xã hội tại trường, giúp mình có thêm nhiều trải nghiệm và kỹ năng thực tiễn.</p>
-            
-            <p>Trong thời gian rảnh rỗi, tôi thích viết blog và chia sẻ những suy nghĩ, trải nghiệm của mình. Đôi khi, tôi cũng thích đọc sách, nghe nhạc và tham gia các lớp học online để mở rộng kiến thức. Đối với tôi, học không chỉ là một nghĩa vụ mà còn là một niềm đam mê, giúp tôi không ngừng phát triển bản thân và tạo ra những giá trị cho cộng đồng.</p>
-            
-            <p>Cảm ơn bạn đã dành thời gian đọc giới thiệu về tôi. Mọi góp ý và phản hồi luôn được tôi trân trọng!</p>
-            </p>
+      <section
+        class="banner-section d-flex justify-content-center align-items-end"
+      >
+        <div class="section-overlay"></div>
 
-        <h2>Bài viết gần đây</h2>
-        
-        <p class="recent-post">
-          Trong những năm gần đây, tôi đã dành nhiều thời gian để khám phá và tìm hiểu về các chủ đề liên quan đến công nghệ, khoa học và văn hóa. Điều này không chỉ giúp tôi mở rộng kiến thức mà còn giúp tôi phát triển kỹ năng giao tiếp và viết lách. 
-          <span id="more-content">Một số bài viết của tôi đã nhận được sự quan tâm và phản hồi tích cực từ cộng đồng. Điều này khích lệ tôi tiếp tục viết và chia sẻ kiến thức của mình với mọi người. Trong tương lai, tôi mong muốn có thể tham gia vào nhiều dự án và hoạt động hơn nữa, nhằm mang lại giá trị và kiến thức cho cộng đồng.</span>
-        </p>
-        <a href="#" id="read-more">Đọc thêm</a>
-        
-
-<!-- Bài viết 1 -->
-<div class="recent-post">
-    <h3><a href="#">Những trải nghiệm đáng nhớ tại Đại học Nông Lâm</a></h3>
-    <p>Ngày đăng: 23/10/2023</p>
-    <p>Một trong những yếu tố khiến tôi yêu thích những năm tháng sinh viên là những trải nghiệm đáng nhớ tại Đại học Nông Lâm. Từ những buổi thực hành ở phòng lab đến những giờ học ngoài trời, mỗi khoảnh khắc đều ẩn chứa những bài học quý giá...</p>
-    <a href="#" class="read-more">Đọc thêm</a>
-</div>
-
-<!-- Bài viết 2 -->
-<div class="recent-post">
-    <h3><a href="#">Cách tôi tự học và phát triển kỹ năng mềm</a></h3>
-    <p>Ngày đăng: 20/10/2023</p>
-    <p>Kỹ năng mềm ngày càng trở thành một yếu tố quan trọng giúp sinh viên nổi bật trong mắt các nhà tuyển dụng. Trong bài viết này, tôi sẽ chia sẻ cách tôi tự học và phát triển những kỹ năng mềm này thông qua những hoạt động và trải nghiệm thực tế...</p>
-    <a href="#" class="read-more">Đọc thêm</a>
-</div>
-
-<!-- Bài viết 3 -->
-<div class="recent-post">
-    <h3><a href="#">Những cuốn sách ảnh hưởng đến quá trình học tập của tôi</a></h3>
-    <p>Ngày đăng: 17/10/2023</p>
-    <p>Sách là nguồn tri thức vô tận, là người bạn đồng hành trên con đường học tập và phát triển bản thân. Trong bài viết này, tôi muốn giới thiệu đến các bạn những cuốn sách đã ảnh hưởng sâu sắc đến tôi trong quá trình học tập...</p>
-    <a href="#" class="read-more">Đọc thêm</a>
-</div>
-
-
-        <h2>Liên hệ</h2>
-        <form id="contactForm">
-          <label for="name">Tên của bạn:</label>
-          <input type="text" id="name" name="name" />
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" />
-
-          <label for="message">Tin nhắn:</label>
-          <textarea id="message" name="message" rows="4"></textarea>
-
-          <input type="submit" value="Gửi" />
-        </form>
-      </article>
-
-       
-
-      <aside>
-        <h3>Bài viết nổi bật</h3>
-        <div class="featured-post">
-          <div class="featured-image"></div>
-          <div class="featured-info">
-            <a class="featured-title" href="#">Khám phá những bí mật ít ai biết tại Địa Điểm X - một thiên đường chưa được khám phá!</a>
-            <div class="featured-date">Ngày đăng: 20/10/2023</div>
-            <div class="featured-description">
-              
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7 col-12">
+              <h1 class="text-white mb-lg-0">About Us</h1>
             </div>
-            <a class="read-more" href="#">Đọc tiếp</a>
+
+            <div
+              class="col-lg-4 col-12 d-flex justify-content-lg-end align-items-center ms-auto"
+            >
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center">
+                  <li class="breadcrumb-item"><a href="lab7.html">Home</a></li>
+
+                  <li class="breadcrumb-item active" aria-current="page">
+                    About Us
+                  </li>
+                </ol>
+              </nav>
+            </div>
           </div>
-          <section class="featured-articles">
-            <div class="article-card">
-                <img src="ck-cn.png" alt="Image 1"  class="article-image">
-                <h4 class="article-title">Nam sinh năm cuối của Khoa Cơ khí Công nghệ thuộc Trường đại học Nông Lâm TP.HCM được phát hiện tử vong trên giường ngủ ở ký túc xá Đại học Quốc gia TP.HCM.</h4>
-                <p class="article-description">Ngày 10.9, Công an TP.Dĩ An (Bình Dương) phối hợp các đơn vị liên quan làm rõ nguyên nhân vụ <b>nam sinh</b> được phát hiện đã <b>tử vong</b> bên trong tòa nhà ký túc xá khu B, Đại học Quốc gia TP.HCM.. Nhấn vào đây để đọc thêm.</p>
-                <p>Danh tính nạn nhân được xác định là anh Nguyễn Trường Sơn (22 tuổi, quê Bình Định), là sinh viên năm thứ 5 (năm cuối) của Khoa Cơ khí Công nghệ thuộc Trường đại học Nông Lâm TP.HCM.</p>
-                <p>Hiện trường vụ việc nằm ở một phòng tại tầng 6 của tòa nhà D, ký túc xá khu B, <b>Đại học Quốc gia TP.HCM (TP.Dĩ An, Bình Dương)</b>.</p>
-
-            </div>
-            <div class="article-card">
-                <img src="dhnl.png" alt="Image 2" class="article-image">
-                <h2 class="article-title">Trường ĐH Nông lâm TP. HCM vừa ban hành hàng chục quyết định khác nhau về việc kỷ luật sinh viên vi phạm nội quy, quy chế học đường năm học 2018 - 2019.</h2>
-                <p class="article-description">Hàng chục sinh viên Trường ĐH Nông lâm bị đình chỉ vì gian lận thi cử. Nhấn vào đây để đọc thêm.</p>
-            </div>
-          
-        </section>
-
         </div>
-     
-      </aside>
+      </section>
 
-   
+      <section>
+        <div class="container">
+          <div class="row">
+            <!-- Cột Hình ảnh -->
+            <div class="col-lg-6 col-12">
+              <img
+                src="images/cleaning-concept-with-man-showing-business-card.jpg"
+                alt="Hình ảnh minh họa dịch vụ lau dọn"
+                class="img-fluid mb-4"
+              />
+            </div>
+
+            <!-- Cột Văn bản -->
+            <div class="col-lg-6 col-12">
+              <h2 class="mb-4">
+                Professional Cleaning Services Since 2018
+              </h2>
+              <p>
+                At Clean Work, we are proud to provide high-quality cleaning services for both individual and corporate clients...
+              </p>
+              <p>
+                Our services include house cleaning, office cleaning, post-construction cleaning, and much more...
+              </p>
+            
+              <p>
+                Our team is professionally trained and has extensive experience in the cleaning service sector. We always adhere to professional cleaning procedures to ensure the best service for our customers.
+              </p>
+            
+              <p>
+                With the motto "Clean - Meticulous - Professional", Clean Work is committed to providing customers with a clean, neat living and working environment. Just a phone call away, we are ready to serve any cleaning needs you may have.
+              </p>
+            
+              <p>
+                Contact Clean Work now for advice on services that suit your needs!
+              </p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+      <section class="team-section section-padding section-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-12">
+              <h2 class="mb-4">Meet People</h2>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-12 mb-lg-0 mb-md-5">
+              <img
+                src="images/teams/young-cleaning-man-wearing-casual-clothes.jpg"
+                class="team-image img-fluid"
+              />
+            </div>
+
+            <div
+              class="col-lg-3 col-md-6 col-12 d-flex justify-content-lg-center mt-4 mt-lg-0 mt-md-0 mb-5 mb-lg-0"
+            >
+              <div class="team-info mx-auto mx-lg-0">
+                <h4 class="mb-2">Josh</h4>
+
+                <p>
+                  With 5 years of experience in the house cleaning service industry          </p>
+                </p>
+
+                <div class="border-top mt-3 pt-3">
+                  <p class="d-flex mb-0">
+                    <i class="bi-whatsapp me-2"></i>
+
+                    <a href="tel: 110-220-9800"> 110-220-9800 </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-12">
+              <img
+                src="images/teams/happy-young-woman-wiping-kitchen-counter-wearing-yellow-gloves.jpg"
+                class="team-image img-fluid"
+              />
+            </div>
+
+            <div
+              class="col-lg-3 col-md-6 col-12 d-flex justify-content-lg-center mt-4 mt-lg-0 mt-md-0"
+            >
+              <div class="team-info mx-auto mx-lg-0">
+                <h4 class="mb-2">Marie</h4>
+
+                <p>
+                  With 7 years of experience in the office cleaning service industry                </p>
+
+                <div class="border-top mt-3 pt-3">
+                  <p class="d-flex mb-0">
+                    <i class="bi-whatsapp me-2"></i>
+
+                    <a href="tel: 110-220-9800"> 110-220-9800 </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="partners-section">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-lg-12 col-12">
+              <h4 class="partners-section-title bg-white shadow-lg">
+                Trusted by companies
+              </h4>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6">
+              <img
+                src="images/partners/toprak-leasing.svg"
+                class="partners-image img-fluid"
+              />
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6">
+              <img
+                src="images/partners/glorix.svg"
+                class="partners-image img-fluid"
+              />
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6">
+              <img
+                src="images/partners/woocommerce.svg"
+                class="partners-image img-fluid"
+              />
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6">
+              <img
+                src="images/partners/rolf-leasing.svg"
+                class="partners-image img-fluid"
+              />
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6">
+              <img
+                src="images/partners/unilabs.svg"
+                class="partners-image img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer>
-      <div class="social-icons">
-        <i class="fab fa-facebook-f"></i>
-        <i class="fab fa-twitter"></i>
-        <i class="fab fa-instagram"></i>
+    
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-12 d-flex align-items-center mb-4 pb-2">
+            <div>
+              <img src="images/bubbles.png" class="logo img-fluid" alt="" />
+            </div>
+
+            <ul class="footer-menu d-flex flex-wrap ms-5">
+              <li class="footer-menu-item">
+                <a href="about.html" class="footer-menu-link">About Us</a>
+              </li>
+
+              <li class="footer-menu-item">
+                <a href="#" class="footer-menu-link">Blog</a>
+              </li>
+
+              <li class="footer-menu-item">
+                <a href="#" class="footer-menu-link">Reviews</a>
+              </li>
+
+              <li class="footer-menu-item">
+                <a href="contact.html" class="footer-menu-link">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-5 col-12 mb-4 mb-lg-0">
+            <h5 class="site-footer-title mb-3">Our Services</h5>
+
+            <ul class="footer-menu">
+              <li class="footer-menu-item">
+                <a href="#" class="footer-menu-link">
+                  <i
+                    class="bi-chevron-double-right footer-menu-link-icon me-2"
+                  ></i>
+                  House Cleaning
+                </a>
+              </li>
+
+              <li class="footer-menu-item">
+                <a href="car_washing.html" class="footer-menu-link">
+                  <i
+                    class="bi-chevron-double-right footer-menu-link-icon me-2"
+                  ></i>
+                  Car Washing
+                </a>
+              </li>
+
+              <li class="footer-menu-item">
+                <a href="#" class="footer-menu-link">
+                  <i
+                    class="bi-chevron-double-right footer-menu-link-icon me-2"
+                  ></i>
+                  Laundry
+                </a>
+              </li>
+
+              <li class="footer-menu-item">
+                <a href="services-detail.html" class="footer-menu-link">
+                  <i
+                    class="bi-chevron-double-right footer-menu-link-icon me-2"
+                  ></i>
+                  Office Cleaning
+                </a>
+              </li>
+
+              <li class="footer-menu-item">
+                <a href="#" class="footer-menu-link">
+                  <i
+                    class="bi-chevron-double-right footer-menu-link-icon me-2"
+                  ></i>
+                  Toilet Cleaning
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 mb-md-0">
+            <h5 class="site-footer-title mb-3">Office</h5>
+
+            <p class="text-white d-flex mt-3 mb-2">
+              <i class="bi-geo-alt-fill me-2"></i>
+              Neighborhood 4, Phuoc Dan Town, Ninh Phuoc District, Ninh Thuan
+              Province
+            </p>
+
+            <p class="text-white d-flex mb-2">
+              <i class="bi-telephone-fill me-2"></i>
+
+              <a href="tel: +84-56-7649206" class="site-footer-link">
+                +84-56-7649206
+              </a>
+            </p>
+
+            <p class="text-white d-flex">
+              <i class="bi-envelope-fill me-2"></i>
+
+              <a
+                href="mailto:22130116@st.hcmuaf.edu.vn"
+                class="site-footer-link"
+              >
+                22130116@st.hcmuaf.edu.vn
+              </a>
+            </p>
+
+            <ul class="social-icon mt-4">
+              <li class="social-icon-item">
+                <a href="#" class="social-icon-link button button--skoll">
+                  <span></span>
+                  <span class="bi-twitter"></span>
+                </a>
+              </li>
+
+              <li class="social-icon-item">
+                <a
+                  href="https://www.facebook.com/profile.php?id=100088292157574"
+                  class="social-icon-link button button--skoll"
+                >
+                  <span></span>
+                  <span class="bi-facebook"></span>
+                </a>
+              </li>
+
+              <li class="social-icon-item">
+                <a href="#" class="social-icon-link button button--skoll">
+                  <span></span>
+                  <span class="bi-instagram"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-6 mt-3 mt-lg-0 mt-md-0">
+            <div class="featured-block">
+              <h5 class="text-white mb-3">Service Hours</h5>
+
+              <strong class="d-block text-white mb-1">Mon - Fri</strong>
+
+              <p class="text-white mb-3">8:00 AM - 5:30 PM</p>
+
+              <strong class="d-block text-white mb-1">Sat</strong>
+
+              <p class="text-white mb-0">6:00 AM - 2:30 PM</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <p>&copy;2023 - Hoang Khang Blog. All Right Reserved.</p>
-      Mọi hình thức sao chép nội dung trên website này mà chưa được sự đồng ý đều là trái phép.
-                     Giao diện thiết kế bởi Hoang Khang 
+
+      <div class="site-footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-12">
+              <p class="copyright-text mb-0">
+                © Copyright 2023 by Hoang Khang. All Rights Reserved
+                22130116@st.hcmuaf.edu.vn
+              </p>
+            </div>
+
+            <div class="col-lg-6 col-12 text-end">
+              <p class="copyright-text mb-0">
+                Designed by
+                <a
+                  href="https://www.facebook.com/profile.php?id=100088292157574"
+                  target="_parent"
+                  >Nguyễn Lê Hoàng Khang</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
 
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.backstretch.min.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/animated-headline.js"></script>
+    <script src="js/custom.js"></script>
+
     <script>
-     
-      // Chức năng phản hồi sau khi gửi form liên hệ
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // Ngăn chặn gửi form mặc định
-          alert(
-            "Tin nhắn của bạn đã được gửi! Chúng tôi sẽ phản hồi sớm nhất có thể."
-          );
+        function showTawkToGuide() {
+        Swal.fire({
+          title: "Require Immediate Assistance?",
+          text: "To explore our comprehensive range of services, kindly click on the tawk.to icon located at the bottom right corner of your screen. This action will enable direct communication with our dedicated Clean Work team. We greatly appreciate your interest and look forward to assisting you.",
+          imageUrl: "images/tawk.to.png",
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: "Representative Image",
         });
-
-        document.getElementById("read-more-btn").addEventListener("click", function(event) {
-  event.preventDefault();
-  let moreContent = document.getElementById("more-content");
-  if (moreContent.style.display === "none" || moreContent.style.display === "") {
-    moreContent.style.display = "inline";
-    event.target.innerText = "Thu gọn";
-  } else {
-    moreContent.style.display = "none";
-    event.target.innerText = "Đọc thêm";
-  }
-});
-document.getElementById("read-more").addEventListener("click", function (event) {
-    event.preventDefault();
-    const moreContent = document.getElementById("more-content");
-    if (moreContent.style.display === "none") {
-      moreContent.style.display = "inline";
-      this.textContent = "Thu gọn";
-    } else {
-      moreContent.style.display = "none";
-      this.textContent = "Đọc thêm";
-    }
-  });
-document.getElementById("read-more").addEventListener("click", function(event) {
-    event.preventDefault();
-
-    // Get the more-content element
-    var moreContent = document.getElementById("more-content");
-
-    // If it's hidden, show it, otherwise hide it
-    if (moreContent.style.display === "none" || moreContent.style.display === "") {
-        moreContent.style.display = "block";
-        event.target.innerText = "Thu gọn"; // Change the button text to "Thu gọn" (Collapse)
-    } else {
-        moreContent.style.display = "none";
-        event.target.innerText = "Đọc thêm"; // Change the button text back to "Đọc thêm" (Read more)
-    }
-});
-document.getElementById("contactForm").addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        // Extract values from the form
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const message = document.getElementById("message").value;
-
-        // For demonstration purposes, we'll simply alert the user with their input. 
-        // In a real-world scenario, you might want to send this data to a server.
-        alert(`Thank you, ${name}! Your message has been received. We will get back to you at ${email}.`);
-
-        // Optionally, clear the form
-        document.getElementById("contactForm").reset();
-      });
-
-       // Chức năng phản hồi sau khi gửi form liên hệ
-       document.getElementById('contactForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.');
-      });
-
-      // Chức năng "Đọc thêm" cho nội dung blog
-      document.getElementById('read-more').addEventListener('click', function (e) {
-        e.preventDefault();
-        let moreContent = document.getElementById('more-content');
-        if (moreContent.style.display === 'none') {
-          moreContent.style.display = 'inline';
-          e.target.textContent = 'Rút gọn';
-        } else {
-          moreContent.style.display = 'none';
-          e.target.textContent = 'Đọc thêm';
-        }
-      });
-      document.querySelectorAll('nav a').forEach(function(item) {
-  item.addEventListener('mouseenter', function() {
-    document.querySelectorAll('nav a').forEach(function(otherItem) {
-      if (otherItem !== item) {
-        otherItem.classList.add('blur');
-      } else {
-        otherItem.classList.add('highlight');
       }
-    });
-  });
-  
-  item.addEventListener('mouseleave', function() {
-        document.querySelectorAll('nav a').forEach(function(otherItem) {
-          otherItem.classList.remove('blur');
-        });
-      });
-    });
-    
-        // Chức năng phản hồi sau khi gửi form liên hệ
-document.getElementById('contactForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-  alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.');
-});
-
-// Chức năng "Đọc thêm" cho nội dung blog
-document.getElementById('read-more').addEventListener('click', function (e) {
-  e.preventDefault();
-  let moreContent = document.getElementById('more-content');
-  if (moreContent.style.display === 'none') {
-    moreContent.style.display = 'inline';
-    e.target.textContent = 'Rút gọn';
-  } else {
-    moreContent.style.display = 'none';
-    e.target.textContent = 'Đọc thêm';
-  }
-});
-
-document.querySelectorAll('nav a').forEach(function(item) {
-  item.addEventListener('mouseenter', function() {
-    document.querySelectorAll('nav a').forEach(function(otherItem) {
-      if (otherItem !== item) {
-        otherItem.classList.add('blur');
-      } else {
-        otherItem.classList.add('highlight');
-      }
-    });
-  });
-
-  item.addEventListener('mouseleave', function() {
-    document.querySelectorAll('nav a').forEach(function(otherItem) {
-      otherItem.classList.remove('blur');
-      otherItem.classList.remove('highlight');
-    });
-  });
-});
-
     </script>
   </body>
 </html>
