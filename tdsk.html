@@ -560,6 +560,12 @@
           backToTopBtn.style.display = "none";
         }
       };
+
+      document
+        .getElementById("backToHomeBtn")
+        .addEventListener("click", function () {
+          window.location.href = "lab8.html";
+        });
     </script>
 
     <script>
@@ -582,12 +588,6 @@
           x.parentNode.insertBefore(s, x);
         }
       }
-
-      document
-        .getElementById("backToHomeBtn")
-        .addEventListener("click", function () {
-          window.location.href = "lab8.html";
-        });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
