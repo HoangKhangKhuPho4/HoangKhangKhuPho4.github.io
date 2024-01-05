@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Health Tracking</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      .header {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .container {
+        width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-container {
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+
+      input[type="number"],
+      input[type="text"],
+      input[type="time"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        padding: 14px 20px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      h2 {
+        color: #4caf50;
+      }
+
+      .result {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #e7ffe7;
+        border-left: 6px solid #4caf50;
+      }
+
+      select {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 40px;
+      }
+
+      .gender-group label {
+        margin-right: 10px;
+      }
+
+      .gender-group input[type="radio"] {
+        margin-right: 5px;
+      }
+
+      #backToTopBtn {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 10px;
+      }
+
+      #backToTopBtn:hover {
+        background-color: #0056b3;
+      }
+
+      #backToHomeBtn {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 10px;
+      }
+
+      #backToHomeBtn:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Health Tracking</h1>
+      <div id="google_translate_element"></div>
+    </div>
+    <div class="container">
+      <div class="form-container">
+        <h2>Food Diary</h2>
+        <form id="foodTracker">
+          <label for="foodSelection">Select Food:</label><br />
+          <select id="foodSelection" name="food" required>
+            <option value="">Select food...</option>
+            <option value="Apple">Apple</option>
+            <option value="Bread">Bread</option>
+            <option value="Grilled chicken">Grilled chicken</option>
+            <option value="Salmon">Salmon</option>
+            <option value="Quinoa">Quinoa</option>
+            <option value="Yogurt">Yogurt</option>
+            <option value="Broccoli">Broccoli</option>
+            <option value="Avocado">Avocado</option>
+            <option value="Almonds">Almonds</option>
+            <option value="Blueberries">Blueberries</option>
+            <option value="Bell pepper">Bell pepper</option>
+            <option value="Edamame">Edamame</option>
+            <option value="Oatmeal">Oatmeal</option>
+            <option value="covid19">COVID-19 patient</option>
+
+            <option value="Orange">Orange</option>
+            <option value="Lemon">Lemon</option>
+            <option value="Grapefruit">Grapefruit</option>
+            <option value="Kiwi">Kiwi</option>
+            <option value="Papaya">Papaya</option>
+            <option value="Tomato">Tomato</option>
+            <option value="Kale">Kale</option>
+            <option value="Broccoli">Broccoli</option></select
+          ><br />
+          <label for="calories">Calories:</label><br />
+          <input
+            type="number"
+            id="calories"
+            name="calories"
+            min="0"
+            readonly
+          /><br />
+          <input type="submit" value="Submit" />
+        </form>
+        <div id="foodResult" class="result"></div>
+      </div>
+      <div class="form-container">
+        <h2>Nutrition Calculator</h2>
+
+        <form id="nutritionCalculator">
+          <label for="height">Height:</label>
+          <select id="height" name="height" required>
+            <option value="">Select height...</option>
+            <option value="150">150 cm</option>
+            <option value="155">155 cm</option>
+            <option value="160">160 cm</option>
+            <option value="165">165 cm</option>
+            <option value="170">170 cm</option>
+            <option value="170">175 cm</option>
+            <option value="170">180 cm</option>
+            <option value="170">190 cm</option>
+            <option value="170">200 cm</option>
+            <option value="170">210 cm</option>
+            <option value="170">220 cm</option>
+          </select>
+
+          <label for="weight">Weight:</label>
+          <select id="weight" name="weight" required></select>
+
+          <div class="gender-group">
+            <label for="male">Male:</label>
+            <input type="radio" id="male" name="gender" value="male" required />
+
+            <label for="female">Female:</label>
+            <input
+              type="radio"
+              id="female"
+              name="gender"
+              value="female"
+              required
+            />
+          </div>
+          <br />
+
+          <label for="age">Age:</label><br />
+          <select id="age" name="age" required>
+            <option value="">Select age...</option>
+            <option value="18">18 years old</option>
+            <option value="19">19 years old</option>
+            <option value="20">20 years old</option>
+            <!-- Add other age options here --></select
+          ><br />
+
+          <label for="activityFactor">Activity Level:</label>
+          <select id="activityFactor" name="activityFactor" required>
+            <option value="">Select activity level...</option>
+            <option value="1.2">Sedentary (little or no exercise)</option>
+            <option value="1.375">
+              Lightly active (light exercise 1-3 days/week)
+            </option>
+            <option value="1.55">
+              Moderately active (moderate exercise 3-5 days/week)
+            </option>
+            <option value="1.725">
+              Very active (hard exercise 6-7 days/week)
+            </option>
+            <option value="1.9">
+              Extra active (very hard exercise every day)
+            </option></select
+          ><br />
+          <label for="dailyCalorieGoal">Calories Needed Per Day:</label><br />
+          <input
+            type="number"
+            id="dailyCalorieGoal"
+            name="dailyCalorieGoal"
+            readonly
+          /><br />
+
+          <input type="submit" value="Calculate Calories" />
+        </form>
+      </div>
+      <div class="form-container">
+        <h2>Sleep Tracker</h2>
+        <form id="sleepTracker">
+          <label for="bedtime">Bedtime:</label><br />
+          <input type="time" id="bedtime" name="bedtime" required /><br />
+
+          <label for="waketime">Wake time:</label><br />
+          <input type="time" id="waketime" name="waketime" required /><br />
+
+          <input type="submit" value="Submit" />
+        </form>
+        <div id="sleepResult" class="result"></div>
+      </div>
+    </div>
+
+    <button id="backToTopBtn" title="Go to top">⬆️</button>
+
+    <div class="container">
+      <h2>Nutrition Tips for COVID-19 Patients</h2>
+      <div id="covid-tips">
+        <p>
+          - Avoid spicy foods that may irritate the respiratory tract.<br />
+          - Limit carbonated drinks and sugary drinks which increase risk of
+          inflammation.<br />
+          - Do not eat raw meats, cook food thoroughly.<br />
+          - Increase vitamin C intake with fresh fruits and vegetables.<br />
+          - Drink plenty of fluids, around 2 liters/day.<br />
+          - Eat smaller, frequent meals throughout the day to ensure adequate
+          nutrition.<br />
+          - For energy intake, the recommended daily calories depends on body
+          weight, age, gender. Generally around 2000-2500 calories/day for
+          adults.
+        </p>
+      </div>
+    </div>
+
+    <button id="backToHomeBtn" title="Go to home">🏠 Home</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <script>
+      document.getElementById("foodTracker").onsubmit = function (e) {
+        e.preventDefault();
+        var food = document.getElementById("food").value;
+        var calories = document.getElementById("calories").value;
+        document.getElementById("foodResult").innerHTML =
+          "You ate " + food + " with " + calories + " calories.";
+      };
+
+      document.getElementById("sleepTracker").onsubmit = function (e) {
+        e.preventDefault();
+        var bedtime = document.getElementById("bedtime").value;
+        var waketime = document.getElementById("waketime").value;
+
+        // Calculate sleep duration
+        var sleepDuration = calculateSleepDuration(bedtime, waketime);
+
+        document.getElementById("sleepResult").innerHTML =
+          "You slept a total of " + sleepDuration + " hours.";
+      };
+
+      function calculateSleepDuration(bedtime, waketime) {
+        var bedtimeMoment = moment(bedtime, "HH:mm");
+        var waketimeMoment = moment(waketime, "HH:mm");
+
+        // If wake time is earlier than bed time, assume wake time is next day
+        if (waketimeMoment.isBefore(bedtimeMoment)) {
+          waketimeMoment.add(1, "days");
+        }
+
+        var duration = moment.duration(waketimeMoment.diff(bedtimeMoment));
+        return duration.asHours().toFixed(2);
+      }
+
+      document
+        .getElementById("foodSelection")
+        .addEventListener("change", function () {
+          var foodCalories = {
+            Apple: 52,
+            Bread: 265,
+            "Grilled chicken": 239,
+            Salmon: 206,
+            Quinoa: 120,
+            Yogurt: 59,
+            Broccoli: 23,
+            Avocado: 160,
+            Almonds: 654,
+            Blueberries: 57,
+            "Bell pepper": 20,
+            Edamame: 81,
+            Oatmeal: 389,
+            Orange: 41,
+            Lemon: 30,
+            Grapefruit: 43,
+            Kiwi: 61,
+            Papaya: 43,
+            Tomato: 18,
+            Kale: 25,
+            Broccoli: 27,
+          };
+
+          var selectedFood = this.value;
+          var caloriesInput = document.getElementById("calories");
+          caloriesInput.value = foodCalories[selectedFood] || 0;
+        });
+
+      // Old code for foodTracker form
+
+      document.getElementById("nutritionCalculator").onsubmit = function (e) {
+        e.preventDefault();
+
+        var height = parseFloat(document.getElementById("height").value);
+        var weight = parseFloat(document.getElementById("weight").value);
+        var age = parseInt(document.getElementById("age").value);
+        var activityFactor = parseFloat(
+          document.getElementById("activityFactor").value
+        );
+        var gender = document.querySelector(
+          'input[name="gender"]:checked'
+        ).value;
+
+        var calories = calculateCalories(
+          height,
+          weight,
+          age,
+          gender,
+          activityFactor
+        );
+
+        document.getElementById("dailyCalorieGoal").value = calories;
+
+        // Display message or update result on page
+        Swal.fire({
+          title: "Daily Calorie Intake",
+          text: `You need around ${calories.toFixed(
+            2
+          )} calories per day to maintain your health.`,
+          icon: "info",
+          confirmButtonText: "Got it",
+        });
+      };
+
+      function calculateCalories(height, weight, age, gender, activityFactor) {
+        var BMR;
+        if (gender === "male") {
+          BMR = 88.362 + 13.397 * weight + 4.799 * height - 5.677 * age;
+        } else {
+          BMR = 447.593 + 9.247 * weight + 3.098 * height - 4.33 * age;
+        }
+        return BMR * activityFactor;
+      }
+
+      function checkFoodSafety(food) {
+        const unsafeFoods = ["Bread", "Grilled chicken", "covid19"]; // List of unsafe foods
+        if (unsafeFoods.includes(food)) {
+          Swal.fire({
+            title: "Warning!",
+            text: "This food is not recommended for COVID-19 patients.",
+            icon: "warning",
+            confirmButtonText: "Got it",
+          });
+        }
+      }
+      document
+        .getElementById("foodSelection")
+        .addEventListener("change", function () {
+          var selectedFood = this.value;
+          checkFoodSafety(selectedFood);
+        });
+      document.getElementById("foodTracker").onsubmit = function (e) {
+        e.preventDefault();
+        var food = document.getElementById("foodSelection").value;
+        checkFoodSafety(food);
+        // Other handling if needed
+      };
+
+      function addWeightOptions() {
+        var select = document.getElementById("weight");
+        for (var i = 20; i <= 500; i += 5) {
+          // Increment by 5kg
+          var option = document.createElement("option");
+          option.value = i;
+          option.text = i + " kg";
+          select.appendChild(option);
+        }
+      }
+      window.onload = addWeightOptions;
+
+      function addHeightOptions() {
+        var select = document.getElementById("height");
+        for (var i = 50; i <= 300; i += 5) {
+          // Increment by 5cm
+          var option = document.createElement("option");
+          option.value = i;
+          option.text = i + " cm";
+          select.appendChild(option);
+        }
+      }
+      function addAgeOptions() {
+        var select = document.getElementById("age");
+
+        for (var i = 1; i <= 200; i++) {
+          var option = document.createElement("option");
+          option.value = i;
+          option.text = i + " years old";
+          select.appendChild(option);
+        }
+      }
+
+      window.onload = function () {
+        addWeightOptions();
+        addHeightOptions();
+        addAgeOptions();
+      };
+
+      document.getElementById("sleepTracker").onsubmit = function (e) {
+        e.preventDefault();
+        var bedtime = document.getElementById("bedtime").value;
+        var waketime = document.getElementById("waketime").value;
+
+        // Calculate sleep duration
+        var sleepDuration = calculateSleepDuration(bedtime, waketime);
+
+        // Check if sleep time is valid
+        if (!isSleepTimeValid(bedtime, waketime)) {
+          Swal.fire({
+            title: "Invalid Sleep Time!",
+            text: "You should sleep before 11pm and wake up before 7am to boost immunity.",
+            icon: "warning",
+            confirmButtonText: "Got it",
+          });
+        } else {
+          document.getElementById("sleepResult").innerHTML =
+            "You slept a total of " + sleepDuration + " hours.";
+        }
+      };
+
+      function isSleepTimeValid(bedtime, waketime) {
+        var bedtimeMoment = moment(bedtime, "HH:mm");
+        var waketimeMoment = moment(waketime, "HH:mm");
+        var latestBedtime = moment("23:00", "HH:mm"); // 11pm
+        var earliestWaketime = moment("07:00", "HH:mm"); // 7am
+
+        return (
+          bedtimeMoment.isBefore(latestBedtime) &&
+          waketimeMoment.isBefore(earliestWaketime)
+        );
+      }
+
+      document.getElementById("nutritionCalculator").onsubmit = function (e) {
+        e.preventDefault();
+
+        var height = parseFloat(document.getElementById("height").value);
+        var weight = parseFloat(document.getElementById("weight").value);
+        var age = parseInt(document.getElementById("age").value);
+        var activityFactor = parseFloat(
+          document.getElementById("activityFactor").value
+        );
+        var gender = document.querySelector(
+          'input[name="gender"]:checked'
+        ).value;
+
+        var calories = calculateCalories(
+          height,
+          weight,
+          age,
+          gender,
+          activityFactor
+        );
+
+        document.getElementById("dailyCalorieGoal").value = calories;
+
+        Swal.fire({
+          title: "Daily Calorie Intake",
+          text: `You need around ${calories.toFixed(
+            2
+          )} calories per day to maintain your health.`,
+          icon: "info",
+          confirmButtonText: "Got it",
+        });
+      };
+
+      function calculateCalories(height, weight, age, gender, activityFactor) {
+        var BMR;
+
+        if (gender === "male") {
+          BMR = 88.362 + 13.397 * weight + 4.799 * height - 5.677 * age;
+        } else {
+          BMR = 447.593 + 9.247 * weight + 3.098 * height - 4.33 * age;
+        }
+
+        return BMR * activityFactor;
+      }
+
+      document
+        .getElementById("backToTopBtn")
+        .addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+      var backToTopBtn = document.getElementById("backToTopBtn");
+
+      window.onscroll = function () {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          backToTopBtn.style.display = "block";
+        } else {
+          backToTopBtn.style.display = "none";
+        }
+      };
+    </script>
+
+    <script>
+      window.addEventListener("mouseover", initLandbot, { once: true });
+      window.addEventListener("touchstart", initLandbot, { once: true });
+      var myLandbot;
+      function initLandbot() {
+        if (!myLandbot) {
+          var s = document.createElement("script");
+          s.type = "text/javascript";
+          s.async = true;
+          s.addEventListener("load", function () {
+            var myLandbot = new Landbot.Livechat({
+              configUrl:
+                "https://storage.googleapis.com/landbot.online/v3/H-2081098-LPSLXL0SRMSE54R2/index.json",
+            });
+          });
+          s.src = "https://cdn.landbot.io/landbot-3/landbot-3.0.0.js";
+          var x = document.getElementsByTagName("script")[0];
+          x.parentNode.insertBefore(s, x);
+        }
+      }
+
+      document
+        .getElementById("backToHomeBtn")
+        .addEventListener("click", function () {
+          window.location.href = "lab8.html";
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "google_translate_element"
+        );
+      }
+    </script>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
+  </body>
+</html>

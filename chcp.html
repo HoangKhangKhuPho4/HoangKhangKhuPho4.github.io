@@ -1,0 +1,373 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Covid-19 Health Care Portal</title>
+    <!-- CSS Files -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/templatemo-style.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <style>
+      body {
+        font-family: "Open Sans", sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        line-height: 1.6;
+      }
+      h2 {
+        color: #0056b3;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .form-control {
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 10px;
+      }
+      @media (max-width: 768px) {
+        .form-control {
+          margin-bottom: 10px;
+        }
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        margin: auto;
+      }
+      label {
+        font-weight: bold;
+        color: #0056b3;
+        margin-bottom: 5px;
+      }
+      .form-control {
+        margin-bottom: 20px;
+      }
+      .form-control:hover {
+        border: 1px solid #007bff;
+      }
+      header {
+        background-color: #007bff;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 28px;
+      }
+      #backToTopBtn {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 10px;
+      }
+      #backToTopBtn:hover {
+        background-color: #0056b3;
+      }
+      .back-to-home {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+      .back-to-home:hover {
+        background-color: #0062cc;
+      }
+      .back-to-home {
+        /* old properties */
+        transition: all 0.3s;
+      }
+      .back-to-home:hover {
+        background-color: #fff;
+        color: #007bff;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+      }
+      a {
+        text-decoration: none;
+      }
+      .back-to-home {
+        text-decoration: none;
+      }
+      .back-to-home {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s;
+      }
+      .back-to-home:hover {
+        text-decoration: none;
+      }
+
+      #google_translate_element {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        background-color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      #google_translate_element:hover {
+        background-color: #f8f9fa;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="lab8.html" class="back-to-home">Back To Home</a>
+
+    <div
+      id="google_translate_element"
+      style="text-align: center; margin-top: 20px"
+    ></div>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "google_translate_element"
+        );
+      }
+    </script>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
+
+    <button id="backToTopBtn" title="Go to top">⬆️</button>
+
+    <div class="container mt-5">
+      <h2 class="text-center mb-4">Covid-19 Health Assessment Form</h2>
+      <form
+        id="covid-form"
+        action="mailto:22130116@st.hcmuaf.edu.vn"
+        method="POST"
+        enctype="text/plain"
+      >
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" class="form-control" id="dob" required />
+        </div>
+        <div class="form-group">
+          <label for="age">Age</label>
+          <select class="form-control" id="age"></select>
+        </div>
+        <div class="form-group">
+          <label for="medicalHistory">Medical History</label>
+          <select class="form-control" id="medicalHistory">
+            <option value="None" selected>None</option>
+            <option value="Diabetes">Diabetes</option>
+            <option value="HeartDisease">Heart Disease</option>
+            <option value="Hypertension">Hypertension</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="currentSymptoms">Current Symptoms</label>
+          <select class="form-control" id="currentSymptoms">
+            <option value="None" selected>No Symptoms</option>
+            <option value="Fever">Fever</option>
+            <option value="Cough">Cough</option>
+            <option value="Breathlessness">Breathlessness</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="severity">Severity</label>
+          <select class="form-control" id="severity">
+            <option value="Mild" selected>Mild</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Severe">Severe</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="symptomOnset">Symptom Onset</label>
+          <input type="date" class="form-control" id="symptomOnset" />
+        </div>
+        <div class="form-group">
+          <label for="closeContact">Close Contact</label>
+          <select class="form-control" id="closeContact">
+            <option value="No" selected>No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="testInfo">Test Information</label>
+          <select class="form-control" id="testInfo">
+            <option value="PCR">PCR Test (Polymerase Chain Reaction)</option>
+            <option value="RapidAntigen">Rapid Antigen Test</option>
+            <option value="AntibodyTest">Antibody Test</option>
+            <option value="Cytology">Cytology Test</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="vaccinationHistory">Vaccination History</label>
+          <input
+            type="date"
+            class="form-control"
+            id="vaccinationHistory"
+            placeholder="Select vaccination date"
+          />
+        </div>
+        <div class="form-group">
+          <label for="language">Language</label>
+          <select class="form-control" id="language">
+            <option value="English" selected>English</option>
+            <option value="Other">Other Language</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="unitSystem">Unit System</label>
+          <select class="form-control" id="unitSystem">
+            <option value="Metric" selected>
+              Metric (Meters and Kilograms)
+            </option>
+            <option value="Imperial">Imperial (Feet and Pounds)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="timeZone">Time Zone</label>
+          <select class="form-control" id="timeZone">
+            <option value="UTC-12">UTC-12:00</option>
+            <option value="UTC-11">UTC-11:00</option>
+            <option value="UTC-10">UTC-10:00</option>
+            <option value="UTC-9">UTC-9:00</option>
+            <option value="UTC-8">UTC-8:00</option>
+            <option value="UTC-7">UTC-7:00</option>
+            <option value="UTC-6">UTC-6:00</option>
+            <option value="UTC-5">UTC-5:00</option>
+            <option value="UTC-4">UTC-4:00</option>
+            <option value="UTC-3">UTC-3:00</option>
+            <option value="UTC-2">UTC-2:00</option>
+            <option value="UTC-1">UTC-1:00</option>
+            <option value="UTC+0" selected>UTC+0:00</option>
+            <option value="UTC+1">UTC+1:00</option>
+            <option value="UTC+2">UTC+2:00</option>
+            <option value="UTC+3">UTC+3:00</option>
+            <option value="UTC+4">UTC+4:00</option>
+            <option value="UTC+5">UTC+5:00</option>
+            <option value="UTC+6">UTC+6:00</option>
+            <option value="UTC+7">UTC+7:00</option>
+            <option value="UTC+8">UTC+8:00</option>
+            <option value="UTC+9">UTC+9:00</option>
+            <option value="UTC+10">UTC+10:00</option>
+            <option value="UTC+11">UTC+11:00</option>
+            <option value="UTC+12">UTC+12:00</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <!-- JavaScript Files -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+      const ageSelect = document.getElementById("age");
+      for (let i = 1; i <= 150; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.text = i + " years old";
+        ageSelect.appendChild(option);
+      }
+
+      const covidForm = document.getElementById("covid-form");
+      covidForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const email = "22130116@st.hcmuaf.edu.vn";
+        const subject = "Covid-19 Health Assessment Form Submission";
+        const body = `Name: ${document.getElementById("name").value} 
+        Date of Birth: ${document.getElementById("dob").value} 
+        Age: ${document.getElementById("age").value} 
+        Medical History: ${document.getElementById("medicalHistory").value} 
+        Current Symptoms: ${document.getElementById("currentSymptoms").value} 
+        Severity: ${document.getElementById("severity").value} 
+        Symptom Onset: ${document.getElementById("symptomOnset").value} 
+        Close Contact: ${document.getElementById("closeContact").value} 
+        Test Information: ${document.getElementById("testInfo").value} 
+        Vaccination History: ${
+          document.getElementById("vaccinationHistory").value
+        } 
+        Language: ${document.getElementById("language").value} 
+        Unit System: ${document.getElementById("unitSystem").value} 
+        Time Zone: ${document.getElementById("timeZone").value}`;
+
+        window.location.href = `mailto:${email}?subject=${encodeURIComponent(
+          subject
+        )}&body=${encodeURIComponent(body)}`;
+      });
+
+      const backToTopBtn = document.getElementById("backToTopBtn");
+      window.onscroll = function () {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          backToTopBtn.style.display = "block";
+        } else {
+          backToTopBtn.style.display = "none";
+        }
+      };
+
+      backToTopBtn.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+    <script>
+      window.addEventListener("mouseover", initLandbot, { once: true });
+      window.addEventListener("touchstart", initLandbot, { once: true });
+      var myLandbot;
+      function initLandbot() {
+        if (!myLandbot) {
+          var s = document.createElement("script");
+          s.type = "text/javascript";
+          s.async = true;
+          s.addEventListener("load", function () {
+            var myLandbot = new Landbot.Livechat({
+              configUrl:
+                "https://storage.googleapis.com/landbot.online/v3/H-2081098-LPSLXL0SRMSE54R2/index.json",
+            });
+          });
+          s.src = "https://cdn.landbot.io/landbot-3/landbot-3.0.0.js";
+          var x = document.getElementsByTagName("script")[0];
+          x.parentNode.insertBefore(s, x);
+        }
+      }
+    </script>
+  </body>
+</html>

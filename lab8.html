@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Medic Care Bootstrap 5 CSS Template</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/owl.carousel.min.css" rel="stylesheet">
+
+        <link href="css/owl.theme.default.min.css" rel="stylesheet">
+
+        <link href="css/templatemo-medic-care.css" rel="stylesheet">
+
+        <style>
+              #backToTopBtn {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 10px;
+      }
+
+      #backToTopBtn:hover {
+        background-color: #0056b3;
+      }
+
+      .nav-item #google_translate_element {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Đảm bảo rằng widget không làm vỡ layout của thanh điều hướng */
+.navbar-nav {
+    align-items: center;
+}
+#google_translate_element {
+    margin-left: 10px; 
+    font-size: 0.9em; 
+}
+@media (max-width: 768px) {
+    #google_translate_element {
+        margin-left: 0;
+        font-size: 0.8em; 
+    }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fadeIn {
+    animation: fadeIn 2s ease-in-out;
+}
+@keyframes slideIn {
+    from { transform: translateX(-100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.slideIn {
+    animation: slideIn 1s ease-out;
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* CSS cho hiệu ứng hover trên tất cả liên kết trong navbar, loại trừ Google Dịch */
+.navbar-nav li a:not(#google_translate_element a) {
+    transition: color 0.3s, background-color 0.3s;
+    color: #000; 
+    background-color: transparent; 
+    padding: 10px 15px; 
+}
+
+/* CSS cho hiệu ứng hover, loại trừ Google Dịch */
+.navbar-nav li a:not(#google_translate_element a):hover {
+    color: #fff; 
+    background-color: #007bff; 
+    border-radius: 5px; 
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;  
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+}
+
+.search-button {
+  padding: 8px 12px; 
+  border: 1px solid #007bff;
+  background: #007bff;
+  color: #fff;
+  border-radius: 0 4px 4px 0;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+
+  
+  justify-content: flex-end;
+ 
+}
+
+@media (max-width: 991px) {
+  .search-container {
+    justify-content: center; 
+    
+  }
+}
+
+#google_translate_element {
+  float: right;
+  padding-right: 20px; 
+}
+
+.search-container {
+  float: left;
+  padding-left: 20px;
+}
+   
+.search-container {
+    position: relative;
+    
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    z-index: 1000;
+    display: none; 
+}
+
+.suggestions.active {
+    display: block; 
+}
+
+.suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+.suggestions div:hover {
+    background-color: #eee;
+}
+#learnMoreButton {
+    color: #007bff; 
+    font-weight: bold; 
+    text-decoration: none;
+    transition: color 0.3s ease; 
+}
+
+#learnMoreButton:hover {
+    color: #0056b3; 
+    text-decoration: underline; 
+    cursor: pointer; 
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+#learnMoreButton {
+    animation: pulse 2s infinite; 
+}
+#learnMoreButton {
+    background-color: #f8f9fa; 
+    border: 2px solid #007bff; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: all 0.3s ease; 
+}
+
+#learnMoreButton:hover {
+    background-color: #e9ecef; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+        </style>
+
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    }
+
+    
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    </head>
+    
+
+  
+  
+
+    <body id="top">
+    
+        <main>
+
+            <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
+                <div class="container">
+                    <a class="navbar-brand mx-auto d-lg-none" href="lab8.html">
+                        Medic Care
+                        <strong class="d-block">Health Specialist</strong>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#timeline">Timeline</a>
+                            </li>
+
+                          
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#reviews">Testimonials</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#booking">Booking</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact">Contact</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="tdsk.html">Health Tracking</a>
+                                    
+                                    <div class="dropdown-menu">
+                                      <a class="dropdown-item" href="chcp.html">Covid-19 Health Assessment Form</a>
+                                    </div>
+                                  </li>                            </li>
+                                  <li class="nav-item">
+                                    <div id="google_translate_element"></div> 
+                                  </li>
+
+                            
+
+                              <li class="nav-item">
+                                <div class="search-container">
+                                    <input
+                                      type="text"
+                                      placeholder="Search..."
+                                      name="search"
+                                      class="search-input"
+                                    />
+                                    <button type="submit" class="search-button">Search</button>
+                                    <div class="suggestions"></div>
+                                </div>
+                              </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+               
+            <button id="backToTopBtn" title="Go to top">⬆️</button>
+           
+            <section class="hero" id="hero">
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="images/slider/portrait-successful-mid-adult-doctor-with-crossed-arms.jpg" class="img-fluid" alt="">
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <img src="images/slider/young-asian-female-dentist-white-coat-posing-clinic-equipment.jpg" class="img-fluid" alt="">
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <img src="images/slider/doctor-s-hand-holding-stethoscope-closeup.jpg" class="img-fluid" alt="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="heroText d-flex flex-column justify-content-center">
+
+                                <h1 class="mt-auto mb-2">
+                                    Better
+                                    <div class="animated-info">
+                                        <span class="animated-item">health</span>
+                                        <span class="animated-item">days</span>
+                                        <span class="animated-item">lives</span>
+                                    </div>
+                                </h1>
+
+                                <p class="mb-4">Welcome to the COVID-19 Health Care Portal. We extend a gracious welcome to our esteemed visitors, dedicated to providing a haven of comprehensive healthcare information and services in the relentless battle against the formidable COVID-19 pandemic.</p>
+
+                                <div class="heroLinks d-flex flex-wrap align-items-center">
+                                    <a href="#" id="learnMoreButton">Learn More</a>
+
+                                    <p class="contact-phone mb-0"><i class="bi-phone"></i>0567649206</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            
+
+            <section class="section-padding" id="about">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <h2 class="mb-lg-3 mb-3">Introducing Dr. Carson</h2>
+                        
+                            <p>Protect yourself and others by diligently adhering to safety measures: wear masks, practice frequent handwashing, and choose outdoor settings over indoor ones for gatherings and events. Those who contract the Coronavirus disease (COVID-19) typically experience mild to moderate symptoms and can recover without the need for special treatments.</p>
+                        
+                            <p>If you are seeking information and support for COVID-19 patients, you've come to the right place. Our mission is to provide comprehensive resources and assistance for individuals affected by the COVID-19 virus. We are here to offer guidance, information, and care during these challenging times.</p>
+
+                        </div>
+                        
+
+                        <div class="col-lg-4 col-md-5 col-12 mx-auto">
+                            <div class="featured-circle bg-white shadow-lg d-flex justify-content-center align-items-center">
+                                <p class="featured-text"><span class="featured-number">12</span> Years<br> of Experiences</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="gallery">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-6 ps-0">
+                            <img src="images/gallery/medium-shot-man-getting-vaccine.jpg" class="img-fluid galleryImage" alt="get a vaccine" title="get a vaccine for yourself">
+                        </div>
+
+                        <div class="col-lg-6 col-6 pe-0">
+                            <img src="images/gallery/female-doctor-with-presenting-hand-gesture.jpg" class="img-fluid galleryImage" alt="wear a mask" title="wear a mask to protect yourself">
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding pb-0" id="timeline">
+                <div class="container">
+                    <div class="row">
+
+                        <h2 class="text-center mb-lg-5 mb-4">Our Timeline</h2>
+                        
+                        <div class="timeline">
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">Get the vaccine</h3>
+
+                                    <p>"Vaccination is one of the most important public health measures to prevent epidemics. Vaccines help the body produce antibodies against disease-causing viruses and bacteria. Widespread vaccination will help achieve community immunity, preventing outbreaks and spread of epidemics. Everyone should be fully vaccinated according to the recommended schedule to protect their own health and the community’s health. Parents need to ensure their children are vaccinated on schedule to prevent illnesses. Get vaccinated to protect yourself and those around you!"</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-patch-check-fill timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>2021-07-31 Saturday</time>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
+                                <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">Consulting your health</h3>
+
+                                  <p>Health care is extremely important. To maintain good health, you should have regular health checkups, exercise, eat healthy, manage stress, and get enough sleep. If you have any health issues, you should see a doctor or healthcare professional for advice. They will evaluate your symptoms, examine you, and accurately diagnose your health condition. After that, you will receive recommendations on treatments, medications or proper health care. Always follow the doctor's instructions to quickly recover your health.</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-book timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 pe-md-3 pe-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>2021-07-15 Thursday</time>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">Certified Nurses</h3>
+
+                                    <p>Certified Nurses are nurses who have passed the certification exam administered by the National Nursing Council to evaluate their professional knowledge and clinical experience. Having a certification affirms the nurse's expertise in a specific specialty such as neonatology, critical care, surgery, etc. This serves as evidence that they have attained a high level of professional competence and are committed to delivering quality healthcare services. Certified nurses tend to garner more trust and respect.</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-file-medical timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>2021-06-28 Monday</time>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
+                                <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">Covid-19 Hospitals</h3>
+
+                                    
+                                    <p>During the Covid-19 pandemic, hospitals play a crucial role in treating patients infected with the novel coronavirus. Temporary hospitals dedicated to Covid-19 patients were constructed to prevent the spread of the epidemic. These hospitals are fully equipped with infrastructure and medical staff to treat a large number of patients. The team of doctors, nurses here must strictly comply with personal protective regulations to ensure safety. The effective operation of Covid-19 hospitals helps minimize mortality and control the epidemic.</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-globe timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 pe-md-3 pe-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>2021-05-30 Sunday</time>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">Freelance Nursing</h3>
+
+                                    <p>If you need a working contact form that submits email to your inbox, please <a rel="nofollow" href="https://templatemo.com/contact" target="_parent">visit our contact page</a> for more information.</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-person timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>2021-05-18 Tuesday</time>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding pb-0" id="reviews">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 id="ourPatients" class="text-center mb-lg-5 mb-4">Our Patients</h2>
+                            <div class="owl-carousel reviews-carousel">
+                                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                    <div class="reviews-stars">
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star"></i>
+                                    </div>
+                                    <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Compassionate Care During the Pandemic
+
+                                    </strong></p>
+                                    <p class="reviews-text w-100">"Having gone through a tough journey with COVID-19, I can't help but express my deep gratitude to the medical team of this website. Their attentive, timely, and thoughtful care helped me overcome the critical phase and recover quickly. I appreciate the up-to-date and useful information provided about the pandemic, which gave me and my family more peace of mind during these challenging times."</p>
+                                    <img src="images/reviews/beautiful-woman-face-portrait-brown-background.jpeg" class="img-fluid reviews-image" alt="">
+                                    <figcaption class="ms-4">
+                                        <strong>Marie</strong>
+                                        <span class="text-muted">Patient</span>
+                                    </figcaption>
+                                </figure>
+            
+                                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                    <div class="reviews-stars">
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star"></i>
+                                    </div>
+                                    <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Reliable Health Advice
+
+                                    </strong></p>
+                                    <p class="reviews-text w-100">"This website has become an indispensable source of information during the pandemic. The advice on prevention and treatment of COVID-19 is both scientific and understandable. I value the continuous and accurate updates on the pandemic situation, as well as the preventive measures."</p>
+                                    <img src="images/reviews/senior-man-wearing-white-face-mask-covid-19-campaign-with-design-space.jpeg" class="img-fluid reviews-image" alt="">
+                                    <figcaption class="ms-4">
+                                        <strong>Ben Walker</strong>
+                                        <span class="text-muted">Recovered</span>
+                                    </figcaption>
+                                </figure>
+            
+                                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                    <div class="reviews-stars">
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                    </div>
+                                    <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Psychological Support During the Outbreak
+
+                                    </strong></p>
+                                    <p class="reviews-text w-100">"Not only focusing on physical care, the team at this website also cared about our mental state. During isolation and treatment, the psychological support helped me maintain a positive spirit and optimism. Thank you for being a beacon of hope in these difficult times of the pandemic."</p>
+                                    <img src="images/reviews/portrait-british-woman.jpeg" class="img-fluid reviews-image" alt="">
+                                    <figcaption class="ms-4">
+                                        <strong>Laura Zono</strong>
+                                        <span class="text-muted">New Patient</span>
+                                    </figcaption>
+                                </figure>
+            
+                                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                    <div class="reviews-stars">
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star"></i>
+                                        <i class="bi-star"></i>
+                                    </div>
+                                    <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Dedicated Post-Recovery Health Monitoring
+
+                                    </strong></p>
+                                    <p class="reviews-text w-100">"After recovery, I continued to receive attention from this website. They monitored my health and provided useful advice for maintaining good health post-COVID-19. This level of care has been truly meaningful to me."
+                                    </p>
+                                    <img src="images/reviews/woman-wearing-mask-face-closeup-covid-19-green-background.jpeg" class="img-fluid reviews-image" alt="">
+                                    <figcaption class="ms-4">
+                                        <strong>Rosey</strong>
+                                        <span class="text-muted">Almost Recovered</span>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+
+            <section class="section-padding" id="booking">
+                <div class="container">
+                    <div class="row">
+                    
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="booking-form">
+                                
+                                <h2 class="text-center mb-lg-3 mb-2">Book an appointment</h2>
+                            
+                                <form id="booking-form" role="form" action="javascript:void(0);" method="post">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-12">
+                                            <input type="text" name="name" id="name" class="form-control" placeholder="Full name" required>
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required>
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <input type="tel" name="phone" id="phone" pattern="[0-9]{10}" class="form-control" placeholder="Số điện thoại: 0123456789" title="Định dạng số điện thoại gồm 10 chữ số">
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <input type="date" name="date" id="date" value="" class="form-control">
+                                            
+                                        </div>
+
+                                        <div class="col-12">
+                                            <textarea class="form-control" rows="5" id="message" name="message" placeholder="Additional Message"></textarea>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-4 col-6 mx-auto">
+                                            <button type="submit" class="form-control" id="submit-button">Book Now</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer section-padding" id="contact">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-5 me-auto col-12">
+                        <h5 class="mb-lg-4 mb-3">Opening Hours</h5>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex">
+                                Sunday : Closed
+                            </li>
+
+                            <li class="list-group-item d-flex">
+                                Monday, Tuesday - Firday
+                                <span>8:00 AM - 3:30 PM</span>
+                            </li>
+
+                            <li class="list-group-item d-flex">
+                                Saturday
+                                <span>10:30 AM - 5:30 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 col-12 my-4 my-lg-0">
+                        <h5 class="mb-lg-4 mb-3">Our Clinic</h5>
+
+                        <p><a href="mailto:22130116@st.hcmuaf.edu.vn">22130116@st.hcmuaf.edu.vn</a><p>
+
+                        <p>Neighborhood 4, Phuoc Dan Town, Ninh Phuoc district, Ninh Thuan province
+
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12 ms-auto">
+                        <h5 class="mb-lg-4 mb-3">Socials</h5>
+
+                        <ul class="social-icon">
+                            <li><a href="https://www.facebook.com/profile.php?id=100088292157574" class="social-icon-link bi-facebook"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-twitter"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-instagram"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-youtube"></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-12 ms-auto mt-4 mt-lg-0">
+                        <p class="copyright-text">© Copyright 2023 by Hoang Khang. All Rights Reserved
+                            22130116@st.hcmuaf.edu.vn
+                        <br><br>Design: <a href="https://www.facebook.com/profile.php?id=100088292157574" target="_parent">Nguyễn Lê Hoàng Khang</a></p>
+                    </div>
+
+                </div>
+            </section>
+
+
+        </footer>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/scrollspy.min.js"></script>
+        <script src="js/custom.js"></script>
+          
+
+        <script>
+            document.getElementById('booking-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+            
+                var name = encodeURIComponent(document.getElementById('name').value);
+                var email = encodeURIComponent(document.getElementById('email').value);
+                var phone = encodeURIComponent(document.getElementById('phone').value);
+                var date = encodeURIComponent(document.getElementById('date').value);
+                var message = encodeURIComponent(document.getElementById('message').value);
+            
+                var mailto_link = 'mailto:22130116@st.hcmuaf.edu.vn?subject=Booking%20Appointment&body=' + 
+                    'Name: ' + name + '%0A' +
+                    'Email: ' + email + '%0A' +
+                    'Phone: ' + phone + '%0A' +
+                    'Date: ' + date + '%0A' +
+                    'Message: ' + message;
+            
+                window.location.href = mailto_link;
+            });
+
+            document.getElementById('backToTopBtn').addEventListener('click', function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
+    var backToTopBtn = document.getElementById('backToTopBtn');
+
+window.onscroll = function() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+};
+
+function revealOnScroll() {
+    var elements = document.querySelectorAll('.reveal');
+    for (var i = 0; i < elements.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = elements[i].getBoundingClientRect().top;
+        var elementVisible = 100; // khoảng cách từ đỉnh trang
+
+        if (elementTop < windowHeight - elementVisible) {
+            elements[i].classList.add('active');
+        } else {
+            elements[i].classList.remove('active');
+        }
+    }
+}
+
+window.addEventListener('scroll', revealOnScroll);
+
+document.addEventListener('DOMContentLoaded', function () {
+
+// Event listener cho form ehrForm
+document.getElementById('ehrForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Lấy giá trị từ các trường nhập liệu
+    var patientName = document.getElementById('patientName').value;
+    var patientAge = document.getElementById('patientAge').value;
+    var medicalHistory = document.getElementById('medicalHistory').value;
+
+    // Xử lý dữ liệu (ví dụ: lưu vào database, hiển thị thông báo, vv)
+    console.log('Patient Name:', patientName);
+    console.log('Patient Age:', patientAge);
+    console.log('Medical History:', medicalHistory);
+
+   
+    alert('Dữ liệu đã được lưu!');
+
+    // Đóng modal
+    $('#ehrModal').modal('hide');
+});
+
+document.querySelector('#ehrModal .btn-primary').addEventListener('click', function() {
+    document.getElementById('ehrForm').dispatchEvent(new Event('submit', { cancelable: true }));
+});
+
+
+});
+ 
+window.scrollTo({
+  top: bookingPosition,
+  behavior: "smooth", 
+  duration: 500 
+});
+    
+            </script>
+
+    <script>
+        document.getElementById('learnMoreButton').addEventListener('click', function() {
+            unveilStepOne();
+        });
+        
+        function unveilStepOne() {
+            Swal.fire({
+                title: 'A Comprehensive Guide to Health Monitoring',
+                html: 'Step 1: Embark on a journey to monitor your health, understand illness, and gain insights into essential supplements for COVID-19 patients. Discover the essence of healthy living and receive sage advice from esteemed doctors. Immerse yourself in a world of knowledge by entering your inquiries in the search bar.',
+                imageUrl: 'images/gallery/step1', 
+                imageWidth: 400, 
+                imageHeight: 200, 
+                imageAlt: 'A descriptive depiction', 
+                confirmButtonText: 'Conclude'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.querySelector('.search-input').focus();
+                    document.querySelector('.search-input').scrollIntoView({ behavior: 'smooth' });
+                    transitionToStepTwo();
+                }
+            });
+        }
+        
+        function transitionToStepTwo() {
+            setTimeout(() => {
+                Swal.fire({
+                    title: 'Step 2: Discover Patient Testimonials',
+                    html: 'Journey through the heartfelt feedback from our patients, whose lives have been transformed by our healthcare programs. Explore the "Our Patients" section to witness the symphony of positive experiences.',
+                    imageUrl: 'images/step2', 
+                    imageWidth: 400,
+                    imageHeight: 200,
+                    imageAlt: 'A narrative in imagery',
+                    confirmButtonText: 'Venture to "Our Patients"'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('ourPatients').scrollIntoView({ behavior: 'smooth' });
+                        initiateStepThree();
+                    }
+                });
+            }, 500);
+        }
+        
+        function initiateStepThree() {
+            setTimeout(() => {
+                Swal.fire({
+                    title: 'Step 3: Insight into Our Medical Team and Facilities',
+                    html: 'Peruse "Our Timeline" to uncover the stories of our dedicated medical team and the state-of-the-art facilities that form the backbone of our commitment to healthcare excellence.',
+                    imageUrl: 'images/gallery/step_tree', 
+                    imageWidth: 400,
+                    imageHeight: 200,
+                    imageAlt: 'Visual storytelling',
+                    confirmButtonText: 'Fulfill Journey'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('timeline').scrollIntoView({ behavior: 'smooth' });
+                        embarkOnStepFour();
+                    }
+                });
+            }, 500);
+        }
+        
+        function embarkOnStepFour() {
+            setTimeout(() => {
+                Swal.fire({
+                    title: 'Step 4: Engage with the Chatbot',
+                    html: 'Seize the opportunity to interact with our virtual assistant, nestled in the bottom right corner of your screen. Receive personalized advice, diagnosis, and thoughtful recommendations from our medical team. This gateway offers you a direct line to the support and care you need for your health journey.',
+                    imageUrl: 'images/gallery/landbot.png', 
+                    imageWidth: 400,
+                    imageHeight: 200,
+                    imageAlt: 'A digital companion',
+                    confirmButtonText: 'Summon the Chatbot'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.querySelector('.floating-button').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }, 500);
+        }
+    </script>
+    
+<script>
+    window.addEventListener('mouseover', initLandbot, { once: true });
+    window.addEventListener('touchstart', initLandbot, { once: true });
+    var myLandbot;
+    function initLandbot() {
+      if (!myLandbot) {
+        var s = document.createElement('script');s.type = 'text/javascript';s.async = true;
+        s.addEventListener('load', function() {
+          var myLandbot = new Landbot.Livechat({
+            configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-2081098-LPSLXL0SRMSE54R2/index.json',
+          });
+        });
+        s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.js';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }
+    }
+    </script>
+            
+<button type="button" class="btn btn-primary floating-button" data-toggle="modal" data-target="#ehrModal">
+    Mở Hồ Sơ Sức Khỏe
+</button>
+
+<div class="modal fade" id="ehrModal" tabindex="-1" role="dialog" aria-labelledby="ehrModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ehrModalLabel">Hồ Sơ Sức Khỏe Điện Tử</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="ehrForm">
+                    <div class="form-group">
+                        <label for="patientName">Tên Bệnh Nhân</label>
+                        <input type="text" class="form-control" id="patientName" placeholder="Nhập tên" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patientAge">Tuổi</label>
+                        <input type="number" class="form-control" id="patientAge" placeholder="Nhập tuổi" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="medicalHistory">Tiền Sử Bệnh</label>
+                        <textarea class="form-control" id="medicalHistory" rows="3" placeholder="Mô tả tiền sử bệnh" required></textarea>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Lưu Thay Đổi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/scrollspy.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+<script type="text/javascript">
+   document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.querySelector(".search-input");
+    const searchButton = document.querySelector(".search-button");
+    const suggestionsPanel = document.querySelector(".suggestions");
+
+    const searchMappings = {
+        "health tracking": "tdsk.html",
+        "covid-19 health assessment form": "chcp.html",
+    };
+    
+    const keywords = Object.keys(searchMappings);
+
+    searchInput.addEventListener("input", function () {
+        const input = searchInput.value.toLowerCase();
+        suggestionsPanel.innerHTML = '';
+        const suggestions = keywords.filter(function(keyword) {
+            return keyword.toLowerCase().startsWith(input);
+        });
+
+        if (input !== '' && suggestions.length > 0) {
+            suggestionsPanel.classList.add('active');
+        } else {
+            suggestionsPanel.classList.remove('active');
+        }
+
+        suggestions.forEach(function(suggested) {
+            const div = document.createElement('div');
+            div.textContent = suggested;
+            div.addEventListener('click', function () {
+                window.location.href = searchMappings[suggested];
+            });
+            suggestionsPanel.appendChild(div);
+        });
+    });
+
+    function handleSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        if (searchTerm in searchMappings) {
+            window.location.href = searchMappings[searchTerm];
+        } else {
+            alert("Không tìm thấy kết quả cho: " + searchTerm);
+        }
+    }
+
+    searchButton.addEventListener("click", handleSearch);
+    searchInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            handleSearch();
+        }
+    });
+});
+
+
+// Lấy các phần tử input
+const patientNameInput = document.getElementById('patientName');
+const patientAgeInput = document.getElementById('patientAge');
+const medicalHistoryInput = document.getElementById('medicalHistory');
+
+// Lấy nút Lưu Thay Đổi
+const submitBtn = document.querySelector('#ehrModal .btn-primary');
+
+// Thêm sự kiện click cho nút Lưu Thay Đổi
+submitBtn.addEventListener('click', () => {
+
+  // Lấy giá trị của các trường input
+  const patientName = patientNameInput.value;
+  const patientAge = patientAgeInput.value;
+  const medicalHistory = medicalHistoryInput.value;
+
+  // Tạo đường dẫn mailto với nội dung đã được điền sẵn
+  const mailtoLink = `mailto:22130116@st.hcmuaf.edu.vn?subject=Hồ Sơ Sức Khỏe&body=Tên Bệnh Nhân: ${patientName}%0ATuổi: ${patientAge}%0ATiền Sử Bệnh: ${medicalHistory}`;
+
+  // Chuyển hướng đến mailtoLink
+  window.location.href = mailtoLink;
+
+});
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.search-input').focus(); 
+    });
+  </script>
+        
+    </body>
+</html>
